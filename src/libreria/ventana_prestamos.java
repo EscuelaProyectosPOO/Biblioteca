@@ -2,6 +2,10 @@
 package libreria;
 
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import Base_Datos_Conexion.ConsultasBD;
 
 public class ventana_prestamos extends javax.swing.JFrame {
 
@@ -453,11 +457,43 @@ public class ventana_prestamos extends javax.swing.JFrame {
     }//GEN-LAST:event_materno_cajaMousePressed
 
     private void boton_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseClicked
-        System.out.println(id_caja.getText());
-        System.out.println(nombre_caja.getText());
-        System.out.println(paterno_caja.getText());
-        System.out.println(materno_caja.getText());
-        System.out.println(prestamo_caja.getText());
+        
+        
+        try{
+            //convierte los string en fechas, luego esas fechas en una que se pueda insertar en sql        
+            Date date = new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            
+            Date Fecha_fin_formatoDate = simpleDateFormat.parse(prestamo_caja.getText());
+        
+
+            String Fecha_inicio_formato = simpleDateFormat.format(date);
+            String Fecha_fin_prestamo = simpleDateFormat.format(Fecha_fin_formatoDate);
+            
+
+            java.sql.Date Fecha_inicio = java.sql.Date.valueOf(Fecha_inicio_formato);
+            java.sql.Date Fecha_fin = java.sql.Date.valueOf(Fecha_fin_prestamo);
+            
+            
+            id_libro = Integer.parseInt(id_caja.getText());
+            nombre_libro = nombre_caja.getText();
+            apellido_paterno = paterno_caja.getText();
+            apellido_materno = materno_caja.getText();
+            
+            ConsultasBD.insertarBaseDatos_TablaPrestamo(id_libro, nombre_libro, apellido_paterno, apellido_materno, Fecha_inicio, Fecha_fin);
+            
+            
+            
+        
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos correctamente\n" + e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+        
+        
+        
     }//GEN-LAST:event_boton_registrarMouseClicked
 
     private void boton_registrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseEntered
@@ -562,7 +598,11 @@ public class ventana_prestamos extends javax.swing.JFrame {
             }
         });
     }
-
+    private int id_libro;
+    private String nombre_libro;
+    private String apellido_paterno;
+    private String apellido_materno;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Autor;
     private javax.swing.JLabel Editorial;

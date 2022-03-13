@@ -2,6 +2,10 @@
 package libreria;
 
 import java.awt.Color;
+import Base_Datos_Conexion.ConsultasBD;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 public class ventana_usuarios extends javax.swing.JFrame {
 
@@ -345,11 +349,38 @@ public class ventana_usuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_direccion_cajaMousePressed
 
     private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
-        System.out.println(nombre_caja.getText());
-        System.out.println(paterno_caja.getText());
-        System.out.println(materno_caja.getText());
-        System.out.println(direccion_caja.getText());
-        System.out.println(telefono_caja.getText());
+        //se registra en la base de datos
+        
+         try{
+            
+            Nombre = nombre_caja.getText();
+            Apellido_paterno = paterno_caja.getText();
+            Apellido_materno = materno_caja.getText();
+            Direccion = direccion_caja.getText();
+            Telefono = telefono_caja.getText();
+            
+            if(Nombre.isEmpty() || Nombre.equals("Ingrese el nombre aquí") ||
+                    Apellido_paterno.isEmpty() || Apellido_paterno.equals("Ingrese el apellido paterno aquí") ||
+                    Apellido_materno.isEmpty() || Apellido_materno.equals("Ingrese el apellido materno aquí") ||
+                    Direccion.isEmpty() || Direccion.equals("Ingrese la direccion aquí") ||
+                    Telefono.isEmpty() || Telefono.equals("Ingrese el telefono aquí")){
+             
+                JOptionPane.showMessageDialog(null, "Debe llenar todos los campos\n", "Advertencia",
+                    JOptionPane.WARNING_MESSAGE);
+            }else{
+                ConsultasBD.insertarBaseDatos_TablaUsuarios(Nombre, Apellido_paterno, Apellido_materno, Direccion, Telefono);
+            
+            }
+            
+            
+            
+            
+        
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos correctamente\n" + e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_boton_entrarMouseClicked
 
     private void boton_entrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseEntered
@@ -415,6 +446,14 @@ public class ventana_usuarios extends javax.swing.JFrame {
             }
         });
     }
+    
+    private String Nombre;
+    private String Apellido_paterno;
+    private String Apellido_materno;
+    private String Direccion;
+    private String Telefono;
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Autor;

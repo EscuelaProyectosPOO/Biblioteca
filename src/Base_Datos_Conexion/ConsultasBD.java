@@ -4,6 +4,7 @@ package Base_Datos_Conexion;
 import java.sql.Connection;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import javax.swing.JOptionPane;
 
 
@@ -18,7 +19,7 @@ public class ConsultasBD {
     private static String Password = "123";
         
     
-    public static String ConsultarBaseDatos(String nombre_campo, String nombre_tabla, String columna_identificadora, String valor_identificador){
+    public static String ConsultarBaseDatos(String nombre_tabla, String nombre_campo,  String columna_identificadora, String valor_identificador){
         //Consultar en la base de datos
         String resultado = "";
         Connection conexion = null;
@@ -148,6 +149,53 @@ public class ConsultasBD {
             
      
     }
+    
+    public static void insertarBaseDatos_TablaPrestamo(int id_libro, String Nombre, String Apellido_paterno, String Apellido_materno, java.sql.Date Fecha_prestamo_inicio, java.sql.Date Fecha_prestamo_fin){
+        //Inserta un registro en la base dde datos
+        Connection conexion = null;
+        
+        
+        
+        try{
+
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            String conexionUrl = "jdbc:sqlserver://;"
+                + "databaseName=" +Nombre_base_datos + ";"
+                + "user="+ Nombre_usario_base_datos + ";"
+                + "password=" + Password + ";"
+                + "encrypt=true;trustServerCertificate=true;";
+
+            conexion = DriverManager.getConnection(conexionUrl);
+            
+            
+            
+            String consulta = "INSERT INTO Prestamo VALUES(?,?,?,?,?,?)";
+            
+            PreparedStatement pst = conexion.prepareStatement(consulta);
+            
+            pst.setInt(1, id_libro);
+            pst.setString(2, Nombre);
+            pst.setString(3, Apellido_paterno);
+            pst.setString(4, Apellido_materno);
+            pst.setDate(5, Fecha_prestamo_inicio);
+            pst.setDate(6, Fecha_prestamo_fin);
+            
+            
+            pst.executeUpdate();//para que se ejecute
+            
+         
+            JOptionPane.showMessageDialog(null, "Se ha guardado el registro", "Informacion",
+                    JOptionPane.INFORMATION_MESSAGE);
+            conexion.close();
+            
+        } catch (Exception er) {
+            System.out.println("Error " + er);
+        }
+            
+     
+    }
+    
+    
     
     
 }   
