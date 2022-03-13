@@ -1,7 +1,10 @@
 package libreria;
 import codigo_ventana.clase_ventanaVolver_inicio;
 
+import Base_Datos_Conexion.ConsultasBD;
+
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 public class ventana_libros extends javax.swing.JFrame {
 
@@ -244,11 +247,41 @@ public class ventana_libros extends javax.swing.JFrame {
        
 //Trabajar en la recoleccion de datos en este modulo
     private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
-        System.out.println(titulo_caja.getText());
-        System.out.println(autor_caja.getText());
-        System.out.println(editorial_caja.getText());
-        System.out.println(id_caja.getText());
-        System.out.println(ejemplares_caja.getText());
+        //se registran los datos en la tabla libros
+        try{
+            int id_libro = Integer.parseInt(id_caja.getText());
+            String Titulo_libro = titulo_caja.getText();
+            String autor = autor_caja.getText();
+            String editorial = editorial_caja.getText();
+            int numero_ejemplares = Integer.parseInt(ejemplares_caja.getText());
+            
+            if(Titulo_libro.isEmpty() || Titulo_libro.equals("Ingrese el titulo del libro aquí") ||
+                    autor.isEmpty() || autor.equals("Ingrese el titulo del libro aquí") ||
+                    editorial.isEmpty() || editorial.equals("Ingrese la editorial del libro aquí")){
+                
+                JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n", "No se han podido registrar los datos",
+                    JOptionPane.ERROR_MESSAGE);
+            }else{
+                
+                ConsultasBD.insertarBaseDatos_TablaLibros(id_libro, Titulo_libro, autor, editorial, numero_ejemplares);
+                limpiar_campos();
+            }
+            
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n" + e, "No se han podido registrar los datos",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+        
+        
+        
+        
+        
+       
+        
+        
     }//GEN-LAST:event_boton_entrarMouseClicked
     //Fin de funcion para trabajo
     
@@ -380,6 +413,22 @@ public class ventana_libros extends javax.swing.JFrame {
     }//GEN-LAST:event_ejemplares_cajaMousePressed
     //Fin de las funciones de posicionamiento
     
+    //esta es para limpiara los campos y colocar las indicaciones
+    public void limpiar_campos(){
+        titulo_caja.setText("Ingrese el titulo del libro aquí");
+        autor_caja.setText("Ingrese el autor del libro aquí");
+        editorial_caja.setText("Ingrese la editorial del libro aquí");
+        id_caja.setText("Ingrese el ID del libro aquí");
+        ejemplares_caja.setText("Ingrese la cantidad de ejemplares aquí");
+        
+        titulo_caja.setForeground(new Color (153, 153, 153));
+        autor_caja.setForeground(new Color (153, 153, 153));
+        editorial_caja.setForeground(new Color (153, 153, 153)); 
+        id_caja.setForeground(new Color (153, 153, 153));
+        ejemplares_caja.setForeground(new Color (153, 153, 153));
+        
+        
+    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -412,7 +461,11 @@ public class ventana_libros extends javax.swing.JFrame {
             }
         });
     }
-
+    private int id_libro ;
+    private String Titulo_libro;
+    private String autor;
+    private String editorial;
+    private int numero_ejemplares;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Autor;
     private javax.swing.JLabel Editorial;
