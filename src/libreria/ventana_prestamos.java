@@ -1,12 +1,16 @@
 
 package libreria;
 
+import codigo_ventana.clase_ventanaVolver_inicio;
 import java.awt.Color;
 
 public class ventana_prestamos extends javax.swing.JFrame {
 
     public ventana_prestamos() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+        addWindowListener(new clase_ventanaVolver_inicio());
     }
 
 
@@ -32,17 +36,17 @@ public class ventana_prestamos extends javax.swing.JFrame {
         ID = new javax.swing.JLabel();
         materno_caja = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
-        panel_registrar = new javax.swing.JPanel();
-        boton_registrar = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         prestamo_caja = new javax.swing.JTextField();
         Ejemplares = new javax.swing.JLabel();
-        panel_buscar = new javax.swing.JPanel();
-        boton_buscar = new javax.swing.JLabel();
+        panel_registrar = new javax.swing.JPanel();
+        boton_registrar = new javax.swing.JLabel();
         panel_eliminar = new javax.swing.JPanel();
         boton_eliminar = new javax.swing.JLabel();
         panel_actualizar = new javax.swing.JPanel();
         boton_actualizar = new javax.swing.JLabel();
+        panel_buscar = new javax.swing.JPanel();
+        boton_buscar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -179,6 +183,26 @@ public class ventana_prestamos extends javax.swing.JFrame {
         jSeparator5.setBackground(new java.awt.Color(204, 204, 204));
         bg.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 479, 490, 11));
 
+        jSeparator6.setBackground(new java.awt.Color(204, 204, 204));
+        bg.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 589, 490, 11));
+
+        prestamo_caja.setBackground(new java.awt.Color(255, 255, 255));
+        prestamo_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
+        prestamo_caja.setForeground(new java.awt.Color(153, 153, 153));
+        prestamo_caja.setText("Ingrese la fecha aquí");
+        prestamo_caja.setBorder(null);
+        prestamo_caja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                prestamo_cajaMousePressed(evt);
+            }
+        });
+        bg.add(prestamo_caja, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 550, 490, 33));
+
+        Ejemplares.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
+        Ejemplares.setForeground(new java.awt.Color(0, 0, 0));
+        Ejemplares.setText("Fecha de inicio de prestamo");
+        bg.add(Ejemplares, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 505, -1, 35));
+
         panel_registrar.setBackground(new java.awt.Color(184, 183, 169));
 
         boton_registrar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
@@ -212,60 +236,6 @@ public class ventana_prestamos extends javax.swing.JFrame {
         );
 
         bg.add(panel_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, -1, -1));
-
-        jSeparator6.setBackground(new java.awt.Color(204, 204, 204));
-        bg.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 589, 490, 11));
-
-        prestamo_caja.setBackground(new java.awt.Color(255, 255, 255));
-        prestamo_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
-        prestamo_caja.setForeground(new java.awt.Color(153, 153, 153));
-        prestamo_caja.setText("Ingrese la fecha aquí");
-        prestamo_caja.setBorder(null);
-        prestamo_caja.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                prestamo_cajaMousePressed(evt);
-            }
-        });
-        bg.add(prestamo_caja, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 550, 490, 33));
-
-        Ejemplares.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
-        Ejemplares.setForeground(new java.awt.Color(0, 0, 0));
-        Ejemplares.setText("Fecha de inicio de prestamo");
-        bg.add(Ejemplares, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 505, -1, 35));
-
-        panel_buscar.setBackground(new java.awt.Color(184, 183, 169));
-
-        boton_buscar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
-        boton_buscar.setForeground(new java.awt.Color(51, 51, 51));
-        boton_buscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        boton_buscar.setText("BUSCAR");
-        boton_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        boton_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boton_buscarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                boton_buscarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                boton_buscarMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panel_buscarLayout = new javax.swing.GroupLayout(panel_buscar);
-        panel_buscar.setLayout(panel_buscarLayout);
-        panel_buscarLayout.setHorizontalGroup(
-            panel_buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(boton_buscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-        );
-        panel_buscarLayout.setVerticalGroup(
-            panel_buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_buscarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(boton_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
-        );
-
-        bg.add(panel_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, -1, -1));
 
         panel_eliminar.setBackground(new java.awt.Color(184, 183, 169));
 
@@ -335,6 +305,40 @@ public class ventana_prestamos extends javax.swing.JFrame {
 
         bg.add(panel_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 610, -1, -1));
 
+        panel_buscar.setBackground(new java.awt.Color(184, 183, 169));
+
+        boton_buscar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
+        boton_buscar.setForeground(new java.awt.Color(51, 51, 51));
+        boton_buscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        boton_buscar.setText("BUSCAR");
+        boton_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_buscarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                boton_buscarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                boton_buscarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_buscarLayout = new javax.swing.GroupLayout(panel_buscar);
+        panel_buscar.setLayout(panel_buscarLayout);
+        panel_buscarLayout.setHorizontalGroup(
+            panel_buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(boton_buscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+        );
+        panel_buscarLayout.setVerticalGroup(
+            panel_buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_buscarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(boton_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+        );
+
+        bg.add(panel_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -361,176 +365,193 @@ public class ventana_prestamos extends javax.swing.JFrame {
 
     private void id_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_id_cajaMousePressed
 
-        if(id_caja.getText().equals("Ingrese el nombre aquí")){
+        if(id_caja.getText().equals("Ingrese el ID del prestamo aquí")){
             id_caja.setText("");
             id_caja.setForeground(Color.BLACK);
         }
         if(nombre_caja.getText().equals("")){
-            nombre_caja.setText("Ingrese el apellido paterno aquí");
+            nombre_caja.setText("Ingrese el nombre aquí");
             nombre_caja.setForeground(new Color (153, 153, 153));
         }
         if(paterno_caja.getText().equals("")){
-            paterno_caja.setText("Ingrese el apellido materno aquí");
+            paterno_caja.setText("Ingrese el apellido paterno aquí");
             paterno_caja.setForeground(new Color (153, 153, 153));
         }
         if(materno_caja.getText().equals("")){
-            materno_caja.setText("Ingrese la direccion aquí");
+            materno_caja.setText("Ingrese el apellido materno aquí");
             materno_caja.setForeground(new Color (153, 153, 153));
         }
         if(prestamo_caja.getText().equals("")){
-            prestamo_caja.setText("Ingrese el telefono aquí");
+            prestamo_caja.setText("Ingrese la fecha aquí");
             prestamo_caja.setForeground(new Color (153, 153, 153));
         }
     }//GEN-LAST:event_id_cajaMousePressed
 
     private void nombre_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombre_cajaMousePressed
         if(id_caja.getText().equals("")){
-            id_caja.setText("Ingrese el nombre aquí");
+            id_caja.setText("Ingrese el ID del prestamo aquí");
             id_caja.setForeground(new Color (153, 153, 153));
         }
-        if(nombre_caja.getText().equals("Ingrese el apellido paterno aquí")){
+        if(nombre_caja.getText().equals("Ingrese el nombre aquí")){
             nombre_caja.setText("");
             nombre_caja.setForeground(Color.BLACK);
         }
         if(paterno_caja.getText().equals("")){
-            paterno_caja.setText("Ingrese el apellido materno aquí");
+            paterno_caja.setText("Ingrese el apellido paterno aquí");
             paterno_caja.setForeground(new Color (153, 153, 153));
         }
         if(materno_caja.getText().equals("")){
-            materno_caja.setText("Ingrese la direccion aquí");
+            materno_caja.setText("Ingrese el apellido materno aquí");
             materno_caja.setForeground(new Color (153, 153, 153));
         }
         if(prestamo_caja.getText().equals("")){
-            prestamo_caja.setText("Ingrese el telefono aquí");
+            prestamo_caja.setText("Ingrese la fecha aquí");
             prestamo_caja.setForeground(new Color (153, 153, 153));
         }
     }//GEN-LAST:event_nombre_cajaMousePressed
 
     private void paterno_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paterno_cajaMousePressed
         if(id_caja.getText().equals("")){
-            id_caja.setText("Ingrese el nombre aquí");
+            id_caja.setText("Ingrese el ID del prestamo aquí");
             id_caja.setForeground(new Color (153, 153, 153));
         }
         if(nombre_caja.getText().equals("")){
-            nombre_caja.setText("Ingrese el apellido paterno aquí");
+            nombre_caja.setText("Ingrese el nombre aquí");
             nombre_caja.setForeground(new Color (153, 153, 153));
         }
-        if(paterno_caja.getText().equals("Ingrese el apellido materno aquí")){
+        if(paterno_caja.getText().equals("Ingrese el apellido paterno aquí")){
             paterno_caja.setText("");
             paterno_caja.setForeground(Color.BLACK);
         }
         if(materno_caja.getText().equals("")){
-            materno_caja.setText("Ingrese la direccion aquí");
+            materno_caja.setText("Ingrese el apellido materno aquí");
             materno_caja.setForeground(new Color (153, 153, 153));
         }
         if(prestamo_caja.getText().equals("")){
-            prestamo_caja.setText("Ingrese el telefono aquí");
+            prestamo_caja.setText("Ingrese la fecha aquí");
             prestamo_caja.setForeground(new Color (153, 153, 153));
         }
     }//GEN-LAST:event_paterno_cajaMousePressed
 
     private void materno_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_materno_cajaMousePressed
         if(id_caja.getText().equals("")){
-            id_caja.setText("Ingrese el nombre aquí");
+            id_caja.setText("Ingrese el ID del prestamo aquí");
             id_caja.setForeground(new Color (153, 153, 153));
         }
         if(nombre_caja.getText().equals("")){
-            nombre_caja.setText("Ingrese el apellido paterno aquí");
+            nombre_caja.setText("Ingrese el nombre aquí");
             nombre_caja.setForeground(new Color (153, 153, 153));
         }
         if(paterno_caja.getText().equals("")){
-            paterno_caja.setText("Ingrese el apellido materno aquí");
+            paterno_caja.setText("Ingrese el apellido paterno aquí");
             paterno_caja.setForeground(new Color (153, 153, 153));
         }
-        if(materno_caja.getText().equals("Ingrese la direccion aquí")){
+        if(materno_caja.getText().equals("Ingrese el apellido materno aquí")){
             materno_caja.setText("");
             materno_caja.setForeground(Color.BLACK);
         }
         if(prestamo_caja.getText().equals("")){
-            prestamo_caja.setText("Ingrese el telefono aquí");
+            prestamo_caja.setText("Ingrese la fecha aquí");
             prestamo_caja.setForeground(new Color (153, 153, 153));
         }
     }//GEN-LAST:event_materno_cajaMousePressed
 
+    private void prestamo_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prestamo_cajaMousePressed
+        if(id_caja.getText().equals("")){
+            id_caja.setText("Ingrese el ID del prestamo aquí");
+            id_caja.setForeground(new Color (153, 153, 153));
+        }
+        if(nombre_caja.getText().equals("")){
+            nombre_caja.setText("Ingrese el nombre aquí");
+            nombre_caja.setForeground(new Color (153, 153, 153));
+        }
+        if(paterno_caja.getText().equals("")){
+            paterno_caja.setText("Ingrese el apellido paterno aquí");
+            paterno_caja.setForeground(new Color (153, 153, 153));
+        }
+        if(materno_caja.getText().equals("")){
+            materno_caja.setText("Ingrese el apellido materno aquí");
+            materno_caja.setForeground(new Color (153, 153, 153));
+        }
+        if(prestamo_caja.getText().equals("Ingrese la fecha aquí")){
+            prestamo_caja.setText("");
+            prestamo_caja.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_prestamo_cajaMousePressed
+    
+    
+    //Codigo del boton registrar
     private void boton_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseClicked
-        System.out.println(id_caja.getText());
-        System.out.println(nombre_caja.getText());
-        System.out.println(paterno_caja.getText());
-        System.out.println(materno_caja.getText());
-        System.out.println(prestamo_caja.getText());
-    }//GEN-LAST:event_boton_registrarMouseClicked
 
+    }//GEN-LAST:event_boton_registrarMouseClicked
+    //Fin del codigo del boton registrar
+    
+    
     private void boton_registrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseEntered
-        panel_registrar.setBackground(new Color(112, 98, 70));
+        panel_registrar.setBackground(new Color(132, 132, 122));
         boton_registrar.setForeground(Color.white);
     }//GEN-LAST:event_boton_registrarMouseEntered
 
     private void boton_registrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseExited
         panel_registrar.setBackground(new Color (184, 183, 169));
+        boton_registrar.setForeground(Color.black);
     }//GEN-LAST:event_boton_registrarMouseExited
 
-    private void prestamo_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prestamo_cajaMousePressed
-        if(id_caja.getText().equals("")){
-            id_caja.setText("Ingrese el nombre aquí");
-            id_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(nombre_caja.getText().equals("")){
-            nombre_caja.setText("Ingrese el apellido paterno aquí");
-            nombre_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(paterno_caja.getText().equals("")){
-            paterno_caja.setText("Ingrese el apellido materno aquí");
-            paterno_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(materno_caja.getText().equals("")){
-            materno_caja.setText("Ingrese la direccion aquí");
-            materno_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(prestamo_caja.getText().equals("Ingrese el telefono aquí")){
-            prestamo_caja.setText("");
-            prestamo_caja.setForeground(Color.BLACK);
-        }
-    }//GEN-LAST:event_prestamo_cajaMousePressed
-
-    private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_buscarMouseClicked
-
-    private void boton_buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_buscarMouseEntered
-
-    private void boton_buscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_buscarMouseExited
-
+    
+    //Codigo del boton eliminar
     private void boton_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_eliminarMouseClicked
-
+    //Fin del codigo del boton actualizar
+    
+    
+    
     private void boton_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseEntered
-        // TODO add your handling code here:
+        panel_eliminar.setBackground(new Color(132, 132, 122));
+        boton_eliminar.setForeground(Color.white);
     }//GEN-LAST:event_boton_eliminarMouseEntered
 
     private void boton_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseExited
-        // TODO add your handling code here:
+        panel_eliminar.setBackground(new Color (184, 183, 169));
+        boton_eliminar.setForeground(Color.black);
     }//GEN-LAST:event_boton_eliminarMouseExited
 
+    
+    //Codigo del boton actualizar
     private void boton_actualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_actualizarMouseClicked
-
+    //Fin del codigo del boton actualizar
+    
+        
     private void boton_actualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseEntered
-        // TODO add your handling code here:
+        panel_actualizar.setBackground(new Color(132, 132, 122));
+        boton_actualizar.setForeground(Color.white);
     }//GEN-LAST:event_boton_actualizarMouseEntered
 
     private void boton_actualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseExited
-        // TODO add your handling code here:
+        panel_actualizar.setBackground(new Color (184, 183, 169));
+        boton_actualizar.setForeground(Color.black);
     }//GEN-LAST:event_boton_actualizarMouseExited
 
-    /**
-     * @param args the command line arguments
-     */
+    
+    //Codigo del boton buscar
+    private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_buscarMouseClicked
+    //Fin del codigo del boton buscar
+    
+    
+    private void boton_buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseEntered
+        panel_buscar.setBackground(new Color(132, 132, 122));
+        boton_buscar.setForeground(Color.white);
+    }//GEN-LAST:event_boton_buscarMouseEntered
+
+    private void boton_buscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseExited
+        panel_buscar.setBackground(new Color (184, 183, 169));
+        boton_buscar.setForeground(Color.black);
+    }//GEN-LAST:event_boton_buscarMouseExited
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
