@@ -47,6 +47,12 @@ public class ventana_libros extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         ejemplares_caja = new javax.swing.JTextField();
         Ejemplares = new javax.swing.JLabel();
+        panel_buscar = new javax.swing.JPanel();
+        boton_buscar = new javax.swing.JLabel();
+        panel_actualizar = new javax.swing.JPanel();
+        boton_actualizar = new javax.swing.JLabel();
+        panel_eliminar = new javax.swing.JPanel();
+        boton_eliminar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -216,7 +222,7 @@ public class ventana_libros extends javax.swing.JFrame {
                 .addComponent(boton_entrar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
         );
 
-        bg.add(panel_entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, -1, -1));
+        bg.add(panel_entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, -1, -1));
 
         jSeparator6.setBackground(new java.awt.Color(204, 204, 204));
         bg.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 589, 490, 11));
@@ -237,6 +243,108 @@ public class ventana_libros extends javax.swing.JFrame {
         Ejemplares.setForeground(new java.awt.Color(0, 0, 0));
         Ejemplares.setText("Ejemplares");
         bg.add(Ejemplares, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 505, -1, 35));
+
+        panel_buscar.setBackground(new java.awt.Color(184, 183, 169));
+
+        boton_buscar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
+        boton_buscar.setForeground(new java.awt.Color(51, 51, 51));
+        boton_buscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        boton_buscar.setText("BUSCAR");
+        boton_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_buscarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                boton_buscarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                boton_buscarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_buscarLayout = new javax.swing.GroupLayout(panel_buscar);
+        panel_buscar.setLayout(panel_buscarLayout);
+        panel_buscarLayout.setHorizontalGroup(
+            panel_buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(boton_buscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+        );
+        panel_buscarLayout.setVerticalGroup(
+            panel_buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_buscarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(boton_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+        );
+
+        bg.add(panel_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, -1, -1));
+
+        panel_actualizar.setBackground(new java.awt.Color(184, 183, 169));
+
+        boton_actualizar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
+        boton_actualizar.setForeground(new java.awt.Color(51, 51, 51));
+        boton_actualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        boton_actualizar.setText("ACTUALIZAR");
+        boton_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_actualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_actualizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                boton_actualizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                boton_actualizarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_actualizarLayout = new javax.swing.GroupLayout(panel_actualizar);
+        panel_actualizar.setLayout(panel_actualizarLayout);
+        panel_actualizarLayout.setHorizontalGroup(
+            panel_actualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(boton_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+        );
+        panel_actualizarLayout.setVerticalGroup(
+            panel_actualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_actualizarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(boton_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+        );
+
+        bg.add(panel_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 610, -1, -1));
+
+        panel_eliminar.setBackground(new java.awt.Color(184, 183, 169));
+
+        boton_eliminar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
+        boton_eliminar.setForeground(new java.awt.Color(51, 51, 51));
+        boton_eliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        boton_eliminar.setText("ELIMINAR");
+        boton_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_eliminarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                boton_eliminarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                boton_eliminarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_eliminarLayout = new javax.swing.GroupLayout(panel_eliminar);
+        panel_eliminar.setLayout(panel_eliminarLayout);
+        panel_eliminarLayout.setHorizontalGroup(
+            panel_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(boton_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+        );
+        panel_eliminarLayout.setVerticalGroup(
+            panel_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_eliminarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(boton_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+        );
+
+        bg.add(panel_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 610, -1, -1));
 
         getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 680));
 
@@ -411,6 +519,48 @@ public class ventana_libros extends javax.swing.JFrame {
             ejemplares_caja.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_ejemplares_cajaMousePressed
+
+    private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_buscarMouseClicked
+
+    private void boton_buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseEntered
+        panel_buscar.setBackground(new Color(132, 132, 122));
+        boton_buscar.setForeground(Color.white);
+    }//GEN-LAST:event_boton_buscarMouseEntered
+
+    private void boton_buscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseExited
+        panel_buscar.setBackground(new Color (184, 183, 169));
+        boton_buscar.setForeground(Color.black);
+    }//GEN-LAST:event_boton_buscarMouseExited
+
+    private void boton_actualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_actualizarMouseClicked
+
+    private void boton_actualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseEntered
+        panel_actualizar.setBackground(new Color(132, 132, 122));
+        boton_actualizar.setForeground(Color.white);
+    }//GEN-LAST:event_boton_actualizarMouseEntered
+
+    private void boton_actualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseExited
+        panel_actualizar.setBackground(new Color (184, 183, 169));
+        boton_actualizar.setForeground(Color.black);
+    }//GEN-LAST:event_boton_actualizarMouseExited
+
+    private void boton_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_eliminarMouseClicked
+
+    private void boton_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseEntered
+        panel_eliminar.setBackground(new Color(132, 132, 122));
+        boton_eliminar.setForeground(Color.white);
+    }//GEN-LAST:event_boton_eliminarMouseEntered
+
+    private void boton_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseExited
+        panel_eliminar.setBackground(new Color (184, 183, 169));
+        boton_eliminar.setForeground(Color.black);
+    }//GEN-LAST:event_boton_eliminarMouseExited
     //Fin de las funciones de posicionamiento
     
     //esta es para limpiara los campos y colocar las indicaciones
@@ -474,6 +624,9 @@ public class ventana_libros extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo;
     private javax.swing.JTextField autor_caja;
     private javax.swing.JPanel bg;
+    private javax.swing.JLabel boton_actualizar;
+    private javax.swing.JLabel boton_buscar;
+    private javax.swing.JLabel boton_eliminar;
     private javax.swing.JLabel boton_entrar;
     private javax.swing.JTextField editorial_caja;
     private javax.swing.JTextField ejemplares_caja;
@@ -488,6 +641,9 @@ public class ventana_libros extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JPanel panel_actualizar;
+    private javax.swing.JPanel panel_buscar;
+    private javax.swing.JPanel panel_eliminar;
     private javax.swing.JPanel panel_entrar;
     private javax.swing.JTextField titulo_caja;
     // End of variables declaration//GEN-END:variables

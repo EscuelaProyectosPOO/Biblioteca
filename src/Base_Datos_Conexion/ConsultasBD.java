@@ -6,6 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 
 /**
@@ -19,10 +20,11 @@ public class ConsultasBD {
     private static String Password = "123";
         
     
-    public static String ConsultarBaseDatos(String nombre_tabla, String nombre_campo,  String columna_identificadora, String valor_identificador){
+    public static ArrayList ConsultarBaseDatos(String nombre_tabla,  String columna_identificadora, int valor_identificador){
         //Consultar en la base de datos
-        String resultado = "";
+        
         Connection conexion = null;
+        ArrayList informacion_registro = new ArrayList();
         
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
@@ -34,35 +36,43 @@ public class ConsultasBD {
 
             conexion = DriverManager.getConnection(conexionUrl);
             
-            String consulta = "SELECT "+ nombre_campo +" FROM " + nombre_tabla 
+            String consulta = "SELECT * FROM " + nombre_tabla 
                     + " WHERE " +  columna_identificadora + " = ?";
             
             PreparedStatement pst = conexion.prepareStatement(consulta);
             
-            pst.setString(1, valor_identificador.trim());
+            pst.setInt(1, valor_identificador);
             
             ResultSet rs = pst.executeQuery();
             
             if(rs.next()){
                 
-                 resultado = rs.getString(nombre_campo);
+                for (int i=1;i<=rs.getMetaData().getColumnCount();i++)
+                    informacion_registro.add(rs.getString(i));
                 
             }else{
                 
-                JOptionPane.showMessageDialog(null, "Error en la consulta del campo "+ nombre_campo);
+                JOptionPane.showMessageDialog(null, "Error en la consulta del campo ");
                 
             
             }
             
+            conexion.close();
             
             
         }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null, e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
         
-        return resultado;
+        return informacion_registro;
         
     }
     
+    public static void eliminarRegistro(String nombre_tabla,  String columna_identificadora, int valor_identificador){
+        
+    }
     
     public static void insertarBaseDatos_TablaLibros(int id_libro, String Titulo,String Autor, String Editorial, int Numero_ejemplares ){
         //Inserta un registro en la base dde datos
@@ -100,8 +110,9 @@ public class ConsultasBD {
                     JOptionPane.INFORMATION_MESSAGE);
             conexion.close();
             
-        } catch (Exception er) {
-            System.out.println("Error " + er);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
             
      
@@ -143,8 +154,9 @@ public class ConsultasBD {
                     JOptionPane.INFORMATION_MESSAGE);
             conexion.close();
             
-        } catch (Exception er) {
-            System.out.println("Error " + er);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
             
      
@@ -188,8 +200,10 @@ public class ConsultasBD {
                     JOptionPane.INFORMATION_MESSAGE);
             conexion.close();
             
-        } catch (Exception er) {
-            System.out.println("Error " + er);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            
         }
             
      
