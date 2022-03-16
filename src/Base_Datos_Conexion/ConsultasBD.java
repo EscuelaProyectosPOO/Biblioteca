@@ -71,8 +71,86 @@ public class ConsultasBD {
     }
     
     public static void eliminarRegistro(String nombre_tabla,  String columna_identificadora, int valor_identificador){
+        //eliminar registro
+        
+        Connection conexion = null;
+        ArrayList informacion_registro = new ArrayList();
+        
+        try{
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            String conexionUrl = "jdbc:sqlserver://;"
+                + "databaseName=" +Nombre_base_datos + ";"
+                + "user="+ Nombre_usario_base_datos + ";"
+                + "password=" + Password + ";"
+                + "encrypt=true;trustServerCertificate=true;";
+
+            conexion = DriverManager.getConnection(conexionUrl);
+            
+            String consulta = "DELETE FROM " + nombre_tabla 
+                    + " WHERE " +  columna_identificadora + " = ?";
+            
+            PreparedStatement pst = conexion.prepareStatement(consulta);
+            
+            pst.setInt(1, valor_identificador);
+            
+            pst.executeQuery();
+            
+          
+            conexion.close();
+            
+            
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null, e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
         
     }
+    
+    public static void ActualizarBaseDatos(String Nombre_tabla, String CampoModificar, String valorNuevoMeter,String NombreColumnaIdentificador, int identificador){
+        
+        
+        Connection conexion = null;
+        
+        
+        
+        try{
+
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            String conexionUrl = "jdbc:sqlserver://;"
+                + "databaseName=" +Nombre_base_datos + ";"
+                + "user="+ Nombre_usario_base_datos + ";"
+                + "password=" + Password + ";"
+                + "encrypt=true;trustServerCertificate=true;";
+
+            conexion = DriverManager.getConnection(conexionUrl);
+            
+            
+            
+            String consulta = "UPDATE " + Nombre_tabla + " set " + CampoModificar + " = ? WHERE " + NombreColumnaIdentificador + " = " + String.valueOf(identificador);
+            
+            PreparedStatement pst = conexion.prepareStatement(consulta);
+            
+            pst.setString(1, valorNuevoMeter);
+            
+            pst.executeUpdate();//para que se ejecute
+            
+         
+            JOptionPane.showMessageDialog(null, "Se ha guardado el registro", "Informacion",
+                    JOptionPane.INFORMATION_MESSAGE);
+            conexion.close();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+        
+        
+    }
+    
     
     public static void insertarBaseDatos_TablaLibros(int id_libro, String Titulo,String Autor, String Editorial, int Numero_ejemplares ){
         //Inserta un registro en la base dde datos
@@ -209,6 +287,12 @@ public class ConsultasBD {
      
     }
     
+    public static void main(String args[]) {
+    
+        //ConsultasBD.ActualizarBaseDatos("Libros","Editorial", "me batearon banda", "ID_libro", 1);
+        //ConsultasBD.eliminarRegistro("Libros", "ID_libro", 1);
+    
+    }
     
     
     

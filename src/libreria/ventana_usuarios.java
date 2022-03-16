@@ -1,11 +1,9 @@
 
 package libreria;
 
+import Base_Datos_Conexion.ConsultasBD;
 import codigo_ventana.clase_ventanaVolver_inicio;
 import java.awt.Color;
-import Base_Datos_Conexion.ConsultasBD;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class ventana_usuarios extends javax.swing.JFrame {
@@ -460,11 +458,31 @@ public class ventana_usuarios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_direccion_cajaMousePressed
 
-<<<<<<< HEAD
-    private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
-        //se registra en la base de datos
-        
-         try{
+    private void telefono_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telefono_cajaMousePressed
+        if(nombre_caja.getText().equals("")){
+            nombre_caja.setText("Ingrese el nombre aquí");
+            nombre_caja.setForeground(new Color (153, 153, 153));
+        }
+        if(paterno_caja.getText().equals("")){
+            paterno_caja.setText("Ingrese el apellido paterno aquí");
+            paterno_caja.setForeground(new Color (153, 153, 153));
+        }
+        if(materno_caja.getText().equals("")){
+            materno_caja.setText("Ingrese el apellido materno aquí");
+            materno_caja.setForeground(new Color (153, 153, 153));
+        }
+        if(direccion_caja.getText().equals("")){
+            direccion_caja.setText("Ingrese la direccion aquí");
+            direccion_caja.setForeground(new Color (153, 153, 153));
+        }
+        if(telefono_caja.getText().equals("Ingrese el telefono aquí")){
+            telefono_caja.setText("");
+            telefono_caja.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_telefono_cajaMousePressed
+
+    private void boton_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseClicked
+        try{
             
             Nombre = nombre_caja.getText();
             Apellido_paterno = paterno_caja.getText();
@@ -490,48 +508,9 @@ public class ventana_usuarios extends javax.swing.JFrame {
             
         
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos correctamente\n" + e, "Error",
+            JOptionPane.showMessageDialog(null, "Debe rellenar todos  los campos correctamente\n" + e, "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-        
-    }//GEN-LAST:event_boton_entrarMouseClicked
-
-    private void boton_entrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseEntered
-        panel_entrar.setBackground(new Color(112, 98, 70));
-        boton_entrar.setForeground(Color.white);
-    }//GEN-LAST:event_boton_entrarMouseEntered
-
-    private void boton_entrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseExited
-        panel_entrar.setBackground(new Color (184, 183, 169));
-    }//GEN-LAST:event_boton_entrarMouseExited
-
-=======
->>>>>>> 454283067dfb269c856d2f0c9b855078b9a2bc70
-    private void telefono_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telefono_cajaMousePressed
-        if(nombre_caja.getText().equals("")){
-            nombre_caja.setText("Ingrese el nombre aquí");
-            nombre_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(paterno_caja.getText().equals("")){
-            paterno_caja.setText("Ingrese el apellido paterno aquí");
-            paterno_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(materno_caja.getText().equals("")){
-            materno_caja.setText("Ingrese el apellido materno aquí");
-            materno_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(direccion_caja.getText().equals("")){
-            direccion_caja.setText("Ingrese la direccion aquí");
-            direccion_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(telefono_caja.getText().equals("Ingrese el telefono aquí")){
-            telefono_caja.setText("");
-            telefono_caja.setForeground(Color.BLACK);
-        }
-    }//GEN-LAST:event_telefono_cajaMousePressed
-
-    private void boton_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseClicked
-
     }//GEN-LAST:event_boton_registrarMouseClicked
 
     private void boton_registrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseEntered
@@ -629,15 +608,11 @@ public class ventana_usuarios extends javax.swing.JFrame {
             }
         });
     }
-    
     private String Nombre;
     private String Apellido_paterno;
     private String Apellido_materno;
     private String Direccion;
     private String Telefono;
-    
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Autor;
     private javax.swing.JLabel Editorial;

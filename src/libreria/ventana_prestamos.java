@@ -460,8 +460,8 @@ public class ventana_prestamos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_materno_cajaMousePressed
 
-<<<<<<< HEAD
-    private void boton_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseClicked
+
+    private void boton_registrarMouseClicked(java.awt.event.MouseEvent evt) {                                             
         
         
         try{
@@ -499,19 +499,18 @@ public class ventana_prestamos extends javax.swing.JFrame {
         
         
         
-    }//GEN-LAST:event_boton_registrarMouseClicked
+    }                                            
 
-    private void boton_registrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseEntered
+    private void boton_registrarMouseEntered(java.awt.event.MouseEvent evt) {                                             
         panel_registrar.setBackground(new Color(112, 98, 70));
         boton_registrar.setForeground(Color.white);
-    }//GEN-LAST:event_boton_registrarMouseEntered
+    }                                            
 
-    private void boton_registrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseExited
+    private void boton_registrarMouseExited(java.awt.event.MouseEvent evt) {                                            
         panel_registrar.setBackground(new Color (184, 183, 169));
-    }//GEN-LAST:event_boton_registrarMouseExited
+    }                                           
 
-=======
->>>>>>> 454283067dfb269c856d2f0c9b855078b9a2bc70
+
     private void prestamo_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prestamo_cajaMousePressed
         if(id_caja.getText().equals("")){
             id_caja.setText("Ingrese el ID del prestamo aquí");
@@ -535,7 +534,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_prestamo_cajaMousePressed
     
-    
+    /*
     //Codigo del boton registrar
     private void boton_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseClicked
 
@@ -553,7 +552,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
         boton_registrar.setForeground(Color.black);
     }//GEN-LAST:event_boton_registrarMouseExited
 
-    
+    */
     //Codigo del boton eliminar
     private void boton_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseClicked
         // TODO add your handling code here:
