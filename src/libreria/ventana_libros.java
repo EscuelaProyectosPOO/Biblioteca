@@ -4,6 +4,7 @@ import codigo_ventana.clase_ventanaVolver_inicio;
 import Base_Datos_Conexion.ConsultasBD;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class ventana_libros extends javax.swing.JFrame {
@@ -522,6 +523,29 @@ public class ventana_libros extends javax.swing.JFrame {
 
     private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
         // TODO add your handling code here:
+        
+        id_libro = Integer.parseInt(id_caja.getText());
+        
+        ArrayList informacion_registro;
+        informacion_registro = ConsultasBD.ConsultarBaseDatos("Libros", "Id_libro", id_libro);
+        
+        titulo_caja.setText(String.valueOf(informacion_registro.get(1)));
+        autor_caja.setText(String.valueOf(informacion_registro.get(2)));
+        editorial_caja.setText(String.valueOf(informacion_registro.get(3)));
+        ejemplares_caja.setText(String.valueOf(informacion_registro.get(4)));
+        
+        titulo_caja.setForeground(Color.black);
+        autor_caja.setForeground(Color.black);
+        editorial_caja.setForeground(Color.black);
+        id_caja.setForeground(Color.black);
+        ejemplares_caja.setForeground(Color.black);
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_boton_buscarMouseClicked
 
     private void boton_buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseEntered
@@ -536,6 +560,20 @@ public class ventana_libros extends javax.swing.JFrame {
 
     private void boton_actualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseClicked
         // TODO add your handling code here:
+        id_libro = Integer.parseInt(id_caja.getText());
+        Titulo_libro = titulo_caja.getText();
+        autor = autor_caja.getText();
+        editorial = editorial_caja.getText();
+        numero_ejemplares = Integer.parseInt(ejemplares_caja.getText());
+        
+        ConsultasBD.ActualizarBaseDatos_Libro(id_libro, Titulo_libro, autor, editorial, numero_ejemplares);
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_boton_actualizarMouseClicked
 
     private void boton_actualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseEntered
@@ -550,6 +588,12 @@ public class ventana_libros extends javax.swing.JFrame {
 
     private void boton_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseClicked
         // TODO add your handling code here:
+        
+        
+        
+        id_libro = Integer.parseInt(id_caja.getText());
+        ConsultasBD.eliminarRegistro("Libros", "ID_libro", id_libro);
+        
     }//GEN-LAST:event_boton_eliminarMouseClicked
 
     private void boton_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseEntered

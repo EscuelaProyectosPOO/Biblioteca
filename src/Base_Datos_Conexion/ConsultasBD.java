@@ -74,8 +74,7 @@ public class ConsultasBD {
         //eliminar registro
         
         Connection conexion = null;
-        ArrayList informacion_registro = new ArrayList();
-        
+       
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
             String conexionUrl = "jdbc:sqlserver://;"
@@ -101,14 +100,14 @@ public class ConsultasBD {
             
         }catch(Exception e){
             
-            JOptionPane.showMessageDialog(null, e, "Error",
-                    JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, e, "Error",
+                    //JOptionPane.ERROR_MESSAGE);
         }
         
         
     }
     
-    public static void ActualizarBaseDatos(String Nombre_tabla, String CampoModificar, String valorNuevoMeter,String NombreColumnaIdentificador, int identificador){
+    public static void ActualizarBaseDatos_Libro(int identificador, String titulo, String autor, String editorial, int ejemplares){
         
         
         Connection conexion = null;
@@ -128,18 +127,21 @@ public class ConsultasBD {
             
             
             
-            String consulta = "UPDATE " + Nombre_tabla + " set " + CampoModificar + " = ? WHERE " + NombreColumnaIdentificador + " = " + String.valueOf(identificador);
+            String consulta = "UPDATE Libros set Titulo = ?, Autor = ?, Editorial = ?, Ejemplares = ?  WHERE ID_libro = " + String.valueOf(identificador);
             
             PreparedStatement pst = conexion.prepareStatement(consulta);
             
-            pst.setString(1, valorNuevoMeter);
+            pst.setString(1, titulo);
+            pst.setString(2,autor);
+            pst.setString(3, editorial);
+            pst.setInt(4, ejemplares);
             
             pst.executeUpdate();//para que se ejecute
             
          
+            conexion.close();
             JOptionPane.showMessageDialog(null, "Se ha guardado el registro", "Informacion",
                     JOptionPane.INFORMATION_MESSAGE);
-            conexion.close();
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error",
