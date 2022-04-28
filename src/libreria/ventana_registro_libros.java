@@ -1,20 +1,19 @@
 
 package libreria;
 
-import Base_Datos_Conexion.ConsultasBD;
 import codigo_ventana.clase_ventanaVolver_inicio;
 import java.awt.Color;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
-public class ventana_autores extends javax.swing.JFrame {
 
-    public ventana_autores() {
+public class ventana_registro_libros extends javax.swing.JFrame {
+
+    public ventana_registro_libros() {
         initComponents();
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
         addWindowListener(new clase_ventanaVolver_inicio());
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -26,7 +25,7 @@ public class ventana_autores extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         Autor = new javax.swing.JLabel();
-        autor_caja = new javax.swing.JTextField();
+        nombre_caja = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         ID = new javax.swing.JLabel();
         id_caja = new javax.swing.JTextField();
@@ -93,26 +92,26 @@ public class ventana_autores extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Victor Mono Medium", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("REGISTRO DE AUTORES");
+        jLabel4.setText("REGISTRO DE LIBROS");
         bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, 30));
 
         Autor.setBackground(new java.awt.Color(0, 0, 0));
         Autor.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
         Autor.setForeground(new java.awt.Color(0, 0, 0));
-        Autor.setText("Autor");
+        Autor.setText("Nombre");
         bg.add(Autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 185, -1, 35));
 
-        autor_caja.setBackground(new java.awt.Color(255, 255, 255));
-        autor_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
-        autor_caja.setForeground(new java.awt.Color(153, 153, 153));
-        autor_caja.setText("Ingrese el autor del libro aquí");
-        autor_caja.setBorder(null);
-        autor_caja.addMouseListener(new java.awt.event.MouseAdapter() {
+        nombre_caja.setBackground(new java.awt.Color(255, 255, 255));
+        nombre_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
+        nombre_caja.setForeground(new java.awt.Color(153, 153, 153));
+        nombre_caja.setText("Ingrese el nombre del libro aquí");
+        nombre_caja.setBorder(null);
+        nombre_caja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                autor_cajaMousePressed(evt);
+                nombre_cajaMousePressed(evt);
             }
         });
-        bg.add(autor_caja, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 230, 490, 33));
+        bg.add(nombre_caja, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 230, 490, 33));
 
         jSeparator2.setBackground(new java.awt.Color(204, 204, 204));
         bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 269, 490, 11));
@@ -125,7 +124,7 @@ public class ventana_autores extends javax.swing.JFrame {
         id_caja.setBackground(new java.awt.Color(255, 255, 255));
         id_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
         id_caja.setForeground(new java.awt.Color(153, 153, 153));
-        id_caja.setText("Ingrese el ID del autor aquí");
+        id_caja.setText("Ingrese el ID del libro aquí");
         id_caja.setBorder(null);
         id_caja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -289,174 +288,86 @@ public class ventana_autores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void boton_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseExited
-        panel_eliminar.setBackground(new Color (184, 183, 169));
-        boton_eliminar.setForeground(Color.black);
-    }//GEN-LAST:event_boton_eliminarMouseExited
+    private void nombre_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombre_cajaMousePressed
 
-    private void boton_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseEntered
-        panel_eliminar.setBackground(new Color(132, 132, 122));
-        boton_eliminar.setForeground(Color.white);
-    }//GEN-LAST:event_boton_eliminarMouseEntered
-
-    private void boton_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseClicked
-        // TODO add your handling code here:
-        try{            
-            
-            int ID_autor = Integer.parseInt(id_caja.getText());
-            
-            ConsultasBD.eliminarRegistro("Autores", "ID_Autor", ID_autor);
-            
-
-       }catch(Exception e){
-
-            JOptionPane.showMessageDialog(null, "Debe rellenar el campo ID \n" + e, "No se han podido registrar los datos",
-                JOptionPane.ERROR_MESSAGE);
+        if(nombre_caja.getText().equals("Ingrese el nombre del libro aquí")){
+            nombre_caja.setText("");
+            nombre_caja.setForeground(Color.BLACK);
         }
 
-//        id_libro = Integer.parseInt(id_caja.getText());
-//        ConsultasBD.eliminarRegistro("Libros", "ID_libro", id_libro);
-    }//GEN-LAST:event_boton_eliminarMouseClicked
-
-    private void boton_actualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseExited
-        panel_actualizar.setBackground(new Color (184, 183, 169));
-        boton_actualizar.setForeground(Color.black);
-    }//GEN-LAST:event_boton_actualizarMouseExited
-
-    private void boton_actualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseEntered
-        panel_actualizar.setBackground(new Color(132, 132, 122));
-        boton_actualizar.setForeground(Color.white);
-    }//GEN-LAST:event_boton_actualizarMouseEntered
-
-    private void boton_actualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseClicked
-        // TODO add your handling code here:
-        
-        try{            
-            
-            int ID_autor = Integer.parseInt(id_caja.getText());
-            String Nombre_autor = autor_caja.getText();
-           
-
-            if(Nombre_autor.isBlank()){
-
-                JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n", "No se han podido registrar los datos",
-                    JOptionPane.ERROR_MESSAGE);
-            }else{
-
-                ConsultasBD.ActualizarBaseDatos_Autores(ID_autor, Nombre_autor);
-               
-          }
-
-       }catch(Exception e){
-
-            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n" + e, "No se han podido registrar los datos",
-                JOptionPane.ERROR_MESSAGE);
+        if(id_caja.getText().equals("")){
+            id_caja.setText("Ingrese el ID del libro aquí");
+            id_caja.setForeground(new Color (153, 153, 153));
         }
-//        id_libro = Integer.parseInt(id_caja.getText());
-//        Titulo_libro = titulo_caja.getText();
-//        autor = autor_caja.getText();
-//        editorial = editorial_caja.getText();
-//        numero_ejemplares = Integer.parseInt(ejemplares_caja.getText());
-//
-//        ConsultasBD.ActualizarBaseDatos_Libro(id_libro, Titulo_libro, autor, editorial, numero_ejemplares);
-    }//GEN-LAST:event_boton_actualizarMouseClicked
 
-    private void boton_buscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseExited
-        panel_buscar.setBackground(new Color (184, 183, 169));
-        boton_buscar.setForeground(Color.black);
-    }//GEN-LAST:event_boton_buscarMouseExited
+    }//GEN-LAST:event_nombre_cajaMousePressed
 
-    private void boton_buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseEntered
-        panel_buscar.setBackground(new Color(132, 132, 122));
-        boton_buscar.setForeground(Color.white);
-    }//GEN-LAST:event_boton_buscarMouseEntered
-
-    private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
-        // TODO add your handling code here:
-        try{            
-            
-            int ID_autor = Integer.parseInt(id_caja.getText());
-            ArrayList informacion_registro = new ArrayList();
-            
-            informacion_registro = ConsultasBD.ConsultarBaseDatos("Autores", "ID_autor", ID_autor);
-
-            autor_caja.setText(String.valueOf(informacion_registro.get(1)));
-
-
-            autor_caja.setForeground(Color.black);
-           
-
-          
-
-       }catch(Exception e){
-
-            JOptionPane.showMessageDialog(null, "Debe rellenar el campo ID \n" + e, "No se han podido registrar los datos",
-                JOptionPane.ERROR_MESSAGE);
+    private void id_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_id_cajaMousePressed
+        if(nombre_caja.getText().equals("")){
+            nombre_caja.setText("Ingrese el nombre del libro aquí");
+            nombre_caja.setForeground(new Color (153, 153, 153));
         }
-      
-        
-        
-    }//GEN-LAST:event_boton_buscarMouseClicked
+        if(id_caja.getText().equals("Ingrese el ID del libro aquí")){
+            id_caja.setText("");
+            id_caja.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_id_cajaMousePressed
 
-    private void boton_entrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseExited
-        panel_entrar.setBackground(new Color (184, 183, 169));
-        boton_entrar.setForeground(Color.black);
-    }//GEN-LAST:event_boton_entrarMouseExited
+    private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
+        //se registran los datos en la tabla libros
+    }//GEN-LAST:event_boton_entrarMouseClicked
 
     private void boton_entrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseEntered
         panel_entrar.setBackground(new Color(132, 132, 122));
         boton_entrar.setForeground(Color.white);
     }//GEN-LAST:event_boton_entrarMouseEntered
 
-    private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
-        //se registran los datos en la tabla libros
-        try{            
-            
-            int ID_autor = Integer.parseInt(id_caja.getText());
-            String Nombre_autor = autor_caja.getText();
-           
+    private void boton_entrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseExited
+        panel_entrar.setBackground(new Color (184, 183, 169));
+        boton_entrar.setForeground(Color.black);
+    }//GEN-LAST:event_boton_entrarMouseExited
 
-            if(Nombre_autor.isBlank()){
+    private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_buscarMouseClicked
 
-                JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n", "No se han podido registrar los datos",
-                    JOptionPane.ERROR_MESSAGE);
-            }else{
+    private void boton_buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseEntered
+        panel_buscar.setBackground(new Color(132, 132, 122));
+        boton_buscar.setForeground(Color.white);
+    }//GEN-LAST:event_boton_buscarMouseEntered
 
-                ConsultasBD.insertarTablaAutor(ID_autor, Nombre_autor);
-               
-          }
+    private void boton_buscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseExited
+        panel_buscar.setBackground(new Color (184, 183, 169));
+        boton_buscar.setForeground(Color.black);
+    }//GEN-LAST:event_boton_buscarMouseExited
 
-       }catch(Exception e){
+    private void boton_actualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseClicked
+        // TODO add your handling code here
+    }//GEN-LAST:event_boton_actualizarMouseClicked
 
-            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n" + e, "No se han podido registrar los datos",
-                JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_boton_entrarMouseClicked
+    private void boton_actualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseEntered
+        panel_actualizar.setBackground(new Color(132, 132, 122));
+        boton_actualizar.setForeground(Color.white);
+    }//GEN-LAST:event_boton_actualizarMouseEntered
 
-    private void id_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_id_cajaMousePressed
-        if(autor_caja.getText().equals("")){
-            autor_caja.setText("Ingrese el autor del libro aquí");
-            autor_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(id_caja.getText().equals("Ingrese el ID del autor aquí")){
-            id_caja.setText("");
-            id_caja.setForeground(Color.BLACK);
-        }
-    }//GEN-LAST:event_id_cajaMousePressed
+    private void boton_actualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseExited
+        panel_actualizar.setBackground(new Color (184, 183, 169));
+        boton_actualizar.setForeground(Color.black);
+    }//GEN-LAST:event_boton_actualizarMouseExited
 
-    private void autor_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_autor_cajaMousePressed
-        
-        if(autor_caja.getText().equals("Ingrese el autor del libro aquí")){
-            autor_caja.setText("");
-            autor_caja.setForeground(Color.BLACK);
-        }
-        
-        if(id_caja.getText().equals("")){
-            id_caja.setText("Ingrese el ID del autor aquí");
-            id_caja.setForeground(new Color (153, 153, 153));
-        }
-        
-    }//GEN-LAST:event_autor_cajaMousePressed
+    private void boton_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_eliminarMouseClicked
+
+    private void boton_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseEntered
+        panel_eliminar.setBackground(new Color(132, 132, 122));
+        boton_eliminar.setForeground(Color.white);
+    }//GEN-LAST:event_boton_eliminarMouseEntered
+
+    private void boton_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseExited
+        panel_eliminar.setBackground(new Color (184, 183, 169));
+        boton_eliminar.setForeground(Color.black);
+    }//GEN-LAST:event_boton_eliminarMouseExited
 
 
     public static void main(String args[]) {
@@ -473,20 +384,20 @@ public class ventana_autores extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventana_autores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventana_registro_libros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventana_autores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventana_registro_libros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventana_autores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventana_registro_libros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventana_autores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventana_registro_libros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ventana_autores().setVisible(true);
+                new ventana_registro_libros().setVisible(true);
             }
         });
     }
@@ -494,7 +405,6 @@ public class ventana_autores extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Autor;
     private javax.swing.JLabel ID;
-    private javax.swing.JTextField autor_caja;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel boton_actualizar;
     private javax.swing.JLabel boton_buscar;
@@ -508,6 +418,7 @@ public class ventana_autores extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JTextField nombre_caja;
     private javax.swing.JPanel panel_actualizar;
     private javax.swing.JPanel panel_buscar;
     private javax.swing.JPanel panel_eliminar;

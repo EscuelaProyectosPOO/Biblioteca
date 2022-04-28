@@ -44,6 +44,9 @@ public class ventana_libros extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         ejemplares_caja = new javax.swing.JTextField();
         Ejemplares = new javax.swing.JLabel();
+        titulo_caja1 = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        Titulo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -94,12 +97,12 @@ public class ventana_libros extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        bg.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(586, 0, 190, 680));
+        bg.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, 190, 680));
 
         jLabel4.setFont(new java.awt.Font("Victor Mono Medium", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("REGISTRO DE LIBROS");
-        bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 40, -1, 30));
+        bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, 30));
 
         Titulo.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
         Titulo.setForeground(new java.awt.Color(0, 0, 0));
@@ -116,7 +119,7 @@ public class ventana_libros extends javax.swing.JFrame {
                 titulo_cajaMousePressed(evt);
             }
         });
-        bg.add(titulo_caja, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 125, 490, 33));
+        bg.add(titulo_caja, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 125, 510, 33));
 
         jSeparator1.setBackground(new java.awt.Color(204, 204, 204));
         bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 164, 490, 11));
@@ -124,7 +127,7 @@ public class ventana_libros extends javax.swing.JFrame {
         Autor.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
         Autor.setForeground(new java.awt.Color(0, 0, 0));
         Autor.setText("Autor");
-        bg.add(Autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 185, -1, 35));
+        bg.add(Autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, 35));
 
         autor_caja.setBackground(new java.awt.Color(255, 255, 255));
         autor_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
@@ -136,10 +139,10 @@ public class ventana_libros extends javax.swing.JFrame {
                 autor_cajaMousePressed(evt);
             }
         });
-        bg.add(autor_caja, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 230, 490, 33));
+        bg.add(autor_caja, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 490, 33));
 
         jSeparator2.setBackground(new java.awt.Color(204, 204, 204));
-        bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 269, 490, 11));
+        bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 490, 11));
 
         Editorial.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
         Editorial.setForeground(new java.awt.Color(0, 0, 0));
@@ -234,6 +237,26 @@ public class ventana_libros extends javax.swing.JFrame {
         Ejemplares.setForeground(new java.awt.Color(0, 0, 0));
         Ejemplares.setText("Ejemplares");
         bg.add(Ejemplares, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 505, -1, 35));
+
+        titulo_caja1.setBackground(new java.awt.Color(255, 255, 255));
+        titulo_caja1.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
+        titulo_caja1.setForeground(new java.awt.Color(153, 153, 153));
+        titulo_caja1.setText("Ingrese el titulo del libro aquí");
+        titulo_caja1.setBorder(null);
+        titulo_caja1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                titulo_caja1MousePressed(evt);
+            }
+        });
+        bg.add(titulo_caja1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 125, 280, 33));
+
+        jSeparator3.setBackground(new java.awt.Color(204, 204, 204));
+        bg.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 164, 260, 11));
+
+        Titulo1.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
+        Titulo1.setForeground(new java.awt.Color(0, 0, 0));
+        Titulo1.setText("Titulo");
+        bg.add(Titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 80, -1, 35));
 
         getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 680));
 
@@ -378,6 +401,10 @@ public class ventana_libros extends javax.swing.JFrame {
             ejemplares_caja.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_ejemplares_cajaMousePressed
+
+    private void titulo_caja1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_titulo_caja1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_titulo_caja1MousePressed
     //Fin de las funciones de posicionamiento
     
     
@@ -419,6 +446,7 @@ public class ventana_libros extends javax.swing.JFrame {
     private javax.swing.JLabel Ejemplares;
     private javax.swing.JLabel ID;
     private javax.swing.JLabel Titulo;
+    private javax.swing.JLabel Titulo1;
     private javax.swing.JTextField autor_caja;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel boton_entrar;
@@ -432,10 +460,12 @@ public class ventana_libros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JPanel panel_entrar;
     private javax.swing.JTextField titulo_caja;
+    private javax.swing.JTextField titulo_caja1;
     // End of variables declaration//GEN-END:variables
 }
