@@ -19,7 +19,6 @@ public class ventana_libros extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
         addWindowListener(new clase_ventanaVolver_inicio());
-        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -380,29 +379,20 @@ public class ventana_libros extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n" + e, "No se han podido registrar los datos",
                     JOptionPane.ERROR_MESSAGE);
-        }
-        
-        
-        
-        
-        
-        
-        
-       
-        
-        
+        }       
     }//GEN-LAST:event_boton_entrarMouseClicked
     //Fin de funcion para trabajo
     
         
     //Inicio de las funciones de posicionamiento de la ventana, por favor, no mover
     private void boton_entrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseEntered
-        panel_entrar.setBackground(new Color(112, 98, 70));
+        panel_entrar.setBackground(new Color(132, 132, 122));
         boton_entrar.setForeground(Color.white);
     }//GEN-LAST:event_boton_entrarMouseEntered
 
     private void boton_entrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseExited
         panel_entrar.setBackground(new Color (184, 183, 169));
+        boton_entrar.setForeground(Color.black);
     }//GEN-LAST:event_boton_entrarMouseExited
 
     private void titulo_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_titulo_cajaMousePressed

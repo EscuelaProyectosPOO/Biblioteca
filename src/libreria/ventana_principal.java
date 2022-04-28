@@ -136,7 +136,7 @@ public class ventana_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_entrarMouseClicked
 
     private void boton_entrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseEntered
-        panel_entrar.setBackground(new Color (112, 98, 70));
+        panel_entrar.setBackground(new Color (132, 132, 122));
         boton_entrar.setForeground(Color.white);
     }//GEN-LAST:event_boton_entrarMouseEntered
 
