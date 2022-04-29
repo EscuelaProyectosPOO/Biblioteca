@@ -2,6 +2,7 @@
 package libreria;
 
 import java.awt.Color;
+import Base_Datos_Conexion.ConsultasBD;
 
 public class ventana_usuarios extends javax.swing.JFrame {
 
@@ -350,6 +351,9 @@ public class ventana_usuarios extends javax.swing.JFrame {
         System.out.println(materno_caja.getText());
         System.out.println(direccion_caja.getText());
         System.out.println(telefono_caja.getText());
+        
+        ConsultasBD.insertarBaseDatos_TablaUsuarios(nombre_caja.getText(), paterno_caja.getText(),
+                materno_caja.getText(), direccion_caja.getText(), telefono_caja.getText());
     }//GEN-LAST:event_boton_entrarMouseClicked
 
     private void boton_entrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseEntered
