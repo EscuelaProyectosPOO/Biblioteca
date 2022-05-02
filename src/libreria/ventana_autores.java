@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class ventana_autores extends javax.swing.JFrame {
+    
+    public Base_Datos_Conexion.ConsultasBD conexion = new Base_Datos_Conexion.ConsultasBD();
 
     public ventana_autores() {
         initComponents();
@@ -372,7 +374,7 @@ public class ventana_autores extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_buscarMouseEntered
 
     private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
-        // TODO add your handling code here:
+        
         try{            
             
             int ID_autor = Integer.parseInt(id_caja.getText());
