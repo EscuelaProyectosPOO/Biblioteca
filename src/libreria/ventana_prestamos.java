@@ -467,22 +467,22 @@ public class ventana_prestamos extends javax.swing.JFrame {
         System.out.println(materno_caja.getText());
         System.out.println(prestamo_caja.getText());
       
-        try {
-            int idl = Integer.parseInt(id_caja.getText());
-        
-        
-            SimpleDateFormat formato = new SimpleDateFormat(prestamo_caja.getText());
-            
-            Date fecha_inicio_prestamo = formato.parse(prestamo_caja.getText());
-            //System.out.println(formato.format(fecha_inicio_prestamo));
-            
-            Date fecha_fin_prestamo = new Date(fecha_inicio_prestamo.getTime() + (1000 * 3600 * 24 * 3));
-
-            Base_Datos_Conexion.ConsultasBD conexion = new Base_Datos_Conexion.ConsultasBD();
-            conexion.insertarBaseDatos_TablaPrestamo(idl, nombre_caja.getText(), paterno_caja.getText(), materno_caja.getText(), fecha_inicio_prestamo, fecha_fin_prestamo);
-        } catch (ParseException ex) {
-            Logger.getLogger(ventana_prestamos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            int idl = Integer.parseInt(id_caja.getText());
+//        
+//        
+//            SimpleDateFormat formato = new SimpleDateFormat(prestamo_caja.getText());
+//            
+//            Date fecha_inicio_prestamo = formato.parse(prestamo_caja.getText());
+//            //System.out.println(formato.format(fecha_inicio_prestamo));
+//            
+//            Date fecha_fin_prestamo = new Date(fecha_inicio_prestamo.getTime() + (1000 * 3600 * 24 * 3));
+//
+//            Base_Datos_Conexion.ConsultasBD conexion = new Base_Datos_Conexion.ConsultasBD();
+//            conexion.insertarBaseDatos_TablaPrestamo(idl, nombre_caja.getText(), paterno_caja.getText(), materno_caja.getText(), fecha_inicio_prestamo, fecha_fin_prestamo);
+//        } catch (ParseException ex) {
+//            Logger.getLogger(ventana_prestamos.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_boton_registrarMouseClicked
 
     private void boton_registrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseEntered

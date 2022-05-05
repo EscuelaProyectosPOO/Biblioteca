@@ -9,8 +9,6 @@ public class ventana_libros extends javax.swing.JFrame {
     int xMouse, yMouse;
     //Fin de las variables
     
-    
-    
     public ventana_libros() {
         initComponents();
         //Code for this window, do not touch
