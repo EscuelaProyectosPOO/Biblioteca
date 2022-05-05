@@ -1,5 +1,6 @@
 package libreria;
 import codigo_ventana.clase_ventanaVolver_inicio;
+import Base_Datos_Conexion.ConsultasBD;
 
 import java.awt.Color;
 
@@ -172,7 +173,12 @@ public class ventana_libros extends javax.swing.JFrame {
         boton_entrar.setForeground(new java.awt.Color(51, 51, 51));
         boton_entrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_entrar.setText("REGISTRAR");
-        boton_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        boton_entrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_entrarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_entrarLayout = new javax.swing.GroupLayout(panel_entrar);
         panel_entrar.setLayout(panel_entrarLayout);
@@ -260,7 +266,7 @@ public class ventana_libros extends javax.swing.JFrame {
         boton_limpiar.setForeground(new java.awt.Color(51, 51, 51));
         boton_limpiar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_limpiar.setText("LIMPIAR");
-        boton_limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         boton_limpiar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_limpiarMouseClicked(evt);
@@ -286,7 +292,7 @@ public class ventana_libros extends javax.swing.JFrame {
         boton_buscar.setForeground(new java.awt.Color(51, 51, 51));
         boton_buscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_buscar.setText("BUSCAR");
-        boton_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         boton_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_buscarMouseClicked(evt);
@@ -318,7 +324,7 @@ public class ventana_libros extends javax.swing.JFrame {
         boton_eliminar.setForeground(new java.awt.Color(51, 51, 51));
         boton_eliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_eliminar.setText("ELIMINAR");
-        boton_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         boton_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_eliminarMouseClicked(evt);
@@ -350,7 +356,7 @@ public class ventana_libros extends javax.swing.JFrame {
         boton_actualizar.setForeground(new java.awt.Color(51, 51, 51));
         boton_actualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_actualizar.setText("ACTUALIZAR");
-        boton_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         boton_actualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_actualizarMouseClicked(evt);
@@ -796,6 +802,11 @@ public class ventana_libros extends javax.swing.JFrame {
     private void boton_actualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_actualizarMouseExited
+
+    private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
+        Base_Datos_Conexion.ConsultasBD conexion = new Base_Datos_Conexion.ConsultasBD();
+       
+    }//GEN-LAST:event_boton_entrarMouseClicked
       
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

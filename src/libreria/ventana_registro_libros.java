@@ -5,6 +5,7 @@ import codigo_ventana.clase_ventanaVolver_inicio;
 import java.awt.Color;
 
 
+
 public class ventana_registro_libros extends javax.swing.JFrame {
 
     public ventana_registro_libros() {
@@ -315,6 +316,8 @@ public class ventana_registro_libros extends javax.swing.JFrame {
 
     private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
         //se registran los datos en la tabla libros
+        int id = Integer.parseInt(id_caja.getText());
+        Base_Datos_Conexion.ConsultasBD.insertarBaseDatos_TablaLibros(id, nombre_caja.getText());
     }//GEN-LAST:event_boton_entrarMouseClicked
 
     private void boton_entrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseEntered
