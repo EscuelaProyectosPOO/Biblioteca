@@ -126,7 +126,7 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="DESCUBIENDO UN UNIVERSO"/>
+            <Property name="text" type="java.lang.String" value="DESCUBRIENDO UN UNIVERSO"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">

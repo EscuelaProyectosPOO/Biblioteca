@@ -3,11 +3,15 @@ package libreria;
 
 import java.awt.Color;
 import Base_Datos_Conexion.ConsultasBD;
+import codigo_ventana.clase_ventanaVolver_inicio;
 
 public class ventana_usuarios extends javax.swing.JFrame {
 
     public ventana_usuarios() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+        addWindowListener(new clase_ventanaVolver_inicio());
     }
 
     

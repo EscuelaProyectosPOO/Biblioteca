@@ -30,10 +30,8 @@ public class ventana_libros extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         Autor = new javax.swing.JLabel();
-        autor_caja = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         Editorial = new javax.swing.JLabel();
-        editorial_caja = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         ID = new javax.swing.JLabel();
         id_libro = new javax.swing.JTextField();
@@ -59,6 +57,8 @@ public class ventana_libros extends javax.swing.JFrame {
         boton_eliminar = new javax.swing.JLabel();
         panel_actualizar = new javax.swing.JPanel();
         boton_actualizar = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,14 +86,14 @@ public class ventana_libros extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(54, 54, 54)
-                        .addComponent(jLabel6)))
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jLabel1)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -105,7 +105,7 @@ public class ventana_libros extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
 
         jLabel4.setFont(new java.awt.Font("Victor Mono Medium", 1, 24)); // NOI18N
@@ -118,33 +118,11 @@ public class ventana_libros extends javax.swing.JFrame {
         Autor.setForeground(new java.awt.Color(0, 0, 0));
         Autor.setText("Autor");
 
-        autor_caja.setBackground(new java.awt.Color(255, 255, 255));
-        autor_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
-        autor_caja.setForeground(new java.awt.Color(153, 153, 153));
-        autor_caja.setText("Ingrese el autor del libro aquí");
-        autor_caja.setBorder(null);
-        autor_caja.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                autor_cajaMousePressed(evt);
-            }
-        });
-
         jSeparator2.setBackground(new java.awt.Color(204, 204, 204));
 
         Editorial.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
         Editorial.setForeground(new java.awt.Color(0, 0, 0));
         Editorial.setText("Editorial");
-
-        editorial_caja.setBackground(new java.awt.Color(255, 255, 255));
-        editorial_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
-        editorial_caja.setForeground(new java.awt.Color(153, 153, 153));
-        editorial_caja.setText("Ingrese la editorial del libro aquí");
-        editorial_caja.setBorder(null);
-        editorial_caja.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                editorial_cajaMousePressed(evt);
-            }
-        });
 
         jSeparator4.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -233,9 +211,15 @@ public class ventana_libros extends javax.swing.JFrame {
         id_autor.setForeground(new java.awt.Color(153, 153, 153));
         id_autor.setText("Ingrese el ID del autor aquí");
         id_autor.setBorder(null);
+        id_autor.setEnabled(false);
         id_autor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 id_autorMousePressed(evt);
+            }
+        });
+        id_autor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                id_autorActionPerformed(evt);
             }
         });
 
@@ -250,6 +234,7 @@ public class ventana_libros extends javax.swing.JFrame {
         id_editorial.setForeground(new java.awt.Color(153, 153, 153));
         id_editorial.setText("Ingrese el ID de la editorial aquí");
         id_editorial.setBorder(null);
+        id_editorial.setEnabled(false);
         id_editorial.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 id_editorialMousePressed(evt);
@@ -380,6 +365,11 @@ public class ventana_libros extends javax.swing.JFrame {
                 .addComponent(boton_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
         );
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setBorder(null);
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
@@ -392,17 +382,21 @@ public class ventana_libros extends javax.swing.JFrame {
                         .addGap(269, 269, 269))
                     .addGroup(bgLayout.createSequentialGroup()
                         .addGap(0, 29, Short.MAX_VALUE)
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bgLayout.createSequentialGroup()
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgLayout.createSequentialGroup()
                                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Titulo1)
-                                    .addComponent(Autor)
-                                    .addComponent(autor_caja)
-                                    .addComponent(jSeparator2)
-                                    .addComponent(jSeparator1)
-                                    .addComponent(editorial_caja, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                                    .addComponent(titulo_caja))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(bgLayout.createSequentialGroup()
+                                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(Titulo1)
+                                            .addComponent(Autor)
+                                            .addComponent(jSeparator2)
+                                            .addComponent(jSeparator1)
+                                            .addComponent(titulo_caja, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                    .addGroup(bgLayout.createSequentialGroup()
+                                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(12, 12, 12)))
                                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jSeparator7, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
                                     .addComponent(jSeparator9)
@@ -472,9 +466,9 @@ public class ventana_libros extends javax.swing.JFrame {
                                                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(5, 5, 5)
                                         .addComponent(Autor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(autor_caja, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(7, 7, 7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(bgLayout.createSequentialGroup()
                                         .addComponent(ID1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -487,9 +481,11 @@ public class ventana_libros extends javax.swing.JFrame {
                                     .addComponent(Editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(ID2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(10, 10, 10)
-                                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(editorial_caja, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(id_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(id_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(bgLayout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addComponent(jComboBox2)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -516,8 +512,6 @@ public class ventana_libros extends javax.swing.JFrame {
 
     public void color_cajas(){
        titulo_caja.setForeground(new Color (0, 0, 0));
-       autor_caja.setForeground(new Color (0, 0, 0));
-       editorial_caja.setForeground(new Color (0, 0, 0));
        id_libro.setForeground(new Color (0, 0, 0));
        id_autor.setForeground(new Color (0, 0, 0));
        id_editorial.setForeground(new Color (0, 0, 0));
@@ -528,26 +522,10 @@ public class ventana_libros extends javax.swing.JFrame {
         if(titulo_caja.getText().equals("Ingrese el titulo del libro aquí")){
             titulo_caja.setText("");
             titulo_caja.setForeground(new Color (0, 0, 0));
-        }
-        if(autor_caja.getText().equals("")){
-            autor_caja.setText("Ingrese el autor del libro aquí");
-            autor_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(editorial_caja.getText().equals("")){
-            editorial_caja.setText("Ingrese la editorial del libro aquí");
-            editorial_caja.setForeground(new Color (153, 153, 153));
         }       
         if(id_libro.getText().equals("")){
             id_libro.setText("Ingrese el ID del libro aquí");
             id_libro.setForeground(new Color (153, 153, 153));
-        }
-        if(id_autor.getText().equals("")){
-            id_autor.setText("Ingrese el ID del autor aquí");
-            id_autor.setForeground(new Color (153, 153, 153));
-        }
-        if(id_editorial.getText().equals("")){
-            id_editorial.setText("Ingrese el ID de la editorial aquí");
-            id_editorial.setForeground(new Color (153, 153, 153));
         }
         if(ejemplares_caja.getText().equals("")){
             ejemplares_caja.setText("Ingrese la cantidad de ejemplares aquí");
@@ -555,92 +533,15 @@ public class ventana_libros extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_titulo_cajaMousePressed
 
-    private void autor_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_autor_cajaMousePressed
-        if(titulo_caja.getText().equals("")){
-            titulo_caja.setText("Ingrese el titulo del libro aquí");
-            titulo_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(autor_caja.getText().equals("Ingrese el autor del libro aquí")){
-            autor_caja.setText("");
-            autor_caja.setForeground(new Color (0, 0, 0));
-        }
-        if(editorial_caja.getText().equals("")){
-            editorial_caja.setText("Ingrese la editorial del libro aquí");
-            editorial_caja.setForeground(new Color (153, 153, 153));
-        }       
-        if(id_libro.getText().equals("")){
-            id_libro.setText("Ingrese el ID del libro aquí");
-            id_libro.setForeground(new Color (153, 153, 153));
-        }
-        if(id_autor.getText().equals("")){
-            id_autor.setText("Ingrese el ID del autor aquí");
-            id_autor.setForeground(new Color (153, 153, 153));
-        }
-        if(id_editorial.getText().equals("")){
-            id_editorial.setText("Ingrese el ID de la editorial aquí");
-            id_editorial.setForeground(new Color (153, 153, 153));
-        }
-        if(ejemplares_caja.getText().equals("")){
-            ejemplares_caja.setText("Ingrese la cantidad de ejemplares aquí");
-            ejemplares_caja.setForeground(new Color (153, 153, 153));
-        }
-    }//GEN-LAST:event_autor_cajaMousePressed
-
-    private void editorial_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editorial_cajaMousePressed
-        if(titulo_caja.getText().equals("")){
-            titulo_caja.setText("Ingrese el titulo del libro aquí");
-            titulo_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(autor_caja.getText().equals("")){
-            autor_caja.setText("Ingrese el autor del libro aquí");
-            autor_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(editorial_caja.getText().equals("Ingrese la editorial del libro aquí")){
-            editorial_caja.setText("");
-            editorial_caja.setForeground(new Color (0, 0, 0));
-        }       
-        if(id_libro.getText().equals("")){
-            id_libro.setText("Ingrese el ID del libro aquí");
-            id_libro.setForeground(new Color (153, 153, 153));
-        }
-        if(id_autor.getText().equals("")){
-            id_autor.setText("Ingrese el ID del autor aquí");
-            id_autor.setForeground(new Color (153, 153, 153));
-        }
-        if(id_editorial.getText().equals("")){
-            id_editorial.setText("Ingrese el ID de la editorial aquí");
-            id_editorial.setForeground(new Color (153, 153, 153));
-        }
-        if(ejemplares_caja.getText().equals("")){
-            ejemplares_caja.setText("Ingrese la cantidad de ejemplares aquí");
-            ejemplares_caja.setForeground(new Color (153, 153, 153));
-        }
-    }//GEN-LAST:event_editorial_cajaMousePressed
-
     private void id_libroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_id_libroMousePressed
         if(titulo_caja.getText().equals("")){
             titulo_caja.setText("Ingrese el titulo del libro aquí");
             titulo_caja.setForeground(new Color (153, 153, 153));
         }
-        if(autor_caja.getText().equals("")){
-            autor_caja.setText("Ingrese el autor del libro aquí");
-            autor_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(editorial_caja.getText().equals("")){
-            editorial_caja.setText("Ingrese la editorial del libro aquí");
-            editorial_caja.setForeground(new Color (153, 153, 153));
-        }       
+             
         if(id_libro.getText().equals("Ingrese el ID del libro aquí")){
             id_libro.setText("");
             id_libro.setForeground(new Color (0, 0, 0));
-        }
-        if(id_autor.getText().equals("")){
-            id_autor.setText("Ingrese el ID del autor aquí");
-            id_autor.setForeground(new Color (153, 153, 153));
-        }
-        if(id_editorial.getText().equals("")){
-            id_editorial.setText("Ingrese el ID de la editorial aquí");
-            id_editorial.setForeground(new Color (153, 153, 153));
         }
         if(ejemplares_caja.getText().equals("")){
             ejemplares_caja.setText("Ingrese la cantidad de ejemplares aquí");
@@ -652,26 +553,10 @@ public class ventana_libros extends javax.swing.JFrame {
         if(titulo_caja.getText().equals("")){
             titulo_caja.setText("Ingrese el titulo del libro aquí");
             titulo_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(autor_caja.getText().equals("")){
-            autor_caja.setText("Ingrese el autor del libro aquí");
-            autor_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(editorial_caja.getText().equals("")){
-            editorial_caja.setText("Ingrese la editorial del libro aquí");
-            editorial_caja.setForeground(new Color (153, 153, 153));
-        }       
+        }      
         if(id_libro.getText().equals("")){
             id_libro.setText("Ingrese el ID del libro aquí");
             id_libro.setForeground(new Color (153, 153, 153));
-        }
-        if(id_autor.getText().equals("Ingrese el ID del autor aquí")){
-            id_autor.setText("");
-            id_autor.setForeground(new Color (0, 0, 0));
-        }
-        if(id_editorial.getText().equals("")){
-            id_editorial.setText("Ingrese el ID de la editorial aquí");
-            id_editorial.setForeground(new Color (153, 153, 153));
         }
         if(ejemplares_caja.getText().equals("")){
             ejemplares_caja.setText("Ingrese la cantidad de ejemplares aquí");
@@ -683,26 +568,10 @@ public class ventana_libros extends javax.swing.JFrame {
         if(titulo_caja.getText().equals("")){
             titulo_caja.setText("Ingrese el titulo del libro aquí");
             titulo_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(autor_caja.getText().equals("")){
-            autor_caja.setText("Ingrese el autor del libro aquí");
-            autor_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(editorial_caja.getText().equals("")){
-            editorial_caja.setText("Ingrese la editorial del libro aquí");
-            editorial_caja.setForeground(new Color (153, 153, 153));
         }       
         if(id_libro.getText().equals("")){
             id_libro.setText("Ingrese el ID del libro aquí");
             id_libro.setForeground(new Color (153, 153, 153));
-        }
-        if(id_autor.getText().equals("")){
-            id_autor.setText("Ingrese el ID del autor aquí");
-            id_autor.setForeground(new Color (153, 153, 153));
-        }
-        if(id_editorial.getText().equals("Ingrese el ID de la editorial aquí")){
-            id_editorial.setText("");
-            id_editorial.setForeground(new Color (0, 0, 0));
         }
         if(ejemplares_caja.getText().equals("")){
             ejemplares_caja.setText("Ingrese la cantidad de ejemplares aquí");
@@ -715,25 +584,10 @@ public class ventana_libros extends javax.swing.JFrame {
             titulo_caja.setText("Ingrese el titulo del libro aquí");
             titulo_caja.setForeground(new Color (153, 153, 153));
         }
-        if(autor_caja.getText().equals("")){
-            autor_caja.setText("Ingrese el autor del libro aquí");
-            autor_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(editorial_caja.getText().equals("")){
-            editorial_caja.setText("Ingrese la editorial del libro aquí");
-            editorial_caja.setForeground(new Color (153, 153, 153));
-        }       
+               
         if(id_libro.getText().equals("")){
             id_libro.setText("Ingrese el ID del libro aquí");
             id_libro.setForeground(new Color (153, 153, 153));
-        }
-        if(id_autor.getText().equals("")){
-            id_autor.setText("Ingrese el ID del autor aquí");
-            id_autor.setForeground(new Color (153, 153, 153));
-        }
-        if(id_editorial.getText().equals("")){
-            id_editorial.setText("Ingrese el ID de la editorial aquí");
-            id_editorial.setForeground(new Color (153, 153, 153));
         }
         if(ejemplares_caja.getText().equals("Ingrese la cantidad de ejemplares aquí")){
             ejemplares_caja.setText("");
@@ -744,12 +598,6 @@ public class ventana_libros extends javax.swing.JFrame {
     private void boton_limpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_limpiarMouseClicked
         titulo_caja.setText("Ingrese el titulo del libro aquí");
         titulo_caja.setForeground(new Color (153, 153, 153));
-        
-        autor_caja.setText("Ingrese el autor del libro aquí");
-        autor_caja.setForeground(new Color (153, 153, 153));
-        
-        editorial_caja.setText("Ingrese la editorial del libro aquí");
-        editorial_caja.setForeground(new Color (153, 153, 153));
         
         id_libro.setText("Ingrese el ID del libro aquí");
         id_libro.setForeground(new Color (153, 153, 153));
@@ -805,6 +653,10 @@ public class ventana_libros extends javax.swing.JFrame {
         Base_Datos_Conexion.ConsultasBD conexion = new Base_Datos_Conexion.ConsultasBD();
        
     }//GEN-LAST:event_boton_entrarMouseClicked
+
+    private void id_autorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_autorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_id_autorActionPerformed
       
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -846,18 +698,18 @@ public class ventana_libros extends javax.swing.JFrame {
     private javax.swing.JLabel ID1;
     private javax.swing.JLabel ID2;
     private javax.swing.JLabel Titulo1;
-    private javax.swing.JTextField autor_caja;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel boton_actualizar;
     private javax.swing.JLabel boton_buscar;
     private javax.swing.JLabel boton_eliminar;
     private javax.swing.JLabel boton_entrar;
     private javax.swing.JLabel boton_limpiar;
-    private javax.swing.JTextField editorial_caja;
     private javax.swing.JTextField ejemplares_caja;
     private javax.swing.JTextField id_autor;
     private javax.swing.JTextField id_editorial;
     private javax.swing.JTextField id_libro;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

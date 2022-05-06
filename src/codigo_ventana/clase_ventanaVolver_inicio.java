@@ -3,7 +3,7 @@ package codigo_ventana;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import libreria.ventana_principal;
+import libreria.ventana_menu;
 
 
 
@@ -15,7 +15,7 @@ public class clase_ventanaVolver_inicio extends  WindowAdapter{//cvlase aadaptad
 
     public void windowClosing(WindowEvent e){
 
-        new ventana_principal().setVisible(true);
+        new ventana_menu().setVisible(true);
     }
  
     

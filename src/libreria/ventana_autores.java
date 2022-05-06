@@ -145,7 +145,7 @@ public class ventana_autores extends javax.swing.JFrame {
         boton_entrar.setForeground(new java.awt.Color(51, 51, 51));
         boton_entrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_entrar.setText("REGISTRAR");
-        boton_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         boton_entrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_entrarMouseClicked(evt);
@@ -179,7 +179,7 @@ public class ventana_autores extends javax.swing.JFrame {
         boton_buscar.setForeground(new java.awt.Color(51, 51, 51));
         boton_buscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_buscar.setText("BUSCAR");
-        boton_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         boton_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_buscarMouseClicked(evt);
@@ -213,7 +213,7 @@ public class ventana_autores extends javax.swing.JFrame {
         boton_actualizar.setForeground(new java.awt.Color(51, 51, 51));
         boton_actualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_actualizar.setText("ACTUALIZAR");
-        boton_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         boton_actualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_actualizarMouseClicked(evt);
@@ -247,7 +247,7 @@ public class ventana_autores extends javax.swing.JFrame {
         boton_eliminar.setForeground(new java.awt.Color(51, 51, 51));
         boton_eliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_eliminar.setText("ELIMINAR");
-        boton_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         boton_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_eliminarMouseClicked(evt);

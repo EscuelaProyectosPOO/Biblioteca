@@ -7,7 +7,6 @@ public class ventana_principal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
-            
     }
     
     @SuppressWarnings("unchecked")
@@ -54,7 +53,7 @@ public class ventana_principal extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("DESCUBIENDO UN UNIVERSO");
+        jLabel2.setText("DESCUBRIENDO UN UNIVERSO");
 
         jLabel3.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 22)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -131,7 +130,7 @@ public class ventana_principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
-        new ventana_libros().setVisible(true);
+        new ventana_menu().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_boton_entrarMouseClicked
 
