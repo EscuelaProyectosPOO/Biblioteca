@@ -10,7 +10,6 @@ public class ventana_menu extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
-        addWindowListener(new clase_ventanaVolver_inicio());
     }
 
  
@@ -28,10 +27,17 @@ public class ventana_menu extends javax.swing.JFrame {
         boton_usuarios = new javax.swing.JLabel();
         panel_libros = new javax.swing.JPanel();
         boton_libros = new javax.swing.JLabel();
+<<<<<<< HEAD
         panel_autores = new javax.swing.JPanel();
         boton_autores = new javax.swing.JLabel();
         panel_editoriales = new javax.swing.JPanel();
         boton_editoriales = new javax.swing.JLabel();
+=======
+        panel_editorial = new javax.swing.JPanel();
+        boton_editorial = new javax.swing.JLabel();
+        panel_autores = new javax.swing.JPanel();
+        boton_autores = new javax.swing.JLabel();
+>>>>>>> 3e70222ad8aad40fe57399f1ca9eadaa277728d0
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,14 +74,19 @@ public class ventana_menu extends javax.swing.JFrame {
         jLabel2.setText("MENÚ DEL USUARIO");
 
         panel_prestamos.setBackground(new java.awt.Color(184, 183, 169));
+        panel_prestamos.setPreferredSize(new java.awt.Dimension(135, 55));
 
         boton_prestamos.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
         boton_prestamos.setForeground(new java.awt.Color(51, 51, 51));
         boton_prestamos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_prestamos.setText("PRESTAMOS");
         boton_prestamos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+<<<<<<< HEAD
         boton_prestamos.setMaximumSize(new java.awt.Dimension(58, 26));
         boton_prestamos.setMinimumSize(new java.awt.Dimension(58, 26));
+=======
+        boton_prestamos.setPreferredSize(new java.awt.Dimension(135, 55));
+>>>>>>> 3e70222ad8aad40fe57399f1ca9eadaa277728d0
         boton_prestamos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_prestamosMouseClicked(evt);
@@ -92,14 +103,25 @@ public class ventana_menu extends javax.swing.JFrame {
         panel_prestamos.setLayout(panel_prestamosLayout);
         panel_prestamosLayout.setHorizontalGroup(
             panel_prestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addComponent(boton_prestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         panel_prestamosLayout.setVerticalGroup(
             panel_prestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(boton_prestamos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+=======
+            .addComponent(boton_prestamos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panel_prestamosLayout.setVerticalGroup(
+            panel_prestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_prestamosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(boton_prestamos, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
+>>>>>>> 3e70222ad8aad40fe57399f1ca9eadaa277728d0
         );
 
         panel_usuarios.setBackground(new java.awt.Color(184, 183, 169));
+        panel_usuarios.setPreferredSize(new java.awt.Dimension(135, 55));
 
         boton_usuarios.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
         boton_usuarios.setForeground(new java.awt.Color(51, 51, 51));
@@ -122,7 +144,7 @@ public class ventana_menu extends javax.swing.JFrame {
         panel_usuarios.setLayout(panel_usuariosLayout);
         panel_usuariosLayout.setHorizontalGroup(
             panel_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(boton_usuarios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+            .addComponent(boton_usuarios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
         );
         panel_usuariosLayout.setVerticalGroup(
             panel_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,12 +154,14 @@ public class ventana_menu extends javax.swing.JFrame {
         );
 
         panel_libros.setBackground(new java.awt.Color(184, 183, 169));
+        panel_libros.setPreferredSize(new java.awt.Dimension(135, 55));
 
         boton_libros.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
         boton_libros.setForeground(new java.awt.Color(51, 51, 51));
         boton_libros.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_libros.setText("LIBROS");
         boton_libros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_libros.setPreferredSize(new java.awt.Dimension(135, 55));
         boton_libros.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_librosMouseClicked(evt);
@@ -154,7 +178,7 @@ public class ventana_menu extends javax.swing.JFrame {
         panel_libros.setLayout(panel_librosLayout);
         panel_librosLayout.setHorizontalGroup(
             panel_librosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(boton_libros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+            .addComponent(boton_libros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panel_librosLayout.setVerticalGroup(
             panel_librosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +187,45 @@ public class ventana_menu extends javax.swing.JFrame {
                 .addComponent(boton_libros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+<<<<<<< HEAD
         panel_autores.setBackground(new java.awt.Color(184, 183, 169));
+=======
+        panel_editorial.setBackground(new java.awt.Color(184, 183, 169));
+        panel_editorial.setPreferredSize(new java.awt.Dimension(135, 55));
+
+        boton_editorial.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
+        boton_editorial.setForeground(new java.awt.Color(51, 51, 51));
+        boton_editorial.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        boton_editorial.setText("EDITORIALES");
+        boton_editorial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_editorial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_editorialMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                boton_editorialMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                boton_editorialMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_editorialLayout = new javax.swing.GroupLayout(panel_editorial);
+        panel_editorial.setLayout(panel_editorialLayout);
+        panel_editorialLayout.setHorizontalGroup(
+            panel_editorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(boton_editorial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+        );
+        panel_editorialLayout.setVerticalGroup(
+            panel_editorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_editorialLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(boton_editorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panel_autores.setBackground(new java.awt.Color(184, 183, 169));
+        panel_autores.setPreferredSize(new java.awt.Dimension(135, 55));
+>>>>>>> 3e70222ad8aad40fe57399f1ca9eadaa277728d0
 
         boton_autores.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
         boton_autores.setForeground(new java.awt.Color(51, 51, 51));
@@ -186,6 +248,7 @@ public class ventana_menu extends javax.swing.JFrame {
         panel_autores.setLayout(panel_autoresLayout);
         panel_autoresLayout.setHorizontalGroup(
             panel_autoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addComponent(boton_autores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
         );
         panel_autoresLayout.setVerticalGroup(
@@ -225,6 +288,13 @@ public class ventana_menu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_editorialesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(boton_editoriales, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+=======
+            .addComponent(boton_autores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+        );
+        panel_autoresLayout.setVerticalGroup(
+            panel_autoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(boton_autores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+>>>>>>> 3e70222ad8aad40fe57399f1ca9eadaa277728d0
         );
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
@@ -233,6 +303,7 @@ public class ventana_menu extends javax.swing.JFrame {
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(266, 266, 266)
                 .addComponent(panel_autores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -248,6 +319,28 @@ public class ventana_menu extends javax.swing.JFrame {
                         .addComponent(panel_libros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(panel_prestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+=======
+                .addContainerGap()
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(172, 172, 172))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addComponent(panel_usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(panel_libros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(panel_prestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(panel_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(panel_autores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(248, 248, 248)))
+                        .addGap(74, 74, 74))))
+>>>>>>> 3e70222ad8aad40fe57399f1ca9eadaa277728d0
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,6 +349,7 @@ public class ventana_menu extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
+<<<<<<< HEAD
                 .addGap(50, 50, 50)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panel_usuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -266,7 +360,20 @@ public class ventana_menu extends javax.swing.JFrame {
                     .addComponent(panel_autores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panel_editoriales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(71, Short.MAX_VALUE))
+=======
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panel_usuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                    .addComponent(panel_libros, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                    .addComponent(panel_editorial, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                    .addComponent(panel_prestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(panel_autores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
+>>>>>>> 3e70222ad8aad40fe57399f1ca9eadaa277728d0
         );
+
+        panel_editorial.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -290,7 +397,6 @@ public class ventana_menu extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_prestamosMouseClicked
     //Fin del codigo del boton prestamos
     
-    
     private void boton_prestamosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_prestamosMouseEntered
         panel_prestamos.setBackground(new Color(132, 132, 122));
         boton_prestamos.setForeground(Color.white);
@@ -300,7 +406,6 @@ public class ventana_menu extends javax.swing.JFrame {
         panel_prestamos.setBackground(new Color (184, 183, 169));
         boton_prestamos.setForeground(Color.black);
     }//GEN-LAST:event_boton_prestamosMouseExited
-
     
     //Codigo del boton prestamos
     private void boton_usuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_usuariosMouseClicked
@@ -308,8 +413,7 @@ public class ventana_menu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_boton_usuariosMouseClicked
     //Fin del codigo del boton prestamos
-    
-    
+     
     private void boton_usuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_usuariosMouseEntered
         panel_usuarios.setBackground(new Color(132, 132, 122));
         boton_usuarios.setForeground(Color.white);
@@ -339,6 +443,7 @@ public class ventana_menu extends javax.swing.JFrame {
         boton_libros.setForeground(Color.black);
     }//GEN-LAST:event_boton_librosMouseExited
 
+<<<<<<< HEAD
     private void boton_editorialesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_editorialesMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_editorialesMouseClicked
@@ -361,6 +466,36 @@ public class ventana_menu extends javax.swing.JFrame {
 
     private void boton_autoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_autoresMouseExited
         // TODO add your handling code here:
+=======
+    private void boton_editorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_editorialMouseClicked
+        new ventana_editoriales().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_boton_editorialMouseClicked
+
+    private void boton_editorialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_editorialMouseEntered
+        panel_editorial.setBackground(new Color(132, 132, 122));
+        boton_editorial.setForeground(Color.white);
+    }//GEN-LAST:event_boton_editorialMouseEntered
+
+    private void boton_editorialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_editorialMouseExited
+        panel_editorial.setBackground(new Color (184, 183, 169));
+        boton_editorial.setForeground(Color.black);
+    }//GEN-LAST:event_boton_editorialMouseExited
+
+    private void boton_autoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_autoresMouseClicked
+        new ventana_autores().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_boton_autoresMouseClicked
+
+    private void boton_autoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_autoresMouseEntered
+        panel_autores.setBackground(new Color(132, 132, 122));
+        boton_autores.setForeground(Color.white);
+    }//GEN-LAST:event_boton_autoresMouseEntered
+
+    private void boton_autoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_autoresMouseExited
+        panel_autores.setBackground(new Color (184, 183, 169));
+        boton_autores.setForeground(Color.black);
+>>>>>>> 3e70222ad8aad40fe57399f1ca9eadaa277728d0
     }//GEN-LAST:event_boton_autoresMouseExited
 
     
@@ -399,17 +534,27 @@ public class ventana_menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
     private javax.swing.JLabel boton_autores;
+<<<<<<< HEAD
     private javax.swing.JLabel boton_editoriales;
+=======
+    private javax.swing.JLabel boton_editorial;
+>>>>>>> 3e70222ad8aad40fe57399f1ca9eadaa277728d0
     private javax.swing.JLabel boton_libros;
     private javax.swing.JLabel boton_prestamos;
+    private javax.swing.JLabel boton_prestamos2;
     private javax.swing.JLabel boton_usuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panel_autores;
+<<<<<<< HEAD
     private javax.swing.JPanel panel_editoriales;
+=======
+    private javax.swing.JPanel panel_editorial;
+>>>>>>> 3e70222ad8aad40fe57399f1ca9eadaa277728d0
     private javax.swing.JPanel panel_libros;
     private javax.swing.JPanel panel_prestamos;
+    private javax.swing.JPanel panel_prestamos2;
     private javax.swing.JPanel panel_usuarios;
     // End of variables declaration//GEN-END:variables
 }

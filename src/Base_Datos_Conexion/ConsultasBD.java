@@ -112,9 +112,9 @@ public class ConsultasBD {
         
     }
     
-    public static void ActualizarBaseDatos_Libro(int identificador, String titulo, String autor, String editorial, int ejemplares){
+    public static void ActualizarBaseDatos_Libro(String id_libro, String Titulo){
         
-        //actualiza pero solo de la base de datos libro
+        //actualiza pero solo de la tabla de datos libro
         Connection conexion = null;
         
         
@@ -132,14 +132,12 @@ public class ConsultasBD {
             
             
             
-            String consulta = "UPDATE Libros set Titulo = ?, Autor = ?, Editorial = ?, Ejemplares = ?  WHERE ID_libro = " + String.valueOf(identificador);
+            String consulta = "UPDATE Libros set Titulo = ? WHERE ID_libro = " + String.valueOf(id_libro);
             
             PreparedStatement pst = conexion.prepareStatement(consulta);
             
-            pst.setString(1, titulo);
-            pst.setString(2,autor);
-            pst.setString(3, editorial);
-            pst.setInt(4, ejemplares);
+            pst.setString(1, Titulo);
+
             
             pst.executeUpdate();//para que se ejecute
             
@@ -258,7 +256,7 @@ public class ConsultasBD {
     
     
     
-    public static void insertarBaseDatos_TablaLibros(int id_libro, String Titulo,String Autor, String Editorial, int Numero_ejemplares ){
+    public static void insertarBaseDatos_TablaLibros(int id_libro, String Titulo){
         //Inserta un registro en la base dde datos
         Connection conexion = null;
         
@@ -277,15 +275,12 @@ public class ConsultasBD {
             
             
             
-            String consulta = "INSERT INTO Libros VALUES(?,?,?,?,?)";
+            String consulta = "INSERT INTO Libros VALUES(?,?)";
             
             PreparedStatement pst = conexion.prepareStatement(consulta);
             
             pst.setInt(1, id_libro);
             pst.setString(2, Titulo);
-            pst.setString(3, Autor);
-            pst.setString(4, Editorial);
-            pst.setInt(5, Numero_ejemplares);
             
             pst.executeUpdate();//para que se ejecute
             
@@ -436,7 +431,7 @@ public class ConsultasBD {
     }
     
     
-        public static void ActualizarBaseDatos_Autores(int Id_autor, String nombre_autor){
+    public static void ActualizarBaseDatos_Autores(int Id_autor, String nombre_autor){
         
         //actualiza pero solo de la base de datos Prestamos
         Connection conexion = null;

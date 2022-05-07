@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class ventana_autores extends javax.swing.JFrame {
+    
+    public Base_Datos_Conexion.ConsultasBD conexion = new Base_Datos_Conexion.ConsultasBD();
 
     public ventana_autores() {
         initComponents();
@@ -96,6 +98,7 @@ public class ventana_autores extends javax.swing.JFrame {
         jLabel4.setText("REGISTRO DE AUTORES");
         bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, 30));
 
+        Autor.setBackground(new java.awt.Color(0, 0, 0));
         Autor.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
         Autor.setForeground(new java.awt.Color(0, 0, 0));
         Autor.setText("Autor");
@@ -142,7 +145,7 @@ public class ventana_autores extends javax.swing.JFrame {
         boton_entrar.setForeground(new java.awt.Color(51, 51, 51));
         boton_entrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_entrar.setText("REGISTRAR");
-        boton_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         boton_entrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_entrarMouseClicked(evt);
@@ -176,7 +179,7 @@ public class ventana_autores extends javax.swing.JFrame {
         boton_buscar.setForeground(new java.awt.Color(51, 51, 51));
         boton_buscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_buscar.setText("BUSCAR");
-        boton_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         boton_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_buscarMouseClicked(evt);
@@ -210,7 +213,7 @@ public class ventana_autores extends javax.swing.JFrame {
         boton_actualizar.setForeground(new java.awt.Color(51, 51, 51));
         boton_actualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_actualizar.setText("ACTUALIZAR");
-        boton_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         boton_actualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_actualizarMouseClicked(evt);
@@ -244,7 +247,7 @@ public class ventana_autores extends javax.swing.JFrame {
         boton_eliminar.setForeground(new java.awt.Color(51, 51, 51));
         boton_eliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_eliminar.setText("ELIMINAR");
-        boton_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         boton_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_eliminarMouseClicked(evt);
@@ -371,7 +374,7 @@ public class ventana_autores extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_buscarMouseEntered
 
     private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
-        // TODO add your handling code here:
+        
         try{            
             
             int ID_autor = Integer.parseInt(id_caja.getText());
