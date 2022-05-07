@@ -131,7 +131,7 @@ public class ventana_principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
-        new ventana_menu().setVisible(true);
+        new ventana_libros().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_boton_entrarMouseClicked
 

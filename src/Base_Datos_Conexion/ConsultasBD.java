@@ -1,4 +1,5 @@
 
+
 package Base_Datos_Conexion;
 
 import java.sql.Connection;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  */
 public class ConsultasBD {
     
-    private static String Nombre_base_datos = "Libreria";
+    private static String Nombre_base_datos = "Biblioteca";
     private static String Nombre_usario_base_datos = "Prueba";
     private static String Password = "123";
         
@@ -59,7 +60,8 @@ public class ConsultasBD {
             
             conexion.close();
             
-            
+            JOptionPane.showMessageDialog(null, "Datos encontrados con exito", "Informacion",
+                    JOptionPane.INFORMATION_MESSAGE);
         }catch(Exception e){
             
             JOptionPane.showMessageDialog(null, e, "Error",
@@ -89,19 +91,22 @@ public class ConsultasBD {
                     + " WHERE " +  columna_identificadora + " = ?";
             
             PreparedStatement pst = conexion.prepareStatement(consulta);
-            
             pst.setInt(1, valor_identificador);
+           
             
-            pst.executeQuery();
+            pst.executeUpdate();
             
           
             conexion.close();
             
+            JOptionPane.showMessageDialog(null, "Se ha eliminado el registro", "Informacion",
+                    JOptionPane.INFORMATION_MESSAGE);
+            
             
         }catch(Exception e){
             
-            //JOptionPane.showMessageDialog(null, e, "Error",
-                    //JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
         
         
@@ -109,7 +114,7 @@ public class ConsultasBD {
     
     public static void ActualizarBaseDatos_Libro(int identificador, String titulo, String autor, String editorial, int ejemplares){
         
-        
+        //actualiza pero solo de la base de datos libro
         Connection conexion = null;
         
         
@@ -140,7 +145,7 @@ public class ConsultasBD {
             
          
             conexion.close();
-            JOptionPane.showMessageDialog(null, "Se ha guardado el registro", "Informacion",
+            JOptionPane.showMessageDialog(null, "Se ha Actualizado el registro", "Informacion",
                     JOptionPane.INFORMATION_MESSAGE);
             
         } catch (Exception e) {
@@ -152,6 +157,105 @@ public class ConsultasBD {
         
         
     }
+    
+    
+    public static void ActualizarBaseDatos_Prestamo(int id_libro, String Nombre, String Apellido_paterno, String Apellido_materno, java.sql.Date Fecha_prestamo_inicio, java.sql.Date Fecha_prestamo_fin){
+        
+        //actualiza pero solo de la base de datos Prestamos
+        Connection conexion = null;
+        
+        
+        
+        try{
+
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            String conexionUrl = "jdbc:sqlserver://;"
+                + "databaseName=" +Nombre_base_datos + ";"
+                + "user="+ Nombre_usario_base_datos + ";"
+                + "password=" + Password + ";"
+                + "encrypt=true;trustServerCertificate=true;";
+
+            conexion = DriverManager.getConnection(conexionUrl);
+            
+            
+            
+            String consulta = "UPDATE Prestamo set ID_libro = ?, Nombre = ?, Apellido_paterno = ?, Apellido_materno = ?, Fecha_prestamo_inicio = ?, Fecha_prestamo_fin = ?   WHERE (ID_libro = " 
+                    + String.valueOf(id_libro) + " and Nombre =  " + Nombre + " and Apellido_paterno = " + Apellido_paterno +")";
+            
+            PreparedStatement pst = conexion.prepareStatement(consulta);
+            
+            pst.setInt(1, id_libro);
+            pst.setString(2, Nombre);
+            pst.setString(3,Apellido_paterno);
+            pst.setString(4, Apellido_materno);
+            pst.setDate(5,Fecha_prestamo_inicio );
+            pst.setDate(6,Fecha_prestamo_fin );
+            
+            pst.executeUpdate();//para que se ejecute
+            
+         
+            conexion.close();
+            JOptionPane.showMessageDialog(null, "Se ha actualizado el registro", "Informacion",
+                    JOptionPane.INFORMATION_MESSAGE);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+        
+        
+    }
+   
+    public static void ActualizarBaseDatos_Usuarios(String Nombre, String Apellido_paterno, String Apellido_materno, String Direccion, String Telefono){
+        
+        //actualiza pero solo de la base de datos Prestamos
+        Connection conexion = null;
+        
+        
+        
+        try{
+
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            String conexionUrl = "jdbc:sqlserver://;"
+                + "databaseName=" +Nombre_base_datos + ";"
+                + "user="+ Nombre_usario_base_datos + ";"
+                + "password=" + Password + ";"
+                + "encrypt=true;trustServerCertificate=true;";
+
+            conexion = DriverManager.getConnection(conexionUrl);
+            
+            
+            
+            String consulta = ("UPDATE Usuarios set Nombre = ?, Apellido_paterno = ?, Apellido_materno = ?, Direccion = ?, Telefono = ? where Nombre = " 
+                    + Nombre + " and Apellido_paterno = " + Apellido_paterno + " and Apellido_materno = " + Apellido_materno);
+            
+            PreparedStatement pst = conexion.prepareStatement(consulta);
+           
+            pst.setString(1, Nombre);
+            pst.setString(2,Apellido_paterno);
+            pst.setString(3, Apellido_materno);
+            pst.setString(4,Direccion);
+            pst.setString(5,Telefono);
+            
+            pst.executeUpdate();//para que se ejecute
+            
+         
+            conexion.close();
+            JOptionPane.showMessageDialog(null, "Se ha actualizado el registro", "Informacion",
+                    JOptionPane.INFORMATION_MESSAGE);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+        
+        
+    }
+    
     
     
     public static void insertarBaseDatos_TablaLibros(int id_libro, String Titulo,String Autor, String Editorial, int Numero_ejemplares ){
@@ -288,6 +392,96 @@ public class ConsultasBD {
             
      
     }
+    
+    public static void insertarTablaAutor(int Id_autor, String nombre_autor){
+        Connection conexion = null;
+  
+        
+        try{
+
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            String conexionUrl = "jdbc:sqlserver://;"
+                + "databaseName=" +Nombre_base_datos + ";"
+                + "user="+ Nombre_usario_base_datos + ";"
+                + "password=" + Password + ";"
+                + "encrypt=true;trustServerCertificate=true;";
+
+            conexion = DriverManager.getConnection(conexionUrl);
+            
+            
+            
+             String consulta = "INSERT INTO Autores VALUES(?,?)";
+            
+            PreparedStatement pst = conexion.prepareStatement(consulta);
+            
+            pst.setInt(1, Id_autor);
+            pst.setString(2, nombre_autor);
+            
+            
+            pst.executeUpdate();//para que se ejecute
+            
+         
+            JOptionPane.showMessageDialog(null, "Se ha guardado el registro", "Informacion",
+                    JOptionPane.INFORMATION_MESSAGE);
+            conexion.close();
+            
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            
+        }
+            
+     
+    }
+    
+    
+        public static void ActualizarBaseDatos_Autores(int Id_autor, String nombre_autor){
+        
+        //actualiza pero solo de la base de datos Prestamos
+        Connection conexion = null;
+        
+        
+        
+        try{
+
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            String conexionUrl = "jdbc:sqlserver://;"
+                + "databaseName=" +Nombre_base_datos + ";"
+                + "user="+ Nombre_usario_base_datos + ";"
+                + "password=" + Password + ";"
+                + "encrypt=true;trustServerCertificate=true;";
+
+            conexion = DriverManager.getConnection(conexionUrl);
+            
+            
+            
+            String consulta = ("UPDATE Autores set Nombre = ? where ID_autor =" + String.valueOf(Id_autor) );
+            
+            PreparedStatement pst = conexion.prepareStatement(consulta);
+           
+            pst.setString(1, nombre_autor);
+            
+            pst.executeUpdate();//para que se ejecute
+            
+         
+            conexion.close();
+            JOptionPane.showMessageDialog(null, "Se ha actualizado el registro", "Informacion",
+                    JOptionPane.INFORMATION_MESSAGE);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+        
+        
+    }
+    
+    
+    
+    
     
     public static void main(String args[]) {
     

@@ -1,18 +1,12 @@
 
 package libreria;
 
-import Base_Datos_Conexion.ConsultasBD;
-import codigo_ventana.clase_ventanaVolver_inicio;
 import java.awt.Color;
-import javax.swing.JOptionPane;
 
 public class ventana_usuarios extends javax.swing.JFrame {
 
     public ventana_usuarios() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
-        addWindowListener(new clase_ventanaVolver_inicio());
     }
 
     
@@ -38,17 +32,11 @@ public class ventana_usuarios extends javax.swing.JFrame {
         ID = new javax.swing.JLabel();
         direccion_caja = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
+        panel_entrar = new javax.swing.JPanel();
+        boton_entrar = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         telefono_caja = new javax.swing.JTextField();
         Ejemplares = new javax.swing.JLabel();
-        panel_registrar = new javax.swing.JPanel();
-        boton_registrar = new javax.swing.JLabel();
-        panel_eliminar = new javax.swing.JPanel();
-        boton_eliminar = new javax.swing.JLabel();
-        panel_actualizar = new javax.swing.JPanel();
-        boton_actualizar = new javax.swing.JLabel();
-        panel_buscar = new javax.swing.JPanel();
-        boton_buscar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -185,6 +173,40 @@ public class ventana_usuarios extends javax.swing.JFrame {
         jSeparator5.setBackground(new java.awt.Color(204, 204, 204));
         bg.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 479, 490, 11));
 
+        panel_entrar.setBackground(new java.awt.Color(184, 183, 169));
+
+        boton_entrar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
+        boton_entrar.setForeground(new java.awt.Color(51, 51, 51));
+        boton_entrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        boton_entrar.setText("REGISTRAR");
+        boton_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_entrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_entrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                boton_entrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                boton_entrarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_entrarLayout = new javax.swing.GroupLayout(panel_entrar);
+        panel_entrar.setLayout(panel_entrarLayout);
+        panel_entrarLayout.setHorizontalGroup(
+            panel_entrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(boton_entrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+        );
+        panel_entrarLayout.setVerticalGroup(
+            panel_entrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_entrarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(boton_entrar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+        );
+
+        bg.add(panel_entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, -1, -1));
+
         jSeparator6.setBackground(new java.awt.Color(204, 204, 204));
         bg.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 589, 490, 11));
 
@@ -204,142 +226,6 @@ public class ventana_usuarios extends javax.swing.JFrame {
         Ejemplares.setForeground(new java.awt.Color(0, 0, 0));
         Ejemplares.setText("Telefono");
         bg.add(Ejemplares, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 505, -1, 35));
-
-        panel_registrar.setBackground(new java.awt.Color(184, 183, 169));
-
-        boton_registrar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
-        boton_registrar.setForeground(new java.awt.Color(51, 51, 51));
-        boton_registrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        boton_registrar.setText("REGISTRAR");
-        boton_registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        boton_registrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boton_registrarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                boton_registrarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                boton_registrarMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panel_registrarLayout = new javax.swing.GroupLayout(panel_registrar);
-        panel_registrar.setLayout(panel_registrarLayout);
-        panel_registrarLayout.setHorizontalGroup(
-            panel_registrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(boton_registrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-        );
-        panel_registrarLayout.setVerticalGroup(
-            panel_registrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registrarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(boton_registrar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
-        );
-
-        bg.add(panel_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, -1, -1));
-
-        panel_eliminar.setBackground(new java.awt.Color(184, 183, 169));
-
-        boton_eliminar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
-        boton_eliminar.setForeground(new java.awt.Color(51, 51, 51));
-        boton_eliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        boton_eliminar.setText("ELIMINAR");
-        boton_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        boton_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boton_eliminarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                boton_eliminarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                boton_eliminarMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panel_eliminarLayout = new javax.swing.GroupLayout(panel_eliminar);
-        panel_eliminar.setLayout(panel_eliminarLayout);
-        panel_eliminarLayout.setHorizontalGroup(
-            panel_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(boton_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-        );
-        panel_eliminarLayout.setVerticalGroup(
-            panel_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_eliminarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(boton_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
-        );
-
-        bg.add(panel_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 610, -1, -1));
-
-        panel_actualizar.setBackground(new java.awt.Color(184, 183, 169));
-
-        boton_actualizar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
-        boton_actualizar.setForeground(new java.awt.Color(51, 51, 51));
-        boton_actualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        boton_actualizar.setText("ACTUALIZAR");
-        boton_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        boton_actualizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boton_actualizarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                boton_actualizarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                boton_actualizarMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panel_actualizarLayout = new javax.swing.GroupLayout(panel_actualizar);
-        panel_actualizar.setLayout(panel_actualizarLayout);
-        panel_actualizarLayout.setHorizontalGroup(
-            panel_actualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(boton_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-        );
-        panel_actualizarLayout.setVerticalGroup(
-            panel_actualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_actualizarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(boton_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
-        );
-
-        bg.add(panel_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 610, -1, -1));
-
-        panel_buscar.setBackground(new java.awt.Color(184, 183, 169));
-
-        boton_buscar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
-        boton_buscar.setForeground(new java.awt.Color(51, 51, 51));
-        boton_buscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        boton_buscar.setText("BUSCAR");
-        boton_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        boton_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boton_buscarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                boton_buscarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                boton_buscarMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panel_buscarLayout = new javax.swing.GroupLayout(panel_buscar);
-        panel_buscar.setLayout(panel_buscarLayout);
-        panel_buscarLayout.setHorizontalGroup(
-            panel_buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(boton_buscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-        );
-        panel_buscarLayout.setVerticalGroup(
-            panel_buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_buscarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(boton_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
-        );
-
-        bg.add(panel_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -458,6 +344,23 @@ public class ventana_usuarios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_direccion_cajaMousePressed
 
+    private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
+        System.out.println(nombre_caja.getText());
+        System.out.println(paterno_caja.getText());
+        System.out.println(materno_caja.getText());
+        System.out.println(direccion_caja.getText());
+        System.out.println(telefono_caja.getText());
+    }//GEN-LAST:event_boton_entrarMouseClicked
+
+    private void boton_entrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseEntered
+        panel_entrar.setBackground(new Color(112, 98, 70));
+        boton_entrar.setForeground(Color.white);
+    }//GEN-LAST:event_boton_entrarMouseEntered
+
+    private void boton_entrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseExited
+        panel_entrar.setBackground(new Color (184, 183, 169));
+    }//GEN-LAST:event_boton_entrarMouseExited
+
     private void telefono_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telefono_cajaMousePressed
         if(nombre_caja.getText().equals("")){
             nombre_caja.setText("Ingrese el nombre aquí");
@@ -480,102 +383,6 @@ public class ventana_usuarios extends javax.swing.JFrame {
             telefono_caja.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_telefono_cajaMousePressed
-
-    private void boton_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseClicked
-        try{
-            
-            Nombre = nombre_caja.getText();
-            Apellido_paterno = paterno_caja.getText();
-            Apellido_materno = materno_caja.getText();
-            Direccion = direccion_caja.getText();
-            Telefono = telefono_caja.getText();
-            
-            if(Nombre.isEmpty() || Nombre.equals("Ingrese el nombre aquí") ||
-                    Apellido_paterno.isEmpty() || Apellido_paterno.equals("Ingrese el apellido paterno aquí") ||
-                    Apellido_materno.isEmpty() || Apellido_materno.equals("Ingrese el apellido materno aquí") ||
-                    Direccion.isEmpty() || Direccion.equals("Ingrese la direccion aquí") ||
-                    Telefono.isEmpty() || Telefono.equals("Ingrese el telefono aquí")){
-             
-                JOptionPane.showMessageDialog(null, "Debe llenar todos los campos\n", "Advertencia",
-                    JOptionPane.WARNING_MESSAGE);
-            }else{
-                ConsultasBD.insertarBaseDatos_TablaUsuarios(Nombre, Apellido_paterno, Apellido_materno, Direccion, Telefono);
-            
-            }
-            
-            
-            
-            
-        
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Debe rellenar todos  los campos correctamente\n" + e, "Error",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_boton_registrarMouseClicked
-
-    private void boton_registrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseEntered
-        panel_registrar.setBackground(new Color(132, 132, 122));
-        boton_registrar.setForeground(Color.white);
-    }//GEN-LAST:event_boton_registrarMouseEntered
-
-    private void boton_registrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseExited
-        panel_registrar.setBackground(new Color (184, 183, 169));
-        boton_registrar.setForeground(Color.black);
-    }//GEN-LAST:event_boton_registrarMouseExited
-    
-    
-    //Codigo del boton eliminar
-    private void boton_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_eliminarMouseClicked
-    //Fin del codigo para el boton eliminar
-    
-    
-    private void boton_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseEntered
-        panel_eliminar.setBackground(new Color(132, 132, 122));
-        boton_eliminar.setForeground(Color.white);
-    }//GEN-LAST:event_boton_eliminarMouseEntered
-
-    private void boton_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseExited
-        panel_eliminar.setBackground(new Color (184, 183, 169));
-        boton_eliminar.setForeground(Color.black);
-    }//GEN-LAST:event_boton_eliminarMouseExited
-    
-    
-    //Codigo del boton actualizar 
-    private void boton_actualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_actualizarMouseClicked
-    //Fin del codigo para el boton actualizar
-    
-    
-    private void boton_actualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseEntered
-        panel_actualizar.setBackground(new Color(132, 132, 122));
-        boton_actualizar.setForeground(Color.white);
-    }//GEN-LAST:event_boton_actualizarMouseEntered
-
-    private void boton_actualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseExited
-        panel_actualizar.setBackground(new Color (184, 183, 169));
-        boton_actualizar.setForeground(Color.black);
-    }//GEN-LAST:event_boton_actualizarMouseExited
-
-    
-    //Codigo del boton buscar
-    private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_buscarMouseClicked
-    //Fin del codigo para el boton actualizar
-    
-    
-    private void boton_buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseEntered
-        panel_buscar.setBackground(new Color(132, 132, 122));
-        boton_buscar.setForeground(Color.white);
-    }//GEN-LAST:event_boton_buscarMouseEntered
-
-    private void boton_buscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseExited
-        panel_buscar.setBackground(new Color (184, 183, 169));
-        boton_buscar.setForeground(Color.black);
-    }//GEN-LAST:event_boton_buscarMouseExited
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -608,11 +415,7 @@ public class ventana_usuarios extends javax.swing.JFrame {
             }
         });
     }
-    private String Nombre;
-    private String Apellido_paterno;
-    private String Apellido_materno;
-    private String Direccion;
-    private String Telefono;
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Autor;
     private javax.swing.JLabel Editorial;
@@ -620,10 +423,7 @@ public class ventana_usuarios extends javax.swing.JFrame {
     private javax.swing.JLabel ID;
     private javax.swing.JLabel Titulo;
     private javax.swing.JPanel bg;
-    private javax.swing.JLabel boton_actualizar;
-    private javax.swing.JLabel boton_buscar;
-    private javax.swing.JLabel boton_eliminar;
-    private javax.swing.JLabel boton_registrar;
+    private javax.swing.JLabel boton_entrar;
     private javax.swing.JTextField direccion_caja;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -637,10 +437,7 @@ public class ventana_usuarios extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTextField materno_caja;
     private javax.swing.JTextField nombre_caja;
-    private javax.swing.JPanel panel_actualizar;
-    private javax.swing.JPanel panel_buscar;
-    private javax.swing.JPanel panel_eliminar;
-    private javax.swing.JPanel panel_registrar;
+    private javax.swing.JPanel panel_entrar;
     private javax.swing.JTextField paterno_caja;
     private javax.swing.JTextField telefono_caja;
     // End of variables declaration//GEN-END:variables
