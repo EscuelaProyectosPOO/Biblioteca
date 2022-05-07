@@ -16,7 +16,6 @@ public class ventana_libros extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
         addWindowListener(new clase_ventanaVolver_inicio());
-        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -509,6 +508,61 @@ public class ventana_libros extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+<<<<<<< HEAD
+    
+    
+       
+//Trabajar en la recoleccion de datos en este modulo
+    private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
+<<<<<<< HEAD
+        //se registran los datos en la tabla libros
+        try{
+            int id_libro = Integer.parseInt(id_caja.getText());
+            String Titulo_libro = titulo_caja.getText();
+            String autor = autor_caja.getText();
+            String editorial = editorial_caja.getText();
+            int numero_ejemplares = Integer.parseInt(ejemplares_caja.getText());
+            
+            if(Titulo_libro.isEmpty() || Titulo_libro.equals("Ingrese el titulo del libro aquí") ||
+                    autor.isEmpty() || autor.equals("Ingrese el titulo del libro aquí") ||
+                    editorial.isEmpty() || editorial.equals("Ingrese la editorial del libro aquí")){
+                
+                JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n", "No se han podido registrar los datos",
+                    JOptionPane.ERROR_MESSAGE);
+            }else{
+                
+                ConsultasBD.insertarBaseDatos_TablaLibros(id_libro, Titulo_libro, autor, editorial, numero_ejemplares);
+                limpiar_campos();
+            }
+            
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n" + e, "No se han podido registrar los datos",
+                    JOptionPane.ERROR_MESSAGE);
+        }       
+=======
+        System.out.println(titulo_caja.getText());
+        System.out.println(autor_caja.getText());
+        System.out.println(editorial_caja.getText());
+        System.out.println(id_caja.getText());
+        System.out.println(ejemplares_caja.getText());
+>>>>>>> 387dca709008098f411873cb4ea47b68a2db891b
+    }//GEN-LAST:event_boton_entrarMouseClicked
+    //Fin de funcion para trabajo
+    
+        
+    //Inicio de las funciones de posicionamiento de la ventana, por favor, no mover
+    private void boton_entrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseEntered
+        panel_entrar.setBackground(new Color(132, 132, 122));
+        boton_entrar.setForeground(Color.white);
+    }//GEN-LAST:event_boton_entrarMouseEntered
+
+    private void boton_entrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseExited
+        panel_entrar.setBackground(new Color (184, 183, 169));
+        boton_entrar.setForeground(Color.black);
+    }//GEN-LAST:event_boton_entrarMouseExited
+=======
+>>>>>>> 3e70222ad8aad40fe57399f1ca9eadaa277728d0
 
     public void color_cajas(){
        titulo_caja.setForeground(new Color (0, 0, 0));
