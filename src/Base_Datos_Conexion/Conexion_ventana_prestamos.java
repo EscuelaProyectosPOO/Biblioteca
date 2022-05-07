@@ -73,10 +73,15 @@ public class Conexion_ventana_prestamos {
     }
     
     
-    public static void eliminarRegistro(String id_libro, String id_usuario){
+    public static void eliminarPrestamo(String id_libro, String id_usuario){
         //eliminar registro
         
         Connection conexion = null;
+        
+        int numero_ejemplares_actual = Consultar_ejemplares(id_libro);
+        
+        ModificarEjemplares(id_libro,numero_ejemplares_actual-1 );
+        
        
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
@@ -114,7 +119,7 @@ public class Conexion_ventana_prestamos {
     }
     
     
-    public static void ActualizarBaseDatos_Prestamo(String id_libro, String id_usuario, java.sql.Date Fecha_prestamo_inicio, java.sql.Date Fecha_prestamo_fin){
+    public static void ActualizarBaseDatosPrestamo(String id_libro, String id_usuario, java.sql.Date Fecha_prestamo_inicio, java.sql.Date Fecha_prestamo_fin){
         
         //actualiza pero solo de la base de datos Prestamos
         Connection conexion = null;
@@ -161,11 +166,126 @@ public class Conexion_ventana_prestamos {
         
     }
     
-    public static void insertarBaseDatos_TablaPrestamo(String id_libro, String id_usuario, java.sql.Date Fecha_prestamo_inicio, java.sql.Date Fecha_prestamo_fin){
+    
+    
+    public static void insertarBaseDatos_Prestamo(String id_libro, String id_usuario, java.sql.Date Fecha_prestamo_inicio, java.sql.Date Fecha_prestamo_fin){
         //Inserta un registro en la base dde datos
         Connection conexion = null;
+        int numero_ejemplares_actual = Consultar_ejemplares(id_libro);
+        
+        if( numero_ejemplares_actual > 0){
+            
+            numero_ejemplares_actual = numero_ejemplares_actual - 1;
+            
+            ModificarEjemplares(id_libro,numero_ejemplares_actual );
+            
+            try{
+
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+                String conexionUrl = "jdbc:sqlserver://;"
+                    + "databaseName=" +Nombre_base_datos + ";"
+                    + "user="+ Nombre_usario_base_datos + ";"
+                    + "password=" + Password + ";"
+                    + "encrypt=true;trustServerCertificate=true;";
+
+                conexion = DriverManager.getConnection(conexionUrl);
+
+
+
+                String consulta = "INSERT INTO Prestamo VALUES(?,?,?,?)";
+
+                PreparedStatement pst = conexion.prepareStatement(consulta);
+
+                pst.setString(1, id_libro);
+                pst.setString(2, id_usuario);
+                pst.setDate(3, Fecha_prestamo_inicio);
+                pst.setDate(4, Fecha_prestamo_fin);
+
+
+                pst.executeUpdate();//para que se ejecute
+
+
+                JOptionPane.showMessageDialog(null, "Se ha guardado el registro", "Informacion",
+                        JOptionPane.INFORMATION_MESSAGE);
+                conexion.close();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e, "Error",
+                        JOptionPane.ERROR_MESSAGE);
+
+            }
+            
+            
+        }else{
+            
+            JOptionPane.showMessageDialog(null, "No se tienen mas ejemplares de este libro", "Advertencia",
+                        JOptionPane.WARNING_MESSAGE );
+        
+        }
         
         
+            
+     
+    }
+    
+    
+    public static int Consultar_ejemplares(String id_libro){
+       /*
+        Este metodo nos sirve para saber cuantos ejemplares tenermos del libro con este id
+        gracias a que el id es una combinacion unica del autor, editorial, y nombre del libro este id no se repite
+        nos retorna el numero de ejemplares
+        */
+    
+        Connection conexion = null;
+        int numero_ejemplares = 0;
+        
+        
+        try{
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            String conexionUrl = "jdbc:sqlserver://;"
+                + "databaseName=" +Nombre_base_datos + ";"
+                + "user="+ Nombre_usario_base_datos + ";"
+                + "password=" + Password + ";"
+                + "encrypt=true;trustServerCertificate=true;";
+
+            conexion = DriverManager.getConnection(conexionUrl);
+            
+            String consulta = "SELECT Ejemplares FROM Prestamo WHERE  ID_libro = ?";
+            
+            PreparedStatement pst = conexion.prepareStatement(consulta);
+            
+            pst.setString(1, id_libro);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                // esta parte nos ayuda a saber si no esta vacio, si no mlo esta, comenzamos la extraccion
+                numero_ejemplares = rs.getInt(0);
+                
+            }else{
+                
+                JOptionPane.showMessageDialog(null, "Error en la consulta del campo ");
+                
+            
+            }
+            
+            conexion.close();
+            
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null, e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return numero_ejemplares;
+    
+    }
+    
+    public static void ModificarEjemplares(String id_libro, int numero_nuevo_ejemplares){
+        /*
+            actualiza el numero de ejemplares que se tienen en existencia
+        */
+        Connection conexion = null;
         
         try{
 
@@ -180,30 +300,24 @@ public class Conexion_ventana_prestamos {
             
             
             
-            String consulta = "INSERT INTO Prestamo VALUES(?,?,?,?)";
+            String consulta = "UPDATE Prestamo SET Ejemplares = ?   WHERE (ID_libro = " 
+                    + id_libro + ")";
             
             PreparedStatement pst = conexion.prepareStatement(consulta);
             
-            pst.setString(1, id_libro);
-            pst.setString(2, id_usuario);
-            pst.setDate(3, Fecha_prestamo_inicio);
-            pst.setDate(4, Fecha_prestamo_fin);
-            
+            pst.setInt(1, numero_nuevo_ejemplares);
             
             pst.executeUpdate();//para que se ejecute
             
          
-            JOptionPane.showMessageDialog(null, "Se ha guardado el registro", "Informacion",
-                    JOptionPane.INFORMATION_MESSAGE);
             conexion.close();
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error",
                     JOptionPane.ERROR_MESSAGE);
-            
         }
-            
-     
+        
+    
     }
     
     

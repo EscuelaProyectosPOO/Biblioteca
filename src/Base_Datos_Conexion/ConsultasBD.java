@@ -431,7 +431,7 @@ public class ConsultasBD {
     }
     
     
-        public static void ActualizarBaseDatos_Autores(int Id_autor, String nombre_autor){
+    public static void ActualizarBaseDatos_Autores(int Id_autor, String nombre_autor){
         
         //actualiza pero solo de la base de datos Prestamos
         Connection conexion = null;

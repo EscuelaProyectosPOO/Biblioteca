@@ -2,13 +2,13 @@
 package libreria;
 
 import java.awt.Color;
-import Base_Datos_Conexion.ConsultasBD;
+import Base_Datos_Conexion.Conexion_ventana_prestamos;
 import codigo_ventana.clase_ventanaVolver_inicio;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -398,18 +398,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
             id_caja.setText("");
             id_caja.setForeground(Color.BLACK);
         }
-        if(nombre_caja.getText().equals("")){
-            nombre_caja.setText("Ingrese el apellido paterno aquí");
-            nombre_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(paterno_caja.getText().equals("")){
-            paterno_caja.setText("Ingrese el apellido materno aquí");
-            paterno_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(materno_caja.getText().equals("")){
-            materno_caja.setText("Ingrese la direccion aquí");
-            materno_caja.setForeground(new Color (153, 153, 153));
-        }
+        
         if(prestamo_caja.getText().equals("")){
             prestamo_caja.setText("Ingrese el telefono aquí");
             prestamo_caja.setForeground(new Color (153, 153, 153));
@@ -417,28 +406,21 @@ public class ventana_prestamos extends javax.swing.JFrame {
     }//GEN-LAST:event_id_cajaMousePressed
 
     private void boton_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseClicked
-        System.out.println(id_caja.getText());
-        System.out.println(nombre_caja.getText());
-        System.out.println(paterno_caja.getText());
-        System.out.println(materno_caja.getText());
-        System.out.println(prestamo_caja.getText());
       
-//        try {
-//            int idl = Integer.parseInt(id_caja.getText());
-//        
-//        
-//            SimpleDateFormat formato = new SimpleDateFormat(prestamo_caja.getText());
-//            
-//            Date fecha_inicio_prestamo = formato.parse(prestamo_caja.getText());
-//            //System.out.println(formato.format(fecha_inicio_prestamo));
-//            
-//            Date fecha_fin_prestamo = new Date(fecha_inicio_prestamo.getTime() + (1000 * 3600 * 24 * 3));
-//
-//            Base_Datos_Conexion.ConsultasBD conexion = new Base_Datos_Conexion.ConsultasBD();
-//            conexion.insertarBaseDatos_TablaPrestamo(idl, nombre_caja.getText(), paterno_caja.getText(), materno_caja.getText(), fecha_inicio_prestamo, fecha_fin_prestamo);
-//        } catch (ParseException ex) {
-//            Logger.getLogger(ventana_prestamos.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+      
+        try {
+
+            String id_libro = id_caja.getText();
+            Date prestamo_inicio = Date.valueOf(prestamo_caja.getText());
+            Date prestamo_fin = Date.valueOf(prestamo_caja1.getText());
+
+            Conexion_prestamos.insertarBaseDatos_Prestamo(id_libro, id_usuario, prestamo_inicio, prestamo_fin);
+            
+            
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(ventana_prestamos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_boton_registrarMouseClicked
 
     private void boton_registrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseEntered
@@ -455,18 +437,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
             id_caja.setText("Ingrese el nombre aquí");
             id_caja.setForeground(new Color (153, 153, 153));
         }
-        if(nombre_caja.getText().equals("")){
-            nombre_caja.setText("Ingrese el apellido paterno aquí");
-            nombre_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(paterno_caja.getText().equals("")){
-            paterno_caja.setText("Ingrese el apellido materno aquí");
-            paterno_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(materno_caja.getText().equals("")){
-            materno_caja.setText("Ingrese la direccion aquí");
-            materno_caja.setForeground(new Color (153, 153, 153));
-        }
+        
         if(prestamo_caja.getText().equals("Ingrese el telefono aquí")){
             prestamo_caja.setText("");
             prestamo_caja.setForeground(Color.BLACK);
@@ -474,7 +445,9 @@ public class ventana_prestamos extends javax.swing.JFrame {
     }//GEN-LAST:event_prestamo_cajaMousePressed
 
     private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
-        // TODO add your handling code here:
+        
+        Conexion_prestamos.ConsultarBaseDatos(id_caja.getText(), id_usuario)
+        
     }//GEN-LAST:event_boton_buscarMouseClicked
 
     private void boton_buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseEntered
@@ -486,7 +459,13 @@ public class ventana_prestamos extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_buscarMouseExited
 
     private void boton_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseClicked
-        // TODO add your handling code here:
+        
+        
+        Conexion_prestamos.eliminarPrestamo(id_caja.getText(), id_usuario);
+        
+        
+        
+        
     }//GEN-LAST:event_boton_eliminarMouseClicked
 
     private void boton_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseEntered
@@ -498,7 +477,15 @@ public class ventana_prestamos extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_eliminarMouseExited
 
     private void boton_actualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseClicked
-        // TODO add your handling code here:
+        
+        String id_libro = id_caja.getText();
+        Date prestamo_inicio = Date.valueOf(prestamo_caja.getText());
+        Date prestamo_fin = Date.valueOf(prestamo_caja1.getText());
+        
+        Conexion_prestamos.ActualizarBaseDatosPrestamo(id_libro, id_usuario, prestamo_inicio, prestamo_fin);
+        
+        
+        
     }//GEN-LAST:event_boton_actualizarMouseClicked
 
     private void boton_actualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseEntered
@@ -547,6 +534,10 @@ public class ventana_prestamos extends javax.swing.JFrame {
             }
         });
     }
+
+    //variables propias 
+
+    Conexion_ventana_prestamos Conexion_prestamos = new Conexion_ventana_prestamos();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Autor;
