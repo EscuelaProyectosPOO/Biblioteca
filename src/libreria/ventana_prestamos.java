@@ -415,7 +415,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
 
     private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
 
-        Conexion_prestamos.ConsultarBaseDatos(id_caja.getText(), id_usuario)
+       // Conexion_prestamos.ConsultarBaseDatos(id_caja.getText(), id_usuario)
 
     }//GEN-LAST:event_boton_buscarMouseClicked
 
