@@ -4,13 +4,8 @@ package libreria;
 import java.awt.Color;
 import Base_Datos_Conexion.Conexion_ventana_prestamos;
 import codigo_ventana.clase_ventanaVolver_inicio;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.sql.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 
 public class ventana_prestamos extends javax.swing.JFrame {
 
@@ -101,7 +96,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
         jLabel4.setText("PRESTAMOS");
 
         Titulo.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
-        Titulo.setText("Identificador ");
+        Titulo.setText("ID del libro");
 
         id_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
         id_caja.setForeground(new java.awt.Color(153, 153, 153));
@@ -121,6 +116,11 @@ public class ventana_prestamos extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(204, 204, 204));
 
         panel_registrar.setBackground(new java.awt.Color(184, 183, 169));
+        panel_registrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panel_registrarMouseClicked(evt);
+            }
+        });
 
         boton_registrar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
         boton_registrar.setForeground(new java.awt.Color(51, 51, 51));
@@ -185,6 +185,11 @@ public class ventana_prestamos extends javax.swing.JFrame {
         );
 
         panel_eliminar.setBackground(new java.awt.Color(184, 183, 169));
+        panel_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panel_eliminarMouseClicked(evt);
+            }
+        });
 
         boton_eliminar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
         boton_eliminar.setForeground(new java.awt.Color(51, 51, 51));
@@ -384,10 +389,12 @@ public class ventana_prestamos extends javax.swing.JFrame {
     private void boton_actualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseClicked
 
         String id_libro = id_caja.getText();
-        //Date prestamo_inicio = Date.valueOf(prestamo_caja.getText());
+        String id_usuarioV = id_usuario.getText();
+ 
+        
         Date prestamo_fin = Date.valueOf(prestamo_caja1.getText());
 
-        //Conexion_prestamos.ActualizarBaseDatosPrestamo(id_libro, id_usuario, prestamo_inicio, prestamo_fin);
+        Conexion_ventana_prestamos.ActualizarBaseDatosPrestamo(id_libro, id_usuarioV, prestamo_fin);
 
     }//GEN-LAST:event_boton_actualizarMouseClicked
 
@@ -401,7 +408,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
 
     private void boton_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseClicked
 
-        //Conexion_prestamos.eliminarPrestamo(id_caja.getText(), id_usuario);
+        Conexion_ventana_prestamos.eliminarPrestamo(id_caja.getText(), id_usuario.getText());
 
     }//GEN-LAST:event_boton_eliminarMouseClicked
 
@@ -415,7 +422,10 @@ public class ventana_prestamos extends javax.swing.JFrame {
 
     private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
 
-       // Conexion_prestamos.ConsultarBaseDatos(id_caja.getText(), id_usuario)
+       ArrayList informacion  = Conexion_ventana_prestamos.ConsultarBaseDatos(id_caja.getText(), id_usuario.getText());
+       
+       prestamo_caja1.setText( String.valueOf(informacion.get(0)));
+       
 
     }//GEN-LAST:event_boton_buscarMouseClicked
 
@@ -430,17 +440,19 @@ public class ventana_prestamos extends javax.swing.JFrame {
 
     private void boton_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseClicked
 
-//        try {
-//
-//            String id_libro = id_caja.getText();
-//            Date prestamo_inicio = Date.valueOf(prestamo_caja.getText());
-//            Date prestamo_fin = Date.valueOf(prestamo_caja1.getText());
-//
-//            Conexion_prestamos.insertarBaseDatos_Prestamo(id_libro, id_usuario, prestamo_inicio, prestamo_fin);
-//
-//        } catch (ParseException ex) {
-//            Logger.getLogger(ventana_prestamos.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+       
+        String id_libro = id_caja.getText();
+        String id_usuarioV = id_usuario.getText();
+        //saca la fecha de hoy
+        long miliseconds = System.currentTimeMillis();
+        Date prestamo_inicio = new Date(miliseconds);
+
+        Date prestamo_fin = Date.valueOf(prestamo_caja1.getText());
+
+
+        Conexion_ventana_prestamos.insertarBaseDatos_Prestamo(id_libro, id_usuarioV, prestamo_inicio, prestamo_fin);
+
+        
     }//GEN-LAST:event_boton_registrarMouseClicked
 
     private void id_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_id_cajaMousePressed
@@ -452,6 +464,21 @@ public class ventana_prestamos extends javax.swing.JFrame {
 
        
     }//GEN-LAST:event_id_cajaMousePressed
+
+    private void panel_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_eliminarMouseClicked
+        
+        String id_libro = id_caja.getText();
+        String id_usuarioV = id_usuario.getText();
+        
+        Conexion_ventana_prestamos.eliminarPrestamo(id_libro, id_usuarioV);
+        
+        
+        
+    }//GEN-LAST:event_panel_eliminarMouseClicked
+
+    private void panel_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_registrarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel_registrarMouseClicked
 
     /**
      * @param args the command line arguments

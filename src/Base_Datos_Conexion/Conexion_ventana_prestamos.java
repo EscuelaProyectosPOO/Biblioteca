@@ -37,7 +37,7 @@ public class Conexion_ventana_prestamos {
 
             conexion = DriverManager.getConnection(conexionUrl);
             
-            String consulta = "SELECT * FROM Prestamo WHERE  ID_libro = ? and ID_usuario = ?";
+            String consulta = "SELECT Fecha_de_retorno FROM Prestamo WHERE  ID_libro = ? and ID_usuario = ?";
             
             PreparedStatement pst = conexion.prepareStatement(consulta);
             
@@ -80,7 +80,7 @@ public class Conexion_ventana_prestamos {
         
         int numero_ejemplares_actual = Consultar_ejemplares(id_libro);
         
-        ModificarEjemplares(id_libro,numero_ejemplares_actual-1 );
+        ModificarEjemplares(id_libro,numero_ejemplares_actual+1 );
         
        
         try{
@@ -119,7 +119,7 @@ public class Conexion_ventana_prestamos {
     }
     
     
-    public static void ActualizarBaseDatosPrestamo(String id_libro, String id_usuario, java.sql.Date Fecha_prestamo_inicio, java.sql.Date Fecha_prestamo_fin){
+    public static void ActualizarBaseDatosPrestamo(String id_libro, String id_usuario, java.sql.Date Fecha_prestamo_fin){
         
         //actualiza pero solo de la base de datos Prestamos
         Connection conexion = null;
@@ -139,15 +139,13 @@ public class Conexion_ventana_prestamos {
             
             
             
-            String consulta = "UPDATE Prestamo SET ID_libro = ?, ID_usuario = ?, Fecha_prestamo_inicio = ?, Fecha_prestamo_fin = ?   WHERE (ID_libro = " 
-                    + id_libro + " AND ID_usuario = " + id_usuario + ")";
+            String consulta = "UPDATE Prestamo SET Fecha_de_retorno = ?   WHERE ID_libro = ? AND ID_usuario = ?";
             
             PreparedStatement pst = conexion.prepareStatement(consulta);
             
-            pst.setString(1, id_libro);
-            pst.setString(2, id_usuario);
-            pst.setDate(3,Fecha_prestamo_inicio );
-            pst.setDate(4,Fecha_prestamo_fin );
+            pst.setDate(1,Fecha_prestamo_fin );
+            pst.setString(2,id_libro);
+            pst.setString(3, id_usuario);
             
             pst.executeUpdate();//para que se ejecute
             
@@ -250,7 +248,7 @@ public class Conexion_ventana_prestamos {
 
             conexion = DriverManager.getConnection(conexionUrl);
             
-            String consulta = "SELECT Ejemplares FROM Prestamo WHERE  ID_libro = ?";
+            String consulta = "SELECT Ejemplares FROM Relacion_libros WHERE  ID_libro = ?";
             
             PreparedStatement pst = conexion.prepareStatement(consulta);
             
@@ -260,8 +258,8 @@ public class Conexion_ventana_prestamos {
             
             if(rs.next()){
                 // esta parte nos ayuda a saber si no esta vacio, si no mlo esta, comenzamos la extraccion
-                numero_ejemplares = rs.getInt(0);
-                
+                numero_ejemplares = rs.getInt(1);
+                System.out.println(numero_ejemplares);
             }else{
                 
                 JOptionPane.showMessageDialog(null, "Error en la consulta del campo ");
@@ -300,12 +298,12 @@ public class Conexion_ventana_prestamos {
             
             
             
-            String consulta = "UPDATE Prestamo SET Ejemplares = ?   WHERE (ID_libro = " 
-                    + id_libro + ")";
+            String consulta = "UPDATE Relacion_libros  SET Ejemplares = ?   WHERE ID_libro = ?";
             
             PreparedStatement pst = conexion.prepareStatement(consulta);
             
             pst.setInt(1, numero_nuevo_ejemplares);
+            pst.setString(2, id_libro);
             
             pst.executeUpdate();//para que se ejecute
             
@@ -320,6 +318,6 @@ public class Conexion_ventana_prestamos {
     
     }
     
-    
-    
+
+  
 }
