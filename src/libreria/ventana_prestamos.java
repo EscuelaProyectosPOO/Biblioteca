@@ -407,7 +407,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
 
     private void boton_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseClicked
       
-      
+      //prueba conflicto
         try {
 
             String id_libro = id_caja.getText();
