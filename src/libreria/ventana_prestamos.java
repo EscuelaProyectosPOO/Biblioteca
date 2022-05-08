@@ -39,9 +39,6 @@ public class ventana_prestamos extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         panel_registrar = new javax.swing.JPanel();
         boton_registrar = new javax.swing.JLabel();
-        jSeparator6 = new javax.swing.JSeparator();
-        prestamo_caja = new javax.swing.JTextField();
-        Ejemplares = new javax.swing.JLabel();
         panel_buscar = new javax.swing.JPanel();
         boton_buscar = new javax.swing.JLabel();
         panel_eliminar = new javax.swing.JPanel();
@@ -51,7 +48,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
         Ejemplares1 = new javax.swing.JLabel();
         prestamo_caja1 = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        id_usuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,14 +98,11 @@ public class ventana_prestamos extends javax.swing.JFrame {
         );
 
         jLabel4.setFont(new java.awt.Font("Victor Mono Medium", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("PRESTAMOS");
 
         Titulo.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
-        Titulo.setForeground(new java.awt.Color(0, 0, 0));
         Titulo.setText("Identificador ");
 
-        id_caja.setBackground(new java.awt.Color(255, 255, 255));
         id_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
         id_caja.setForeground(new java.awt.Color(153, 153, 153));
         id_caja.setText("Ingrese el ID del prestamo aquí");
@@ -122,7 +116,6 @@ public class ventana_prestamos extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(204, 204, 204));
 
         Autor.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
-        Autor.setForeground(new java.awt.Color(0, 0, 0));
         Autor.setText("ID Usuario");
 
         jSeparator2.setBackground(new java.awt.Color(204, 204, 204));
@@ -158,23 +151,6 @@ public class ventana_prestamos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(boton_registrar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
         );
-
-        jSeparator6.setBackground(new java.awt.Color(204, 204, 204));
-
-        prestamo_caja.setBackground(new java.awt.Color(255, 255, 255));
-        prestamo_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
-        prestamo_caja.setForeground(new java.awt.Color(153, 153, 153));
-        prestamo_caja.setText("Ingrese la fecha aquí");
-        prestamo_caja.setBorder(null);
-        prestamo_caja.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                prestamo_cajaMousePressed(evt);
-            }
-        });
-
-        Ejemplares.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
-        Ejemplares.setForeground(new java.awt.Color(0, 0, 0));
-        Ejemplares.setText("Fecha de inicio de prestamo");
 
         panel_buscar.setBackground(new java.awt.Color(184, 183, 169));
 
@@ -273,10 +249,8 @@ public class ventana_prestamos extends javax.swing.JFrame {
         );
 
         Ejemplares1.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
-        Ejemplares1.setForeground(new java.awt.Color(0, 0, 0));
         Ejemplares1.setText("Fecha de entrega");
 
-        prestamo_caja1.setBackground(new java.awt.Color(255, 255, 255));
         prestamo_caja1.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
         prestamo_caja1.setForeground(new java.awt.Color(153, 153, 153));
         prestamo_caja1.setText("Ingrese la fecha aquí");
@@ -289,7 +263,15 @@ public class ventana_prestamos extends javax.swing.JFrame {
 
         jSeparator7.setBackground(new java.awt.Color(204, 204, 204));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        id_usuario.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
+        id_usuario.setForeground(new java.awt.Color(153, 153, 153));
+        id_usuario.setText("Ingrese el ID del usuario aquí");
+        id_usuario.setBorder(null);
+        id_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                id_usuarioMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
@@ -310,9 +292,6 @@ public class ventana_prestamos extends javax.swing.JFrame {
                     .addGroup(bgLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Ejemplares)
-                    .addComponent(prestamo_caja, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(bgLayout.createSequentialGroup()
                         .addComponent(panel_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
@@ -321,17 +300,17 @@ public class ventana_prestamos extends javax.swing.JFrame {
                         .addComponent(panel_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(panel_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Ejemplares1)
-                    .addComponent(prestamo_caja1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(bgLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(Autor))
-                    .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(bgLayout.createSequentialGroup()
-                            .addGap(5, 5, 5)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(id_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Ejemplares1)
+                            .addComponent(prestamo_caja1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(36, 36, 36)
                 .addComponent(barra_lateral, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -350,23 +329,17 @@ public class ventana_prestamos extends javax.swing.JFrame {
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(Autor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(Ejemplares, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(id_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
-                        .addComponent(prestamo_caja, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Ejemplares1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(prestamo_caja1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panel_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(panel_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -375,7 +348,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
                     .addGroup(bgLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(barra_lateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(75, 75, 75))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -386,11 +359,89 @@ public class ventana_prestamos extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void id_usuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_id_usuarioMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_id_usuarioMousePressed
+
+    private void prestamo_caja1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prestamo_caja1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prestamo_caja1MousePressed
+
+    private void boton_actualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_actualizarMouseExited
+
+    private void boton_actualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_actualizarMouseEntered
+
+    private void boton_actualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseClicked
+
+        String id_libro = id_caja.getText();
+        //Date prestamo_inicio = Date.valueOf(prestamo_caja.getText());
+        Date prestamo_fin = Date.valueOf(prestamo_caja1.getText());
+
+        //Conexion_prestamos.ActualizarBaseDatosPrestamo(id_libro, id_usuario, prestamo_inicio, prestamo_fin);
+
+    }//GEN-LAST:event_boton_actualizarMouseClicked
+
+    private void boton_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_eliminarMouseExited
+
+    private void boton_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_eliminarMouseEntered
+
+    private void boton_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseClicked
+
+        //Conexion_prestamos.eliminarPrestamo(id_caja.getText(), id_usuario);
+
+    }//GEN-LAST:event_boton_eliminarMouseClicked
+
+    private void boton_buscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_buscarMouseExited
+
+    private void boton_buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_buscarMouseEntered
+
+    private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
+
+        Conexion_prestamos.ConsultarBaseDatos(id_caja.getText(), id_usuario)
+
+    }//GEN-LAST:event_boton_buscarMouseClicked
+
+    private void boton_registrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseExited
+        panel_registrar.setBackground(new Color (184, 183, 169));
+    }//GEN-LAST:event_boton_registrarMouseExited
+
+    private void boton_registrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseEntered
+        panel_registrar.setBackground(new Color(112, 98, 70));
+        boton_registrar.setForeground(Color.white);
+    }//GEN-LAST:event_boton_registrarMouseEntered
+
+    private void boton_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseClicked
+
+//        try {
+//
+//            String id_libro = id_caja.getText();
+//            Date prestamo_inicio = Date.valueOf(prestamo_caja.getText());
+//            Date prestamo_fin = Date.valueOf(prestamo_caja1.getText());
+//
+//            Conexion_prestamos.insertarBaseDatos_Prestamo(id_libro, id_usuario, prestamo_inicio, prestamo_fin);
+//
+//        } catch (ParseException ex) {
+//            Logger.getLogger(ventana_prestamos.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_boton_registrarMouseClicked
 
     private void id_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_id_cajaMousePressed
 
@@ -398,107 +449,9 @@ public class ventana_prestamos extends javax.swing.JFrame {
             id_caja.setText("");
             id_caja.setForeground(Color.BLACK);
         }
-        
-        if(prestamo_caja.getText().equals("")){
-            prestamo_caja.setText("Ingrese el telefono aquí");
-            prestamo_caja.setForeground(new Color (153, 153, 153));
-        }
+
+       
     }//GEN-LAST:event_id_cajaMousePressed
-
-    private void boton_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseClicked
-      
-      
-        try {
-
-            String id_libro = id_caja.getText();
-            Date prestamo_inicio = Date.valueOf(prestamo_caja.getText());
-            Date prestamo_fin = Date.valueOf(prestamo_caja1.getText());
-
-            Conexion_prestamos.insertarBaseDatos_Prestamo(id_libro, id_usuario, prestamo_inicio, prestamo_fin);
-            
-            
-            
-        } catch (ParseException ex) {
-            Logger.getLogger(ventana_prestamos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_boton_registrarMouseClicked
-
-    private void boton_registrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseEntered
-        panel_registrar.setBackground(new Color(112, 98, 70));
-        boton_registrar.setForeground(Color.white);
-    }//GEN-LAST:event_boton_registrarMouseEntered
-
-    private void boton_registrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseExited
-        panel_registrar.setBackground(new Color (184, 183, 169));
-    }//GEN-LAST:event_boton_registrarMouseExited
-
-    private void prestamo_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prestamo_cajaMousePressed
-        if(id_caja.getText().equals("")){
-            id_caja.setText("Ingrese el nombre aquí");
-            id_caja.setForeground(new Color (153, 153, 153));
-        }
-        
-        if(prestamo_caja.getText().equals("Ingrese el telefono aquí")){
-            prestamo_caja.setText("");
-            prestamo_caja.setForeground(Color.BLACK);
-        }
-    }//GEN-LAST:event_prestamo_cajaMousePressed
-
-    private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
-        
-        Conexion_prestamos.ConsultarBaseDatos(id_caja.getText(), id_usuario)
-        
-    }//GEN-LAST:event_boton_buscarMouseClicked
-
-    private void boton_buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_buscarMouseEntered
-
-    private void boton_buscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_buscarMouseExited
-
-    private void boton_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseClicked
-        
-        
-        Conexion_prestamos.eliminarPrestamo(id_caja.getText(), id_usuario);
-        
-        
-        
-        
-    }//GEN-LAST:event_boton_eliminarMouseClicked
-
-    private void boton_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_eliminarMouseEntered
-
-    private void boton_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_eliminarMouseExited
-
-    private void boton_actualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseClicked
-        
-        String id_libro = id_caja.getText();
-        Date prestamo_inicio = Date.valueOf(prestamo_caja.getText());
-        Date prestamo_fin = Date.valueOf(prestamo_caja1.getText());
-        
-        Conexion_prestamos.ActualizarBaseDatosPrestamo(id_libro, id_usuario, prestamo_inicio, prestamo_fin);
-        
-        
-        
-    }//GEN-LAST:event_boton_actualizarMouseClicked
-
-    private void boton_actualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_actualizarMouseEntered
-
-    private void boton_actualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_actualizarMouseExited
-
-    private void prestamo_caja1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prestamo_caja1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_prestamo_caja1MousePressed
 
     /**
      * @param args the command line arguments
@@ -541,7 +494,6 @@ public class ventana_prestamos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Autor;
-    private javax.swing.JLabel Ejemplares;
     private javax.swing.JLabel Ejemplares1;
     private javax.swing.JLabel Titulo;
     private javax.swing.JPanel barra_lateral;
@@ -551,20 +503,18 @@ public class ventana_prestamos extends javax.swing.JFrame {
     private javax.swing.JLabel boton_eliminar;
     private javax.swing.JLabel boton_registrar;
     private javax.swing.JTextField id_caja;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField id_usuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JPanel panel_actualizar;
     private javax.swing.JPanel panel_buscar;
     private javax.swing.JPanel panel_eliminar;
     private javax.swing.JPanel panel_registrar;
-    private javax.swing.JTextField prestamo_caja;
     private javax.swing.JTextField prestamo_caja1;
     // End of variables declaration//GEN-END:variables
 }

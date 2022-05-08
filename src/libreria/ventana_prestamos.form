@@ -28,7 +28,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="bg" min="-2" pref="589" max="-2" attributes="0"/>
+          <Component id="bg" min="-2" pref="474" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -62,9 +62,6 @@
                           <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
                           <Component id="jSeparator1" min="-2" pref="490" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="Ejemplares" min="-2" max="-2" attributes="0"/>
-                      <Component id="prestamo_caja" min="-2" pref="490" max="-2" attributes="0"/>
-                      <Component id="jSeparator6" min="-2" pref="490" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="panel_buscar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
@@ -74,18 +71,18 @@
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Component id="panel_actualizar" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="Ejemplares1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="prestamo_caja1" alignment="0" min="-2" pref="490" max="-2" attributes="0"/>
-                      <Component id="jSeparator7" alignment="0" min="-2" pref="490" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
                           <Component id="Autor" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="id_usuario" min="-2" pref="490" max="-2" attributes="0"/>
                               <Component id="jSeparator2" min="-2" pref="490" max="-2" attributes="0"/>
+                              <Component id="Ejemplares1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="prestamo_caja1" alignment="0" min="-2" pref="490" max="-2" attributes="0"/>
+                              <Component id="jSeparator7" alignment="0" min="-2" pref="490" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -109,23 +106,17 @@
                           <Component id="jSeparator1" min="-2" pref="11" max="-2" attributes="0"/>
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Component id="Autor" min="-2" pref="35" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jComboBox1" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="id_usuario" min="-2" pref="33" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Component id="jSeparator2" min="-2" pref="11" max="-2" attributes="0"/>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="Ejemplares" min="-2" pref="35" max="-2" attributes="0"/>
-                          <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
-                          <Component id="prestamo_caja" min="-2" pref="33" max="-2" attributes="0"/>
-                          <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                          <Component id="jSeparator6" min="-2" pref="11" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="Ejemplares1" min="-2" pref="35" max="-2" attributes="0"/>
-                          <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="prestamo_caja1" min="-2" pref="33" max="-2" attributes="0"/>
-                          <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSeparator7" min="-2" pref="11" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="panel_buscar" min="-2" max="-2" attributes="0"/>
                               <Component id="panel_registrar" min="-2" max="-2" attributes="0"/>
@@ -138,7 +129,7 @@
                           <Component id="barra_lateral" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -323,38 +314,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JSeparator" name="jSeparator6">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="prestamo_caja">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Victor Mono SemiBold" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="99" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Ingrese la fecha aqu&#xed;"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="prestamo_cajaMousePressed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="Ejemplares">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Victor Mono Medium" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Fecha de inicio de prestamo"/>
-          </Properties>
-        </Component>
         <Container class="javax.swing.JPanel" name="panel_buscar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -522,20 +481,22 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JTextField" name="id_usuario">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Victor Mono SemiBold" size="14" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Ingrese el ID del usuario aqu&#xed;"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
             </Property>
           </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="id_usuarioMousePressed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
