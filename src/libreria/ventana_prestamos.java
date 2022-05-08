@@ -15,7 +15,12 @@ public class ventana_prestamos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
         addWindowListener(new clase_ventanaVolver_inicio());
     }
-
+    
+    public void color_cajas(){
+       id_caja.setForeground(new Color (0, 0, 0));
+       id_usuario.setForeground(new Color (0, 0, 0));
+       prestamo_caja1.setForeground(new Color (0, 0, 0));
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

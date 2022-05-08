@@ -13,7 +13,14 @@ public class ventana_usuarios extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
         addWindowListener(new clase_ventanaVolver_inicio());
     }
-
+    
+    public void ColorCajas(){
+        nombre_caja.setForeground(Color.black);
+        paterno_caja.setForeground(Color.black);
+        materno_caja.setForeground(Color.black);
+        direccion_caja.setForeground(Color.black);
+        telefono_caja.setForeground(Color.black);
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -37,11 +44,17 @@ public class ventana_usuarios extends javax.swing.JFrame {
         ID = new javax.swing.JLabel();
         direccion_caja = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
-        panel_entrar = new javax.swing.JPanel();
-        boton_entrar = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         telefono_caja = new javax.swing.JTextField();
         Ejemplares = new javax.swing.JLabel();
+        panel_entrar = new javax.swing.JPanel();
+        boton_entrar = new javax.swing.JLabel();
+        panel_buscar = new javax.swing.JPanel();
+        boton_buscar = new javax.swing.JLabel();
+        panel_actualizar = new javax.swing.JPanel();
+        boton_actualizar = new javax.swing.JLabel();
+        panel_eliminar = new javax.swing.JPanel();
+        boton_eliminar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -178,13 +191,33 @@ public class ventana_usuarios extends javax.swing.JFrame {
         jSeparator5.setBackground(new java.awt.Color(204, 204, 204));
         bg.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 479, 490, 11));
 
+        jSeparator6.setBackground(new java.awt.Color(204, 204, 204));
+        bg.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 589, 490, 11));
+
+        telefono_caja.setBackground(new java.awt.Color(255, 255, 255));
+        telefono_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
+        telefono_caja.setForeground(new java.awt.Color(153, 153, 153));
+        telefono_caja.setText("Ingrese el telefono aquí");
+        telefono_caja.setBorder(null);
+        telefono_caja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                telefono_cajaMousePressed(evt);
+            }
+        });
+        bg.add(telefono_caja, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 550, 490, 33));
+
+        Ejemplares.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
+        Ejemplares.setForeground(new java.awt.Color(0, 0, 0));
+        Ejemplares.setText("Telefono");
+        bg.add(Ejemplares, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 505, -1, 35));
+
         panel_entrar.setBackground(new java.awt.Color(184, 183, 169));
 
         boton_entrar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
         boton_entrar.setForeground(new java.awt.Color(51, 51, 51));
         boton_entrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         boton_entrar.setText("REGISTRAR");
-        boton_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         boton_entrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_entrarMouseClicked(evt);
@@ -210,27 +243,109 @@ public class ventana_usuarios extends javax.swing.JFrame {
                 .addComponent(boton_entrar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
         );
 
-        bg.add(panel_entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, -1, -1));
+        bg.add(panel_entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, -1, -1));
 
-        jSeparator6.setBackground(new java.awt.Color(204, 204, 204));
-        bg.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 589, 490, 11));
+        panel_buscar.setBackground(new java.awt.Color(184, 183, 169));
 
-        telefono_caja.setBackground(new java.awt.Color(255, 255, 255));
-        telefono_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
-        telefono_caja.setForeground(new java.awt.Color(153, 153, 153));
-        telefono_caja.setText("Ingrese el telefono aquí");
-        telefono_caja.setBorder(null);
-        telefono_caja.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                telefono_cajaMousePressed(evt);
+        boton_buscar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
+        boton_buscar.setForeground(new java.awt.Color(51, 51, 51));
+        boton_buscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        boton_buscar.setText("BUSCAR");
+        boton_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        boton_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_buscarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                boton_buscarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                boton_buscarMouseExited(evt);
             }
         });
-        bg.add(telefono_caja, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 550, 490, 33));
 
-        Ejemplares.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
-        Ejemplares.setForeground(new java.awt.Color(0, 0, 0));
-        Ejemplares.setText("Telefono");
-        bg.add(Ejemplares, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 505, -1, 35));
+        javax.swing.GroupLayout panel_buscarLayout = new javax.swing.GroupLayout(panel_buscar);
+        panel_buscar.setLayout(panel_buscarLayout);
+        panel_buscarLayout.setHorizontalGroup(
+            panel_buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(boton_buscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+        );
+        panel_buscarLayout.setVerticalGroup(
+            panel_buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_buscarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(boton_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+        );
+
+        bg.add(panel_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, -1, -1));
+
+        panel_actualizar.setBackground(new java.awt.Color(184, 183, 169));
+
+        boton_actualizar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
+        boton_actualizar.setForeground(new java.awt.Color(51, 51, 51));
+        boton_actualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        boton_actualizar.setText("ACTUALIZAR");
+        boton_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        boton_actualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_actualizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                boton_actualizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                boton_actualizarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_actualizarLayout = new javax.swing.GroupLayout(panel_actualizar);
+        panel_actualizar.setLayout(panel_actualizarLayout);
+        panel_actualizarLayout.setHorizontalGroup(
+            panel_actualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(boton_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+        );
+        panel_actualizarLayout.setVerticalGroup(
+            panel_actualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_actualizarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(boton_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+        );
+
+        bg.add(panel_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 610, -1, -1));
+
+        panel_eliminar.setBackground(new java.awt.Color(184, 183, 169));
+
+        boton_eliminar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
+        boton_eliminar.setForeground(new java.awt.Color(51, 51, 51));
+        boton_eliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        boton_eliminar.setText("ELIMINAR");
+        boton_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        boton_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_eliminarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                boton_eliminarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                boton_eliminarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_eliminarLayout = new javax.swing.GroupLayout(panel_eliminar);
+        panel_eliminar.setLayout(panel_eliminarLayout);
+        panel_eliminarLayout.setHorizontalGroup(
+            panel_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(boton_eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+        );
+        panel_eliminarLayout.setVerticalGroup(
+            panel_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_eliminarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(boton_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+        );
+
+        bg.add(panel_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 610, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -349,26 +464,6 @@ public class ventana_usuarios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_direccion_cajaMousePressed
 
-    private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
-        System.out.println(nombre_caja.getText());
-        System.out.println(paterno_caja.getText());
-        System.out.println(materno_caja.getText());
-        System.out.println(direccion_caja.getText());
-        System.out.println(telefono_caja.getText());
-        
-        ConsultasBD.insertarBaseDatos_TablaUsuarios(nombre_caja.getText(), paterno_caja.getText(),
-                materno_caja.getText(), direccion_caja.getText(), telefono_caja.getText());
-    }//GEN-LAST:event_boton_entrarMouseClicked
-
-    private void boton_entrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseEntered
-        panel_entrar.setBackground(new Color(112, 98, 70));
-        boton_entrar.setForeground(Color.white);
-    }//GEN-LAST:event_boton_entrarMouseEntered
-
-    private void boton_entrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseExited
-        panel_entrar.setBackground(new Color (184, 183, 169));
-    }//GEN-LAST:event_boton_entrarMouseExited
-
     private void telefono_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telefono_cajaMousePressed
         if(nombre_caja.getText().equals("")){
             nombre_caja.setText("Ingrese el nombre aquí");
@@ -391,6 +486,140 @@ public class ventana_usuarios extends javax.swing.JFrame {
             telefono_caja.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_telefono_cajaMousePressed
+
+    private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
+        //se registran los datos en la tabla libros
+        //        try{
+            //
+            //            int ID_autor = Integer.parseInt(id_caja.getText());
+            //            String Nombre_autor = autor_caja.getText();
+            //
+            //            if(Nombre_autor.isBlank()){
+                //
+                //                JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n", "No se han podido registrar los datos",
+                    //                    JOptionPane.ERROR_MESSAGE);
+                //            }else{
+                //
+                //                ConsultasBD.insertarTablaAutor(ID_autor, Nombre_autor);
+                //
+                //            }
+            //
+            //        }catch(Exception e){
+            //
+            //            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n" + e, "No se han podido registrar los datos",
+                //                JOptionPane.ERROR_MESSAGE);
+            //        }
+    }//GEN-LAST:event_boton_entrarMouseClicked
+
+    private void boton_entrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseEntered
+        panel_entrar.setBackground(new Color(132, 132, 122));
+        boton_entrar.setForeground(Color.white);
+    }//GEN-LAST:event_boton_entrarMouseEntered
+
+    private void boton_entrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseExited
+        panel_entrar.setBackground(new Color (184, 183, 169));
+        boton_entrar.setForeground(Color.black);
+    }//GEN-LAST:event_boton_entrarMouseExited
+
+    private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
+
+        //        try{
+            //
+            //            int ID_autor = Integer.parseInt(id_caja.getText());
+            //            ArrayList informacion_registro = new ArrayList();
+            //
+            //            informacion_registro = ConsultasBD.ConsultarBaseDatos("Autores", "ID_autor", ID_autor);
+            //
+            //            autor_caja.setText(String.valueOf(informacion_registro.get(1)));
+            //
+            //            autor_caja.setForeground(Color.black);
+            //
+            //        }catch(Exception e){
+            //
+            //            JOptionPane.showMessageDialog(null, "Debe rellenar el campo ID \n" + e, "No se han podido registrar los datos",
+                //                JOptionPane.ERROR_MESSAGE);
+            //        }
+    }//GEN-LAST:event_boton_buscarMouseClicked
+
+    private void boton_buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseEntered
+        panel_buscar.setBackground(new Color(132, 132, 122));
+        boton_buscar.setForeground(Color.white);
+    }//GEN-LAST:event_boton_buscarMouseEntered
+
+    private void boton_buscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseExited
+        panel_buscar.setBackground(new Color (184, 183, 169));
+        boton_buscar.setForeground(Color.black);
+    }//GEN-LAST:event_boton_buscarMouseExited
+
+    private void boton_actualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseClicked
+        // TODO add your handling code here:
+
+        //        try{
+            //
+            //            int ID_autor = Integer.parseInt(id_caja.getText());
+            //            String Nombre_autor = autor_caja.getText();
+            //
+            //            if(Nombre_autor.isBlank()){
+                //
+                //                JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n", "No se han podido registrar los datos",
+                    //                    JOptionPane.ERROR_MESSAGE);
+                //            }else{
+                //
+                //                ConsultasBD.ActualizarBaseDatos_Autores(ID_autor, Nombre_autor);
+                //
+                //            }
+            //
+            //        }catch(Exception e){
+            //
+            //            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n" + e, "No se han podido registrar los datos",
+                //                JOptionPane.ERROR_MESSAGE);
+            //        }
+        //        id_libro = Integer.parseInt(id_caja.getText());
+        //        Titulo_libro = titulo_caja.getText();
+        //        autor = autor_caja.getText();
+        //        editorial = editorial_caja.getText();
+        //        numero_ejemplares = Integer.parseInt(ejemplares_caja.getText());
+        //
+        //        ConsultasBD.ActualizarBaseDatos_Libro(id_libro, Titulo_libro, autor, editorial, numero_ejemplares);
+    }//GEN-LAST:event_boton_actualizarMouseClicked
+
+    private void boton_actualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseEntered
+        panel_actualizar.setBackground(new Color(132, 132, 122));
+        boton_actualizar.setForeground(Color.white);
+    }//GEN-LAST:event_boton_actualizarMouseEntered
+
+    private void boton_actualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseExited
+        panel_actualizar.setBackground(new Color (184, 183, 169));
+        boton_actualizar.setForeground(Color.black);
+    }//GEN-LAST:event_boton_actualizarMouseExited
+
+    private void boton_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseClicked
+        // TODO add your handling code here:
+        //        try{
+            //
+            //            int ID_autor = Integer.parseInt(id_caja.getText());
+            //
+            //            ConsultasBD.eliminarRegistro("Autores", "ID_Autor", ID_autor);
+            //
+            //        }catch(Exception e){
+            //
+            //            JOptionPane.showMessageDialog(null, "Debe rellenar el campo ID \n" + e, "No se han podido registrar los datos",
+                //                JOptionPane.ERROR_MESSAGE);
+            //        }
+
+        //        id_libro = Integer.parseInt(id_caja.getText());
+        //        ConsultasBD.eliminarRegistro("Libros", "ID_libro", id_libro);
+    }//GEN-LAST:event_boton_eliminarMouseClicked
+
+    private void boton_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseEntered
+        panel_eliminar.setBackground(new Color(132, 132, 122));
+        boton_eliminar.setForeground(Color.white);
+    }//GEN-LAST:event_boton_eliminarMouseEntered
+
+    private void boton_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseExited
+        panel_eliminar.setBackground(new Color (184, 183, 169));
+        boton_eliminar.setForeground(Color.black);
+    }//GEN-LAST:event_boton_eliminarMouseExited
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -431,6 +660,9 @@ public class ventana_usuarios extends javax.swing.JFrame {
     private javax.swing.JLabel ID;
     private javax.swing.JLabel Titulo;
     private javax.swing.JPanel bg;
+    private javax.swing.JLabel boton_actualizar;
+    private javax.swing.JLabel boton_buscar;
+    private javax.swing.JLabel boton_eliminar;
     private javax.swing.JLabel boton_entrar;
     private javax.swing.JTextField direccion_caja;
     private javax.swing.JLabel jLabel1;
@@ -445,6 +677,9 @@ public class ventana_usuarios extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTextField materno_caja;
     private javax.swing.JTextField nombre_caja;
+    private javax.swing.JPanel panel_actualizar;
+    private javax.swing.JPanel panel_buscar;
+    private javax.swing.JPanel panel_eliminar;
     private javax.swing.JPanel panel_entrar;
     private javax.swing.JTextField paterno_caja;
     private javax.swing.JTextField telefono_caja;
