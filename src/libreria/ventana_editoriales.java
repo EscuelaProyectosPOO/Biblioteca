@@ -12,7 +12,13 @@ public class ventana_editoriales extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
         addWindowListener(new clase_ventanaVolver_inicio());
     }
-
+    
+    public void color_cajas(){
+        id_caja.setForeground(Color.black);
+        editorial_caja.setForeground(Color.black);
+    }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -23,8 +29,8 @@ public class ventana_editoriales extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        Autor = new javax.swing.JLabel();
-        autor_caja = new javax.swing.JTextField();
+        editorial = new javax.swing.JLabel();
+        editorial_caja = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         ID = new javax.swing.JLabel();
         id_caja = new javax.swing.JTextField();
@@ -94,28 +100,28 @@ public class ventana_editoriales extends javax.swing.JFrame {
         jLabel4.setText("REGISTRO DE EDITORIALES");
         bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, 30));
 
-        Autor.setBackground(new java.awt.Color(0, 0, 0));
-        Autor.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
-        Autor.setForeground(new java.awt.Color(0, 0, 0));
-        Autor.setText("Autor");
-        bg.add(Autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 185, -1, 35));
+        editorial.setBackground(new java.awt.Color(0, 0, 0));
+        editorial.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
+        editorial.setForeground(new java.awt.Color(0, 0, 0));
+        editorial.setText("Editorial");
+        bg.add(editorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 185, -1, 35));
 
-        autor_caja.setBackground(new java.awt.Color(255, 255, 255));
-        autor_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
-        autor_caja.setForeground(new java.awt.Color(153, 153, 153));
-        autor_caja.setText("Ingrese el autor de la editorial aquí");
-        autor_caja.setBorder(null);
-        autor_caja.addMouseListener(new java.awt.event.MouseAdapter() {
+        editorial_caja.setBackground(new java.awt.Color(255, 255, 255));
+        editorial_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
+        editorial_caja.setForeground(new java.awt.Color(153, 153, 153));
+        editorial_caja.setText("Ingrese el autor de la editorial aquí");
+        editorial_caja.setBorder(null);
+        editorial_caja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                autor_cajaMousePressed(evt);
+                editorial_cajaMousePressed(evt);
             }
         });
-        autor_caja.addActionListener(new java.awt.event.ActionListener() {
+        editorial_caja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                autor_cajaActionPerformed(evt);
+                editorial_cajaActionPerformed(evt);
             }
         });
-        bg.add(autor_caja, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 230, 490, 33));
+        bg.add(editorial_caja, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 230, 490, 33));
 
         jSeparator2.setBackground(new java.awt.Color(204, 204, 204));
         bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 269, 490, 11));
@@ -297,11 +303,11 @@ public class ventana_editoriales extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void autor_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_autor_cajaMousePressed
+    private void editorial_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editorial_cajaMousePressed
 
-        if(autor_caja.getText().equals("Ingrese el autor del libro aquí")){
-            autor_caja.setText("");
-            autor_caja.setForeground(Color.BLACK);
+        if(editorial_caja.getText().equals("Ingrese el autor del libro aquí")){
+            editorial_caja.setText("");
+            editorial_caja.setForeground(Color.BLACK);
         }
 
         if(id_caja.getText().equals("")){
@@ -309,12 +315,12 @@ public class ventana_editoriales extends javax.swing.JFrame {
             id_caja.setForeground(new Color (153, 153, 153));
         }
 
-    }//GEN-LAST:event_autor_cajaMousePressed
+    }//GEN-LAST:event_editorial_cajaMousePressed
 
     private void id_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_id_cajaMousePressed
-        if(autor_caja.getText().equals("")){
-            autor_caja.setText("Ingrese el autor del libro aquí");
-            autor_caja.setForeground(new Color (153, 153, 153));
+        if(editorial_caja.getText().equals("")){
+            editorial_caja.setText("Ingrese el autor del libro aquí");
+            editorial_caja.setForeground(new Color (153, 153, 153));
         }
         if(id_caja.getText().equals("Ingrese el ID del autor aquí")){
             id_caja.setText("");
@@ -457,9 +463,9 @@ public class ventana_editoriales extends javax.swing.JFrame {
         boton_eliminar.setForeground(Color.black);
     }//GEN-LAST:event_boton_eliminarMouseExited
 
-    private void autor_cajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autor_cajaActionPerformed
+    private void editorial_cajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editorial_cajaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_autor_cajaActionPerformed
+    }//GEN-LAST:event_editorial_cajaActionPerformed
 
     private void id_cajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_cajaActionPerformed
         // TODO add your handling code here:
@@ -501,14 +507,14 @@ public class ventana_editoriales extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Autor;
     private javax.swing.JLabel ID;
-    private javax.swing.JTextField autor_caja;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel boton_actualizar;
     private javax.swing.JLabel boton_buscar;
     private javax.swing.JLabel boton_eliminar;
     private javax.swing.JLabel boton_entrar;
+    private javax.swing.JLabel editorial;
+    private javax.swing.JTextField editorial_caja;
     private javax.swing.JTextField id_caja;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
