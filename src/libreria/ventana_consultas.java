@@ -343,7 +343,7 @@ public class ventana_consultas extends javax.swing.JFrame {
     }//GEN-LAST:event_buscar_botonMouseEntered
 
     private void buscar_botonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_botonMouseClicked
-        String palabraClave = (caja_busquedas.getText()).trim();
+        String palabraClave = (caja_busquedas.getText());
         
         if(palabraClave.isBlank() == false && palabraClave.equalsIgnoreCase("Ingrese su consulta aquí") == false){
             
