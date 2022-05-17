@@ -14,6 +14,11 @@ public class ventana_registro_libros extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
         addWindowListener(new clase_ventanaVolver_inicio());
     }
+    
+    public void ColorCajas(){
+        id_caja.setForeground(Color.black);
+        nombre_caja.setForeground(Color.black);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

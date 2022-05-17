@@ -64,6 +64,7 @@ public class ConexionEditoriales {
 
                 conexion = DriverManager.getConnection(conexionUrl);
                 
+                
                 String consulta = "select * from Editorial where ID_editorial = " + ID;
                 PreparedStatement pst = conexion.prepareStatement(consulta);
                 pst.executeUpdate();
