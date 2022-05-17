@@ -3,6 +3,7 @@ package libreria;
 
 import codigo_ventana.clase_ventanaVolver_inicio;
 import java.awt.Color;
+import Base_Datos_Conexion.ConexionEditoriales;
 
 public class ventana_editoriales extends javax.swing.JFrame {
 
@@ -315,27 +316,9 @@ public class ventana_editoriales extends javax.swing.JFrame {
     }//GEN-LAST:event_id_cajaMousePressed
 
     private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
-        //se registran los datos en la tabla libros
-//        try{
-//
-//            int ID_autor = Integer.parseInt(id_caja.getText());
-//            String Nombre_autor = autor_caja.getText();
-//
-//            if(Nombre_autor.isBlank()){
-//
-//                JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n", "No se han podido registrar los datos",
-//                    JOptionPane.ERROR_MESSAGE);
-//            }else{
-//
-//                ConsultasBD.insertarTablaAutor(ID_autor, Nombre_autor);
-//
-//            }
-//
-//        }catch(Exception e){
-//
-//            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n" + e, "No se han podido registrar los datos",
-//                JOptionPane.ERROR_MESSAGE);
-//        }
+        Base_Datos_Conexion.ConexionEditoriales obj = new Base_Datos_Conexion.ConexionEditoriales();
+        int id = Integer.parseInt(id_caja.getText());
+        obj.insertar(id, autor_caja.getText());
     }//GEN-LAST:event_boton_entrarMouseClicked
 
     private void boton_entrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseEntered
