@@ -17,9 +17,9 @@ public class ventana_prestamos extends javax.swing.JFrame {
     }
     
     public void color_cajas(){
-       id_caja.setForeground(new Color (0, 0, 0));
+       id_libro.setForeground(new Color (0, 0, 0));
        id_usuario.setForeground(new Color (0, 0, 0));
-       prestamo_caja1.setForeground(new Color (0, 0, 0));
+       caja_entrega.setForeground(new Color (0, 0, 0));
     }
 
     @SuppressWarnings("unchecked")
@@ -33,7 +33,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         Titulo = new javax.swing.JLabel();
-        id_caja = new javax.swing.JTextField();
+        id_libro = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         Autor = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -46,7 +46,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
         panel_actualizar = new javax.swing.JPanel();
         boton_actualizar = new javax.swing.JLabel();
         Ejemplares1 = new javax.swing.JLabel();
-        prestamo_caja1 = new javax.swing.JTextField();
+        caja_entrega = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
         id_usuario = new javax.swing.JTextField();
 
@@ -103,13 +103,13 @@ public class ventana_prestamos extends javax.swing.JFrame {
         Titulo.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
         Titulo.setText("ID del libro");
 
-        id_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
-        id_caja.setForeground(new java.awt.Color(153, 153, 153));
-        id_caja.setText("Ingrese el ID del prestamo aquí");
-        id_caja.setBorder(null);
-        id_caja.addMouseListener(new java.awt.event.MouseAdapter() {
+        id_libro.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
+        id_libro.setForeground(new java.awt.Color(153, 153, 153));
+        id_libro.setText("Ingrese el ID del prestamo aquí");
+        id_libro.setBorder(null);
+        id_libro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                id_cajaMousePressed(evt);
+                id_libroMousePressed(evt);
             }
         });
 
@@ -261,13 +261,13 @@ public class ventana_prestamos extends javax.swing.JFrame {
         Ejemplares1.setFont(new java.awt.Font("Victor Mono Medium", 1, 18)); // NOI18N
         Ejemplares1.setText("Fecha de entrega");
 
-        prestamo_caja1.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
-        prestamo_caja1.setForeground(new java.awt.Color(153, 153, 153));
-        prestamo_caja1.setText("Ingrese la fecha aquí");
-        prestamo_caja1.setBorder(null);
-        prestamo_caja1.addMouseListener(new java.awt.event.MouseAdapter() {
+        caja_entrega.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
+        caja_entrega.setForeground(new java.awt.Color(153, 153, 153));
+        caja_entrega.setText("Ingrese la fecha aquí en formato YYYY-MM-DD");
+        caja_entrega.setBorder(null);
+        caja_entrega.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                prestamo_caja1MousePressed(evt);
+                caja_entregaMousePressed(evt);
             }
         });
 
@@ -280,6 +280,11 @@ public class ventana_prestamos extends javax.swing.JFrame {
         id_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 id_usuarioMousePressed(evt);
+            }
+        });
+        id_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                id_usuarioActionPerformed(evt);
             }
         });
 
@@ -298,7 +303,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
                         .addComponent(Titulo))
                     .addGroup(bgLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(id_caja, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(id_libro, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(bgLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -319,7 +324,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
                             .addComponent(id_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Ejemplares1)
-                            .addComponent(prestamo_caja1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(caja_entrega, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(36, 36, 36)
                 .addComponent(barra_lateral, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -334,7 +339,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(id_caja, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(id_libro, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
@@ -346,7 +351,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Ejemplares1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(prestamo_caja1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(caja_entrega, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -376,83 +381,112 @@ public class ventana_prestamos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void id_usuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_id_usuarioMousePressed
-        // TODO add your handling code here:
+        if(id_libro.getText().equals("")){
+            id_libro.setText("Ingrese el ID del prestamo aquí");
+            id_libro.setForeground(new Color (153, 153, 153));
+        }
+        if(id_usuario.getText().equals("Ingrese el ID del usuario aquí")){
+            id_usuario.setText("");
+            id_usuario.setForeground(Color.BLACK);
+        }
+        if(caja_entrega.getText().equals("")){
+            caja_entrega.setText("Ingrese la fecha aquí en formato YYYY-MM-DD");
+            caja_entrega.setForeground(new Color (153, 153, 153));
+        }
     }//GEN-LAST:event_id_usuarioMousePressed
 
-    private void prestamo_caja1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prestamo_caja1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_prestamo_caja1MousePressed
+    private void caja_entregaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_caja_entregaMousePressed
+        if(id_libro.getText().equals("")){
+            id_libro.setText("Ingrese el ID del prestamo aquí");
+            id_libro.setForeground(new Color (153, 153, 153));
+        }
+        if(id_usuario.getText().equals("")){
+            id_usuario.setText("Ingrese el ID del usuario aquí");
+            id_usuario.setForeground(new Color (153, 153, 153));
+        }
+        if(caja_entrega.getText().equals("Ingrese la fecha aquí en formato YYYY-MM-DD")){
+            caja_entrega.setText("");
+            caja_entrega.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_caja_entregaMousePressed
 
     private void boton_actualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseExited
-        // TODO add your handling code here:
+        panel_actualizar.setBackground(new Color (184, 183, 169));
+        boton_actualizar.setForeground(Color.black);
     }//GEN-LAST:event_boton_actualizarMouseExited
 
     private void boton_actualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseEntered
-        // TODO add your handling code here:
+        panel_actualizar.setBackground(new Color(132, 132, 122));
+        boton_actualizar.setForeground(Color.white);
     }//GEN-LAST:event_boton_actualizarMouseEntered
 
     private void boton_actualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseClicked
 
-        String id_libro = id_caja.getText();
+        String id_libro = this.id_libro.getText();
         String id_usuarioV = id_usuario.getText();
  
         
-        Date prestamo_fin = Date.valueOf(prestamo_caja1.getText());
+        Date prestamo_fin = Date.valueOf(caja_entrega.getText());
 
         Conexion_ventana_prestamos.ActualizarBaseDatosPrestamo(id_libro, id_usuarioV, prestamo_fin);
 
     }//GEN-LAST:event_boton_actualizarMouseClicked
 
     private void boton_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseExited
-        // TODO add your handling code here:
+        panel_eliminar.setBackground(new Color (184, 183, 169));
+        boton_eliminar.setForeground(Color.black);
     }//GEN-LAST:event_boton_eliminarMouseExited
 
     private void boton_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseEntered
-        // TODO add your handling code here:
+        panel_eliminar.setBackground(new Color(132, 132, 122));
+        boton_eliminar.setForeground(Color.white);
     }//GEN-LAST:event_boton_eliminarMouseEntered
 
     private void boton_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseClicked
 
-        Conexion_ventana_prestamos.eliminarPrestamo(id_caja.getText(), id_usuario.getText());
+        Conexion_ventana_prestamos.eliminarPrestamo(id_libro.getText(), id_usuario.getText());
 
     }//GEN-LAST:event_boton_eliminarMouseClicked
 
     private void boton_buscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseExited
-        // TODO add your handling code here:
+        panel_buscar.setBackground(new Color (184, 183, 169));
+        boton_buscar.setForeground(Color.black);
     }//GEN-LAST:event_boton_buscarMouseExited
 
     private void boton_buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseEntered
-        // TODO add your handling code here:
+        panel_buscar.setBackground(new Color(132, 132, 122));
+        boton_buscar.setForeground(Color.white);
     }//GEN-LAST:event_boton_buscarMouseEntered
 
     private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
 
-       ArrayList informacion  = Conexion_ventana_prestamos.ConsultarBaseDatos(id_caja.getText(), id_usuario.getText());
+       ArrayList informacion  = Conexion_ventana_prestamos.ConsultarBaseDatos(id_libro.getText(), id_usuario.getText());
        
-       prestamo_caja1.setText( String.valueOf(informacion.get(0)));
+       caja_entrega.setText( String.valueOf(informacion.get(0)));
        
 
     }//GEN-LAST:event_boton_buscarMouseClicked
 
     private void boton_registrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseExited
         panel_registrar.setBackground(new Color (184, 183, 169));
+        boton_registrar.setForeground(Color.black);
     }//GEN-LAST:event_boton_registrarMouseExited
 
     private void boton_registrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseEntered
-        panel_registrar.setBackground(new Color(112, 98, 70));
+        panel_registrar.setBackground(new Color(132, 132, 122));
         boton_registrar.setForeground(Color.white);
     }//GEN-LAST:event_boton_registrarMouseEntered
 
     private void boton_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseClicked
 
        
-        String id_libro = id_caja.getText();
+        String id_libro = this.id_libro.getText();
         String id_usuarioV = id_usuario.getText();
         //saca la fecha de hoy
         long miliseconds = System.currentTimeMillis();
         Date prestamo_inicio = new Date(miliseconds);
 
-        Date prestamo_fin = Date.valueOf(prestamo_caja1.getText());
+        Date prestamo_fin = Date.valueOf(caja_entrega.getText());
 
 
         Conexion_ventana_prestamos.insertarBaseDatos_Prestamo(id_libro, id_usuarioV, prestamo_inicio, prestamo_fin);
@@ -460,30 +494,36 @@ public class ventana_prestamos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_boton_registrarMouseClicked
 
-    private void id_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_id_cajaMousePressed
-
-        if(id_caja.getText().equals("Ingrese el nombre aquí")){
-            id_caja.setText("");
-            id_caja.setForeground(Color.BLACK);
+    private void id_libroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_id_libroMousePressed
+        if(id_libro.getText().equals("Ingrese el ID del prestamo aquí")){
+            id_libro.setText("");
+            id_libro.setForeground(Color.BLACK);
         }
-
-       
-    }//GEN-LAST:event_id_cajaMousePressed
+        if(id_usuario.getText().equals("")){
+            id_usuario.setText("Ingrese el ID del usuario aquí");
+            id_usuario.setForeground(new Color (153, 153, 153));
+        }
+        if(caja_entrega.getText().equals("")){
+            caja_entrega.setText("Ingrese la fecha aquí en formato YYYY-MM-DD");
+            caja_entrega.setForeground(new Color (153, 153, 153));
+        }
+    }//GEN-LAST:event_id_libroMousePressed
 
     private void panel_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_eliminarMouseClicked
         
-        String id_libro = id_caja.getText();
+        String id_libro = this.id_libro.getText();
         String id_usuarioV = id_usuario.getText();
         
         Conexion_ventana_prestamos.eliminarPrestamo(id_libro, id_usuarioV);
-        
-        
-        
     }//GEN-LAST:event_panel_eliminarMouseClicked
 
     private void panel_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_registrarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_panel_registrarMouseClicked
+
+    private void id_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_usuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_id_usuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -534,7 +574,8 @@ public class ventana_prestamos extends javax.swing.JFrame {
     private javax.swing.JLabel boton_buscar;
     private javax.swing.JLabel boton_eliminar;
     private javax.swing.JLabel boton_registrar;
-    private javax.swing.JTextField id_caja;
+    private javax.swing.JTextField caja_entrega;
+    private javax.swing.JTextField id_libro;
     private javax.swing.JTextField id_usuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -547,6 +588,5 @@ public class ventana_prestamos extends javax.swing.JFrame {
     private javax.swing.JPanel panel_buscar;
     private javax.swing.JPanel panel_eliminar;
     private javax.swing.JPanel panel_registrar;
-    private javax.swing.JTextField prestamo_caja1;
     // End of variables declaration//GEN-END:variables
 }

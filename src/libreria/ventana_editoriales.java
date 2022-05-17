@@ -15,7 +15,7 @@ public class ventana_editoriales extends javax.swing.JFrame {
     
     public void color_cajas(){
         id_caja.setForeground(Color.black);
-        editorial_caja.setForeground(Color.black);
+        caja_editorial.setForeground(Color.black);
     }
     
     
@@ -30,7 +30,7 @@ public class ventana_editoriales extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         editorial = new javax.swing.JLabel();
-        editorial_caja = new javax.swing.JTextField();
+        caja_editorial = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         ID = new javax.swing.JLabel();
         id_caja = new javax.swing.JTextField();
@@ -106,22 +106,22 @@ public class ventana_editoriales extends javax.swing.JFrame {
         editorial.setText("Editorial");
         bg.add(editorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 185, -1, 35));
 
-        editorial_caja.setBackground(new java.awt.Color(255, 255, 255));
-        editorial_caja.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
-        editorial_caja.setForeground(new java.awt.Color(153, 153, 153));
-        editorial_caja.setText("Ingrese el autor de la editorial aquí");
-        editorial_caja.setBorder(null);
-        editorial_caja.addMouseListener(new java.awt.event.MouseAdapter() {
+        caja_editorial.setBackground(new java.awt.Color(255, 255, 255));
+        caja_editorial.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
+        caja_editorial.setForeground(new java.awt.Color(153, 153, 153));
+        caja_editorial.setText("Ingrese el autor de la editorial aquí");
+        caja_editorial.setBorder(null);
+        caja_editorial.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                editorial_cajaMousePressed(evt);
+                caja_editorialMousePressed(evt);
             }
         });
-        editorial_caja.addActionListener(new java.awt.event.ActionListener() {
+        caja_editorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editorial_cajaActionPerformed(evt);
+                caja_editorialActionPerformed(evt);
             }
         });
-        bg.add(editorial_caja, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 230, 490, 33));
+        bg.add(caja_editorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 230, 490, 33));
 
         jSeparator2.setBackground(new java.awt.Color(204, 204, 204));
         bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 269, 490, 11));
@@ -303,28 +303,14 @@ public class ventana_editoriales extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void editorial_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editorial_cajaMousePressed
-
-        if(editorial_caja.getText().equals("Ingrese el autor del libro aquí")){
-            editorial_caja.setText("");
-            editorial_caja.setForeground(Color.BLACK);
-        }
-
-        if(id_caja.getText().equals("")){
-            id_caja.setText("Ingrese el ID del autor aquí");
-            id_caja.setForeground(new Color (153, 153, 153));
-        }
-
-    }//GEN-LAST:event_editorial_cajaMousePressed
-
     private void id_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_id_cajaMousePressed
-        if(editorial_caja.getText().equals("")){
-            editorial_caja.setText("Ingrese el autor del libro aquí");
-            editorial_caja.setForeground(new Color (153, 153, 153));
-        }
-        if(id_caja.getText().equals("Ingrese el ID del autor aquí")){
+        if(id_caja.getText().equals("Ingrese el ID de la editorial aquí")){
             id_caja.setText("");
-            id_caja.setForeground(Color.BLACK);
+            id_caja.setForeground(Color.black);
+        }
+        if(caja_editorial.getText().equals("")){
+            caja_editorial.setText("Ingrese el autor de la editorial aquí");
+            caja_editorial.setForeground(new Color (153, 153, 153));
         }
     }//GEN-LAST:event_id_cajaMousePressed
 
@@ -463,17 +449,25 @@ public class ventana_editoriales extends javax.swing.JFrame {
         boton_eliminar.setForeground(Color.black);
     }//GEN-LAST:event_boton_eliminarMouseExited
 
-    private void editorial_cajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editorial_cajaActionPerformed
+    private void caja_editorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caja_editorialActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_editorial_cajaActionPerformed
+    }//GEN-LAST:event_caja_editorialActionPerformed
 
     private void id_cajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_cajaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_id_cajaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void caja_editorialMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_caja_editorialMousePressed
+        if(id_caja.getText().equals("")){
+            id_caja.setText("Ingrese el ID de la editorial aquí");
+            id_caja.setForeground(new Color (153, 153, 153));
+        }
+        if(caja_editorial.getText().equals("Ingrese el autor de la editorial aquí")){
+            caja_editorial.setText("");
+            caja_editorial.setForeground(Color.black);
+        }  
+    }//GEN-LAST:event_caja_editorialMousePressed
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -513,8 +507,8 @@ public class ventana_editoriales extends javax.swing.JFrame {
     private javax.swing.JLabel boton_buscar;
     private javax.swing.JLabel boton_eliminar;
     private javax.swing.JLabel boton_entrar;
+    private javax.swing.JTextField caja_editorial;
     private javax.swing.JLabel editorial;
-    private javax.swing.JTextField editorial_caja;
     private javax.swing.JTextField id_caja;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
