@@ -332,7 +332,7 @@ public class ventana_editoriales extends javax.swing.JFrame {
     private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
         Base_Datos_Conexion.ConexionEditoriales obj = new Base_Datos_Conexion.ConexionEditoriales();
         int id = Integer.parseInt(id_caja.getText());
-        obj.insertar(id, autor_caja.getText());
+        obj.insertar(id,editorial_caja.getText());
     }//GEN-LAST:event_boton_entrarMouseClicked
 
     private void boton_entrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseEntered

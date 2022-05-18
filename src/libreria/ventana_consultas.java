@@ -82,9 +82,6 @@ public class ventana_consultas extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 buscar_botonMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                buscar_botonMouseExited(evt);
-            }
         });
 
         javax.swing.GroupLayout buscar_panelLayout = new javax.swing.GroupLayout(buscar_panel);
@@ -100,7 +97,7 @@ public class ventana_consultas extends javax.swing.JFrame {
 
         OpcionCombo.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 15)); // NOI18N
         OpcionCombo.setMaximumRowCount(3);
-        OpcionCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libros", "Usuarios", "Prestamos" }));
+        OpcionCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libros", "Usuarios", "Prestamos", "Autores", "Editoriales" }));
         OpcionCombo.setBorder(null);
         OpcionCombo.setMinimumSize(new java.awt.Dimension(72, 30));
         OpcionCombo.setPreferredSize(new java.awt.Dimension(72, 30));
@@ -294,7 +291,7 @@ public class ventana_consultas extends javax.swing.JFrame {
             //si prestamos
             
             limpiar_tabla();
-            titulo = new String[]{"Libro", "Usuario", "Fecha de inicio", "Fecha de retorno" };
+            titulo = new String[]{"Id libro","Libro", "Id usuario","Usuario", "Fecha de inicio", "Fecha de retorno" };
             
             tabla.setColumnIdentifiers(titulo);
             TablaConsultas.setModel(tabla);
@@ -310,26 +307,73 @@ public class ventana_consultas extends javax.swing.JFrame {
 
                     columnas = (List<String>) registros_que_coinciden.get(i);
                             
-                    tabla.addRow(new Object[]{ columnas.get(0) , columnas.get(1), columnas.get(2), columnas.get(3)});
+                    tabla.addRow(new Object[]{ columnas.get(0) , columnas.get(1), columnas.get(2), columnas.get(3), columnas.get(4), columnas.get(5)});
 
 
                 }
                 
+            }
                 
                 
+                
+                
+        }else if(OpcionCombo.getSelectedIndex() == 3){
+            //si autores
+            
+            limpiar_tabla();
+            titulo = new String[]{"Id autor", "Nombre"};
+            
+            tabla.setColumnIdentifiers(titulo);
+            TablaConsultas.setModel(tabla);
+            
+            
+            if((caja_busquedas.getText()).isBlank() == false){
+                
+                registros_que_coinciden.clear();
+                registros_que_coinciden = Conexion_ventana_consultas.ConsultarTodosLosAutores();
+                
+                
+                for (int i = 0; i < registros_que_coinciden.size(); i++) {
+
+                    columnas = (List<String>) registros_que_coinciden.get(i);
+                            
+                    tabla.addRow(new Object[]{ columnas.get(0) , columnas.get(1)});
+
+
+                }
                 
             }
             
+        }else if(OpcionCombo.getSelectedIndex() == 4){
+            //si autores
             
+            limpiar_tabla();
+            titulo = new String[]{"Id editorial", "Nombre"};
+            
+            tabla.setColumnIdentifiers(titulo);
+            TablaConsultas.setModel(tabla);
+            
+            
+            if((caja_busquedas.getText()).isBlank() == false){
+                
+                registros_que_coinciden.clear();
+                registros_que_coinciden = Conexion_ventana_consultas.ConsultarTodosLasEditoriales();
+                
+                
+                for (int i = 0; i < registros_que_coinciden.size(); i++) {
+
+                    columnas = (List<String>) registros_que_coinciden.get(i);
+                            
+                    tabla.addRow(new Object[]{ columnas.get(0) , columnas.get(1)});
+
+
+                }
+                
+            }
             
         }
         
-        
     }//GEN-LAST:event_OpcionComboActionPerformed
-
-    private void buscar_botonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_botonMouseExited
-
-    }//GEN-LAST:event_buscar_botonMouseExited
 
     private void buscar_botonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_botonMouseEntered
 
@@ -397,7 +441,7 @@ public class ventana_consultas extends javax.swing.JFrame {
         */
         
         String datosfila = "";
-        Pattern pat = Pattern.compile(palabraClave);
+        Pattern pat = Pattern.compile(palabraClave, Pattern.CASE_INSENSITIVE);
         //nos da el index de las filas que contienen la palabra
         List<Integer> indexfilas = new ArrayList();
         
@@ -406,9 +450,10 @@ public class ventana_consultas extends javax.swing.JFrame {
             columnas = (List<String>) registros_que_coinciden.get(i);
             
             for(String columna : columnas){
-                datosfila += "" + columna;                 
+                datosfila += " " + (columna).trim();                 
             }
             
+            System.out.println(datosfila);
             Matcher comparacion = pat.matcher(datosfila);
             if (comparacion.find()) {
                 indexfilas.add(i);
