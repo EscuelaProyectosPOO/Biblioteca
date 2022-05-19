@@ -172,7 +172,7 @@ public class Conexion_ventana_consultas {
 
             conexion = DriverManager.getConnection(conexionUrl);
             
-            String consulta = "select Libros.Titulo as titulo, Usuarios.Nombre as nombre," +
+            String consulta = "select Libros.ID_libro as ID_libro, Libros.Titulo as titulo, Usuarios.ID_usuario as ID_usuario, Usuarios.Nombre as nombre," +
                                 "Prestamo.Fecha_prestamo_inicio as inicio, Prestamo.Fecha_de_retorno as retorno " +
                                 "from Prestamo, Libros, Usuarios " +
                                 "where Prestamo.ID_libro = Libros.ID_libro " +
@@ -188,10 +188,133 @@ public class Conexion_ventana_consultas {
                 while(rs.next()){
                     
                    
-                    informacion_fila = Arrays.asList( rs.getString("titulo"),
-                                rs.getString("nombre"),
-                                String.valueOf(rs.getDate("inicio")),
-                                String.valueOf(rs.getDate("retorno")));
+                    informacion_fila = Arrays.asList( rs.getString("ID_libro"),
+                            rs.getString("titulo"),
+                            rs.getString("ID_usuario"),
+                            rs.getString("nombre"),
+                            String.valueOf(rs.getDate("inicio")),
+                            String.valueOf(rs.getDate("retorno")));
+                    
+                    
+                    
+                    informacion_registro.add(informacion_fila);
+                    
+                }
+                
+                
+//            }else{
+//                
+//                JOptionPane.showMessageDialog(null, "Error en la consulta del campo ");
+//                
+//            
+//            }
+            
+            conexion.close();
+            
+            JOptionPane.showMessageDialog(null, "Datos encontrados con exito", "Informacion",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null, e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return informacion_registro;
+        
+    }
+    
+    
+        public static ArrayList ConsultarTodosLasEditoriales(){
+        //Consultar en la base de datos
+        
+        Connection conexion = null;
+        ArrayList informacion_registro = new ArrayList();
+        List<String> informacion_fila = new ArrayList();
+        
+        try{
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            String conexionUrl = "jdbc:sqlserver://;"
+                + "databaseName=" +Nombre_base_datos + ";"
+                + "user="+ Nombre_usario_base_datos + ";"
+                + "password=" + Password + ";"
+                + "encrypt=true;trustServerCertificate=true;";
+
+            conexion = DriverManager.getConnection(conexionUrl);
+            
+            String consulta = "select * from Editorial";
+            
+            PreparedStatement pst = conexion.prepareStatement(consulta);
+            
+            
+            ResultSet rs = pst.executeQuery();
+            
+//            if(rs.next()){
+                
+                while(rs.next()){
+                    
+                   
+                    informacion_fila = Arrays.asList( String.valueOf(rs.getInt("ID_editorial")),
+                                rs.getString("Editorial"));
+                    
+                    
+                    
+                    informacion_registro.add(informacion_fila);
+                    
+                }
+                
+                
+//            }else{
+//                
+//                JOptionPane.showMessageDialog(null, "Error en la consulta del campo ");
+//                
+//            
+//            }
+            
+            conexion.close();
+            
+            JOptionPane.showMessageDialog(null, "Datos encontrados con exito", "Informacion",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null, e, "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return informacion_registro;
+        
+    }
+    
+    public static ArrayList ConsultarTodosLosAutores(){
+        //Consultar en la base de datos
+        
+        Connection conexion = null;
+        ArrayList informacion_registro = new ArrayList();
+        List<String> informacion_fila = new ArrayList();
+        
+        try{
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            String conexionUrl = "jdbc:sqlserver://;"
+                + "databaseName=" +Nombre_base_datos + ";"
+                + "user="+ Nombre_usario_base_datos + ";"
+                + "password=" + Password + ";"
+                + "encrypt=true;trustServerCertificate=true;";
+
+            conexion = DriverManager.getConnection(conexionUrl);
+            
+            String consulta = "select * from Autores";
+            
+            PreparedStatement pst = conexion.prepareStatement(consulta);
+            
+            
+            ResultSet rs = pst.executeQuery();
+            
+//            if(rs.next()){
+                
+                while(rs.next()){
+                    
+                   
+                    informacion_fila = Arrays.asList( String.valueOf(rs.getInt("ID_autor")),
+                                rs.getString("Nombre"));
                     
                     
                     
