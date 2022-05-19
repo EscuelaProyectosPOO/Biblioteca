@@ -4,8 +4,12 @@ package libreria;
 import codigo_ventana.clase_ventanaVolver_inicio;
 import java.awt.Color;
 import Base_Datos_Conexion.ConexionEditoriales;
+import java.sql.Array;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class ventana_editoriales extends javax.swing.JFrame {
+    Base_Datos_Conexion.ConexionEditoriales obj = new Base_Datos_Conexion.ConexionEditoriales();
 
     public ventana_editoriales() {
         initComponents();
@@ -26,7 +30,6 @@ public class ventana_editoriales extends javax.swing.JFrame {
 
         bg = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -40,10 +43,10 @@ public class ventana_editoriales extends javax.swing.JFrame {
         boton_entrar = new javax.swing.JLabel();
         panel_buscar = new javax.swing.JPanel();
         boton_buscar = new javax.swing.JLabel();
-        panel_actualizar = new javax.swing.JPanel();
-        boton_actualizar = new javax.swing.JLabel();
         panel_eliminar = new javax.swing.JPanel();
         boton_eliminar = new javax.swing.JLabel();
+        panel_actualizar = new javax.swing.JPanel();
+        boton_actualizar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,9 +55,6 @@ public class ventana_editoriales extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(147, 146, 133));
         jPanel2.setForeground(new java.awt.Color(114, 99, 71));
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/book.gif"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Victor Mono Medium", 2, 30)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -69,25 +69,18 @@ public class ventana_editoriales extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(jLabel6)))))
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel6)))
                 .addGap(28, 28, 28))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
-                .addGap(74, 74, 74)
+                .addGap(205, 205, 205)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,40 +213,6 @@ public class ventana_editoriales extends javax.swing.JFrame {
 
         bg.add(panel_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
 
-        panel_actualizar.setBackground(new java.awt.Color(184, 183, 169));
-
-        boton_actualizar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
-        boton_actualizar.setForeground(new java.awt.Color(51, 51, 51));
-        boton_actualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        boton_actualizar.setText("ACTUALIZAR");
-        boton_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        boton_actualizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boton_actualizarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                boton_actualizarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                boton_actualizarMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panel_actualizarLayout = new javax.swing.GroupLayout(panel_actualizar);
-        panel_actualizar.setLayout(panel_actualizarLayout);
-        panel_actualizarLayout.setHorizontalGroup(
-            panel_actualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(boton_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-        );
-        panel_actualizarLayout.setVerticalGroup(
-            panel_actualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_actualizarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(boton_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
-        );
-
-        bg.add(panel_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, -1, -1));
-
         panel_eliminar.setBackground(new java.awt.Color(184, 183, 169));
 
         boton_eliminar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
@@ -288,6 +247,40 @@ public class ventana_editoriales extends javax.swing.JFrame {
 
         bg.add(panel_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, -1, -1));
 
+        panel_actualizar.setBackground(new java.awt.Color(184, 183, 169));
+
+        boton_actualizar.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
+        boton_actualizar.setForeground(new java.awt.Color(51, 51, 51));
+        boton_actualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        boton_actualizar.setText("ACTUALIZAR");
+        boton_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        boton_actualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_actualizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                boton_actualizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                boton_actualizarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_actualizarLayout = new javax.swing.GroupLayout(panel_actualizar);
+        panel_actualizar.setLayout(panel_actualizarLayout);
+        panel_actualizarLayout.setHorizontalGroup(
+            panel_actualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(boton_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+        );
+        panel_actualizarLayout.setVerticalGroup(
+            panel_actualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_actualizarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(boton_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+        );
+
+        bg.add(panel_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -306,13 +299,13 @@ public class ventana_editoriales extends javax.swing.JFrame {
 
     private void editorial_cajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editorial_cajaMousePressed
 
-        if(editorial_caja.getText().equals("Ingrese el autor del libro aquí")){
+        if(editorial_caja.getText().equals("Ingrese la editorial del libro aquí")){
             editorial_caja.setText("");
             editorial_caja.setForeground(Color.BLACK);
         }
 
         if(id_caja.getText().equals("")){
-            id_caja.setText("Ingrese el ID del autor aquí");
+            id_caja.setText("Ingrese el ID de la editorial aquí");
             id_caja.setForeground(new Color (153, 153, 153));
         }
 
@@ -330,9 +323,12 @@ public class ventana_editoriales extends javax.swing.JFrame {
     }//GEN-LAST:event_id_cajaMousePressed
 
     private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
-        Base_Datos_Conexion.ConexionEditoriales obj = new Base_Datos_Conexion.ConexionEditoriales();
+        
         int id = Integer.parseInt(id_caja.getText());
-        obj.insertar(id, autor_caja.getText());
+        obj.insertar(id, editorial_caja.getText());
+        
+        editorial_caja.setText("Ingrese la editorial del libro aquí");
+        id_caja.setText("Ingrese el ID de la editorial aquí");
     }//GEN-LAST:event_boton_entrarMouseClicked
 
     private void boton_entrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseEntered
@@ -346,23 +342,29 @@ public class ventana_editoriales extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_entrarMouseExited
 
     private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
+        ArrayList resultados;
+        try{
+            if("Ingrese el ID de la editorial aquí".equals(id_caja.getText()) || "".equals(id_caja.getText())){
+                resultados = obj.busqueda_nombre(editorial_caja.getText());
+                //System.out.println("nombre: "+resultados.get(1));
+                id_caja.setText(String.valueOf(resultados.get(0)));
 
-//        try{
-//
-//            int ID_autor = Integer.parseInt(id_caja.getText());
-//            ArrayList informacion_registro = new ArrayList();
-//
-//            informacion_registro = ConsultasBD.ConsultarBaseDatos("Autores", "ID_autor", ID_autor);
-//
-//            autor_caja.setText(String.valueOf(informacion_registro.get(1)));
-//
-//            autor_caja.setForeground(Color.black);
-//
-//        }catch(Exception e){
-//
-//            JOptionPane.showMessageDialog(null, "Debe rellenar el campo ID \n" + e, "No se han podido registrar los datos",
-//                JOptionPane.ERROR_MESSAGE);
-//        }
+            }
+            else{
+                int id = Integer.parseInt(id_caja.getText());
+                resultados = obj.busqueda_id(id);
+                editorial_caja.setText(String.valueOf(resultados.get(0)));
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No se ha encontrado ningún registro", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+        }
+        //System.out.println(resultados);
+        //ArrayList nombre = (ArrayList) resultados.get(0);
+        
+        
+        
 
     }//GEN-LAST:event_boton_buscarMouseClicked
 
@@ -377,35 +379,11 @@ public class ventana_editoriales extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_buscarMouseExited
 
     private void boton_actualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseClicked
-        // TODO add your handling code here:
-
-//        try{
-//
-//            int ID_autor = Integer.parseInt(id_caja.getText());
-//            String Nombre_autor = autor_caja.getText();
-//
-//            if(Nombre_autor.isBlank()){
-//
-//                JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n", "No se han podido registrar los datos",
-//                    JOptionPane.ERROR_MESSAGE);
-//            }else{
-//
-//                ConsultasBD.ActualizarBaseDatos_Autores(ID_autor, Nombre_autor);
-//
-//            }
-//
-//        }catch(Exception e){
-//
-//            JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n" + e, "No se han podido registrar los datos",
-//                JOptionPane.ERROR_MESSAGE);
-//        }
-        //        id_libro = Integer.parseInt(id_caja.getText());
-        //        Titulo_libro = titulo_caja.getText();
-        //        autor = autor_caja.getText();
-        //        editorial = editorial_caja.getText();
-        //        numero_ejemplares = Integer.parseInt(ejemplares_caja.getText());
-        //
-        //        ConsultasBD.ActualizarBaseDatos_Libro(id_libro, Titulo_libro, autor, editorial, numero_ejemplares);
+        int id = Integer.parseInt(id_caja.getText());
+        obj.actualizar(id, editorial_caja.getText());
+        
+        editorial_caja.setText("Ingrese la editorial del libro aquí");
+        id_caja.setText("Ingrese el ID de la editorial aquí");
     }//GEN-LAST:event_boton_actualizarMouseClicked
 
     private void boton_actualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseEntered
@@ -419,21 +397,16 @@ public class ventana_editoriales extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_actualizarMouseExited
 
     private void boton_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseClicked
-        // TODO add your handling code here:
-//        try{
-//
-//            int ID_autor = Integer.parseInt(id_caja.getText());
-//
-//            ConsultasBD.eliminarRegistro("Autores", "ID_Autor", ID_autor);
-//
-//        }catch(Exception e){
-//
-//            JOptionPane.showMessageDialog(null, "Debe rellenar el campo ID \n" + e, "No se han podido registrar los datos",
-//                JOptionPane.ERROR_MESSAGE);
-//        }
-
-        //        id_libro = Integer.parseInt(id_caja.getText());
-        //        ConsultasBD.eliminarRegistro("Libros", "ID_libro", id_libro);
+        try{
+            int id = Integer.parseInt(id_caja.getText());
+            obj.eliminar(id, editorial_caja.getText());
+        }
+        catch(Exception e){
+            obj.eliminar(0, editorial_caja.getText());
+        }
+        
+        editorial_caja.setText("Ingrese la editorial del libro aquí");
+        id_caja.setText("Ingrese el ID de la editorial aquí");
     }//GEN-LAST:event_boton_eliminarMouseClicked
 
     private void boton_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseEntered
@@ -452,6 +425,8 @@ public class ventana_editoriales extends javax.swing.JFrame {
 
     private void id_cajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_cajaActionPerformed
         // TODO add your handling code here:
+        // hola
+        
     }//GEN-LAST:event_id_cajaActionPerformed
 
     /**
@@ -499,7 +474,6 @@ public class ventana_editoriales extends javax.swing.JFrame {
     private javax.swing.JLabel editorial;
     private javax.swing.JTextField editorial_caja;
     private javax.swing.JTextField id_caja;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
