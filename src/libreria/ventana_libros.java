@@ -1,10 +1,15 @@
 package libreria;
 import codigo_ventana.clase_ventanaVolver_inicio;
 import Base_Datos_Conexion.ConsultasBD;
+import Base_Datos_Conexion.Conexion_libros;
+import Base_Datos_Conexion.ConexionEditoriales;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 public class ventana_libros extends javax.swing.JFrame {
+    
+    public Base_Datos_Conexion.Conexion_libros obj = new Base_Datos_Conexion.Conexion_libros();
 
     //Variables posicionales para mover la ventana, por favor, no mover
     int xMouse, yMouse;
@@ -12,6 +17,8 @@ public class ventana_libros extends javax.swing.JFrame {
     
     public ventana_libros() {
         initComponents();
+        opciones_combo();
+        
         //Code for this window, do not touch
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
@@ -57,8 +64,8 @@ public class ventana_libros extends javax.swing.JFrame {
         boton_eliminar = new javax.swing.JLabel();
         panel_actualizar = new javax.swing.JPanel();
         boton_actualizar = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        autores_combo = new javax.swing.JComboBox<>();
+        editoriales_combo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -206,12 +213,12 @@ public class ventana_libros extends javax.swing.JFrame {
         ID1.setForeground(new java.awt.Color(0, 0, 0));
         ID1.setText("ID Autor");
 
+        id_autor.setEditable(false);
         id_autor.setBackground(new java.awt.Color(255, 255, 255));
         id_autor.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
         id_autor.setForeground(new java.awt.Color(153, 153, 153));
         id_autor.setText("Ingrese el ID del autor aquí");
         id_autor.setBorder(null);
-        id_autor.setEnabled(false);
         id_autor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 id_autorMousePressed(evt);
@@ -229,12 +236,12 @@ public class ventana_libros extends javax.swing.JFrame {
         ID2.setForeground(new java.awt.Color(0, 0, 0));
         ID2.setText("ID Editorial");
 
+        id_editorial.setEditable(false);
         id_editorial.setBackground(new java.awt.Color(255, 255, 255));
         id_editorial.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
         id_editorial.setForeground(new java.awt.Color(153, 153, 153));
         id_editorial.setText("Ingrese el ID de la editorial aquí");
         id_editorial.setBorder(null);
-        id_editorial.setEnabled(false);
         id_editorial.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 id_editorialMousePressed(evt);
@@ -365,10 +372,20 @@ public class ventana_libros extends javax.swing.JFrame {
                 .addComponent(boton_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
         );
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(null);
+        autores_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar Autor" }));
+        autores_combo.setBorder(null);
+        autores_combo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                autores_comboItemStateChanged(evt);
+            }
+        });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        editoriales_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar Editorial" }));
+        editoriales_combo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                editoriales_comboItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
@@ -392,10 +409,10 @@ public class ventana_libros extends javax.swing.JFrame {
                                             .addComponent(jSeparator2)
                                             .addComponent(jSeparator1)
                                             .addComponent(titulo_caja, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(autores_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                                     .addGroup(bgLayout.createSequentialGroup()
-                                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(editoriales_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(12, 12, 12)))
                                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jSeparator7, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
@@ -467,7 +484,7 @@ public class ventana_libros extends javax.swing.JFrame {
                                         .addGap(5, 5, 5)
                                         .addComponent(Autor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(autores_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(bgLayout.createSequentialGroup()
@@ -485,7 +502,7 @@ public class ventana_libros extends javax.swing.JFrame {
                                     .addComponent(id_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(bgLayout.createSequentialGroup()
                                         .addGap(4, 4, 4)
-                                        .addComponent(jComboBox2)))
+                                        .addComponent(editoriales_combo)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -510,6 +527,30 @@ public class ventana_libros extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void opciones_combo(){
+        //autores_combo.removeAllItems();
+        ArrayList autores;
+        
+        autores = obj.capturar_autores();
+        
+        if (autores != null){
+            for (int i=0; i<autores.size(); i++){
+                autores_combo.addItem(String.valueOf(autores.get(i)));
+            }
+        }
+        
+         ArrayList editoriales;
+        
+        editoriales = obj.capturar_editoriales();
+        
+        if (editoriales != null){
+            for (int i=0; i<editoriales.size(); i++){
+                editoriales_combo.addItem(String.valueOf(editoriales.get(i)));
+            }
+        }
+        
+    }
+    
     public void color_cajas(){
        titulo_caja.setForeground(new Color (0, 0, 0));
        id_libro.setForeground(new Color (0, 0, 0));
@@ -611,10 +652,43 @@ public class ventana_libros extends javax.swing.JFrame {
         ejemplares_caja.setText("Ingrese la cantidad de ejemplares aquí");
         ejemplares_caja.setForeground(new Color (153, 153, 153));
         
+        autores_combo.setSelectedIndex(0);
+        editoriales_combo.setSelectedIndex(0);
+        
     }//GEN-LAST:event_boton_limpiarMouseClicked
 
     private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
-        // TODO add your handling code here:
+        if(id_libro.getText() != "Ingrese el ID del libro aquí"){
+            ArrayList resultado = obj.buscar_id(id_libro.getText());
+            System.out.println(resultado);
+            
+            if(resultado.size() > 0){
+                id_autor.setText(String.valueOf(resultado.get(1)));
+                id_autor.setForeground(new Color(0, 0, 0));
+
+                id_editorial.setText(String.valueOf(resultado.get(2)));
+                id_editorial.setForeground(new Color(0, 0, 0));
+
+                ejemplares_caja.setText(String.valueOf(resultado.get(3)));
+                ejemplares_caja.setForeground(new Color(0, 0, 0));
+
+                int autor = Integer.parseInt(id_autor.getText());
+                int editorial = Integer.parseInt(id_editorial.getText());
+
+                ArrayList titulo = obj.buscar_titulo(id_libro.getText());
+                titulo_caja.setText(String.valueOf(titulo.get(0)));
+                titulo_caja.setForeground(new Color(0, 0, 0));
+                
+                ArrayList autores = obj.buscar_autor(autor);
+                autores_combo.setSelectedItem(String.valueOf(autores.get(0)));
+                
+                Base_Datos_Conexion.ConexionEditoriales edi = new Base_Datos_Conexion.ConexionEditoriales();
+                ArrayList editoriales = edi.busqueda_id(editorial);
+                editoriales_combo.setSelectedItem(String.valueOf(editoriales.get(0)));
+                
+            }
+        }
+        
     }//GEN-LAST:event_boton_buscarMouseClicked
 
     private void boton_buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseEntered
@@ -626,7 +700,7 @@ public class ventana_libros extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_buscarMouseExited
 
     private void boton_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseClicked
-        // TODO add your handling code here:
+        obj.eliminar(id_libro.getText());
     }//GEN-LAST:event_boton_eliminarMouseClicked
 
     private void boton_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_eliminarMouseEntered
@@ -638,7 +712,8 @@ public class ventana_libros extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_eliminarMouseExited
 
     private void boton_actualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseClicked
-        // TODO add your handling code here:
+        obj.actualizar(id_libro.getText(), titulo_caja.getText(), Integer.parseInt(id_autor.getText()), 
+                Integer.parseInt(id_editorial.getText()) , Integer.parseInt(ejemplares_caja.getText()));
     }//GEN-LAST:event_boton_actualizarMouseClicked
 
     private void boton_actualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_actualizarMouseEntered
@@ -650,13 +725,50 @@ public class ventana_libros extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_actualizarMouseExited
 
     private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
-        Base_Datos_Conexion.ConsultasBD conexion = new Base_Datos_Conexion.ConsultasBD();
+        //Base_Datos_Conexion.ConsultasBD conexion = new Base_Datos_Conexion.ConsultasBD();
+        
+        //int autor, editorial, ejemplares;
+        int autor = Integer.parseInt(id_autor.getText());
+        int editorial = Integer.parseInt(id_editorial.getText());
+        int ejemplares = Integer.parseInt(ejemplares_caja.getText());
+        
+        obj.insertar(id_libro.getText(), titulo_caja.getText(), autor, editorial, ejemplares);
        
     }//GEN-LAST:event_boton_entrarMouseClicked
 
     private void id_autorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_autorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_id_autorActionPerformed
+
+    private void autores_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_autores_comboItemStateChanged
+        System.out.println(autores_combo.getSelectedItem());
+        ArrayList id = obj.buscar_id_autor(String.valueOf(autores_combo.getSelectedItem()));
+        if(autores_combo.getSelectedItem() != "Seleccionar Autor" && id != null){
+            id_autor.setText(String.valueOf(id.get(0)));
+            id_autor.setForeground(new Color(0, 0, 0));
+        }
+        else{
+            id_autor.setText("Ingrese el ID del autor aquí");
+            id_autor.setForeground(new Color (153, 153, 153));
+        }
+        
+        
+        
+    }//GEN-LAST:event_autores_comboItemStateChanged
+
+    private void editoriales_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_editoriales_comboItemStateChanged
+
+        Base_Datos_Conexion.ConexionEditoriales edi = new Base_Datos_Conexion.ConexionEditoriales();
+        ArrayList id = edi.busqueda_nombre(String.valueOf(editoriales_combo.getSelectedItem()));
+        if(editoriales_combo.getSelectedItem() != "Seleccionar Editorial" && id != null){
+            id_editorial.setText(String.valueOf(id.get(0)));
+            id_editorial.setForeground(new Color(0, 0, 0));
+        }
+        else{
+            id_editorial.setText("Ingrese el ID de la editorial aquí");
+            id_editorial.setForeground(new Color (153, 153, 153));
+        }
+    }//GEN-LAST:event_editoriales_comboItemStateChanged
       
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -698,18 +810,18 @@ public class ventana_libros extends javax.swing.JFrame {
     private javax.swing.JLabel ID1;
     private javax.swing.JLabel ID2;
     private javax.swing.JLabel Titulo1;
+    private javax.swing.JComboBox<String> autores_combo;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel boton_actualizar;
     private javax.swing.JLabel boton_buscar;
     private javax.swing.JLabel boton_eliminar;
     private javax.swing.JLabel boton_entrar;
     private javax.swing.JLabel boton_limpiar;
+    private javax.swing.JComboBox<String> editoriales_combo;
     private javax.swing.JTextField ejemplares_caja;
     private javax.swing.JTextField id_autor;
     private javax.swing.JTextField id_editorial;
     private javax.swing.JTextField id_libro;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
