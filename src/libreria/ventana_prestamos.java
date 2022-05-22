@@ -487,6 +487,7 @@ public class ventana_prestamos extends javax.swing.JFrame {
         Date prestamo_inicio = new Date(miliseconds);
 
         Date prestamo_fin = Date.valueOf(caja_entrega.getText());
+        
 
 
         Conexion_ventana_prestamos.insertarBaseDatos_Prestamo(id_libro, id_usuarioV, prestamo_inicio, prestamo_fin);

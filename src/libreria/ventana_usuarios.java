@@ -611,10 +611,15 @@ public class ventana_usuarios extends javax.swing.JFrame {
             System.out.println(r);
             
             nombre_caja.setText(String.valueOf(r.get(1)));
+            nombre_caja.setForeground(new Color(0, 0, 0));
             paterno_caja.setText(String.valueOf(r.get(2)));
+            paterno_caja.setForeground(new Color(0, 0, 0));
             materno_caja.setText(String.valueOf(r.get(3)));
+            materno_caja.setForeground(new Color(0, 0, 0));
             telefono_caja.setText(String.valueOf(r.get(4)));
+            telefono_caja.setForeground(new Color(0, 0, 0));
             direccion_caja.setText(String.valueOf(r.get(5)));
+            direccion_caja.setForeground(new Color(0, 0, 0));
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "No se han encontrado registros", "Error",

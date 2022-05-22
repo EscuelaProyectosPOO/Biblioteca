@@ -68,23 +68,20 @@ public class ConexionUsuarios {
                 conexion = DriverManager.getConnection(conexionUrl);
                 
                 
-                String consulta = "select * from Usuarios where ID_usuarios = '" + ID + "'";
+                String consulta = "select * from Usuarios where ID_usuario = '" + ID + "'";
                 PreparedStatement pst = conexion.prepareStatement(consulta);
                 ResultSet rs;
                 rs = pst.executeQuery();
                
                 if(rs != null){
                     while(rs.next()){
-                        informacion_registro.add(rs.getString("ID_usuarios"));
+                        informacion_registro.add(rs.getString("ID_usuario"));
                         informacion_registro.add(rs.getString("Nombre"));
-                        informacion_registro.add(rs.getString("Ap_paterno"));
-                        informacion_registro.add(rs.getString("Ap_materno"));
+                        informacion_registro.add(rs.getString("Apellido_paterno"));
+                        informacion_registro.add(rs.getString("Apellido_materno"));
                         informacion_registro.add(rs.getString("Telefono"));
                         informacion_registro.add(rs.getString("Direccion"));
                             
-                   
-                    
-                    informacion_registro.add(informacion_fila);
                     }
                 
             }else{
@@ -121,7 +118,7 @@ public class ConexionUsuarios {
 
                 conexion = DriverManager.getConnection(conexionUrl);
                 
-                String consulta = "delete from Usuarios where ID_usuarios = '" + ID + "'";
+                String consulta = "delete from Usuarios where ID_usuario = '" + ID + "'";
                 PreparedStatement pst = conexion.prepareStatement(consulta);
                 pst.executeUpdate();
                 
@@ -150,9 +147,9 @@ public class ConexionUsuarios {
 
                 conexion = DriverManager.getConnection(conexionUrl);
                 
-                String consulta = "update Usuarios set ID_usuarios = '"+ ID + "', nombre= '" + nombre +"', Ap_paterno = '" + paterno
-                        +"', Ap_materno = '" + materno + "', Telefono = '" + tel + "', Direccion = '" + direccion + "' "
-                        + " where ID_usuarios = '" + ID + "'";
+                String consulta = "update Usuarios set ID_usuario = '"+ ID + "', nombre= '" + nombre +"', Apellido_paterno = '" + paterno
+                        +"', Apellido_materno = '" + materno + "', Telefono = '" + tel + "', Direccion = '" + direccion + "' "
+                        + " where ID_usuario = '" + ID + "'";
                 PreparedStatement pst = conexion.prepareStatement(consulta);
                 pst.executeUpdate();
                 
