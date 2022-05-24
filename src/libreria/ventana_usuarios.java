@@ -610,16 +610,22 @@ public class ventana_usuarios extends javax.swing.JFrame {
 
             System.out.println(r);
             
-            nombre_caja.setText(String.valueOf(r.get(1)));
-            nombre_caja.setForeground(new Color(0, 0, 0));
-            paterno_caja.setText(String.valueOf(r.get(2)));
-            paterno_caja.setForeground(new Color(0, 0, 0));
-            materno_caja.setText(String.valueOf(r.get(3)));
-            materno_caja.setForeground(new Color(0, 0, 0));
-            telefono_caja.setText(String.valueOf(r.get(4)));
-            telefono_caja.setForeground(new Color(0, 0, 0));
-            direccion_caja.setText(String.valueOf(r.get(5)));
-            direccion_caja.setForeground(new Color(0, 0, 0));
+            if(r != null){
+                nombre_caja.setText(String.valueOf(r.get(1)));
+                nombre_caja.setForeground(new Color(0, 0, 0));
+                paterno_caja.setText(String.valueOf(r.get(2)));
+                paterno_caja.setForeground(new Color(0, 0, 0));
+                materno_caja.setText(String.valueOf(r.get(3)));
+                materno_caja.setForeground(new Color(0, 0, 0));
+                telefono_caja.setText(String.valueOf(r.get(4)));
+                telefono_caja.setForeground(new Color(0, 0, 0));
+                direccion_caja.setText(String.valueOf(r.get(5)));
+                direccion_caja.setForeground(new Color(0, 0, 0));
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No se han encontrado registros", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "No se han encontrado registros", "Error",
@@ -700,8 +706,8 @@ public class ventana_usuarios extends javax.swing.JFrame {
             direccion_caja.setText("Ingrese la direccion aquí");
             direccion_caja.setForeground(new Color (153, 153, 153));
         }
-        if(telefono_caja.getText().equals("Ingrese el telefono aquí")){
-            telefono_caja.setText("");
+        if(telefono_caja.getText().equals("")){
+            telefono_caja.setText("Ingrese el telefono aquí");
             telefono_caja.setForeground(Color.BLACK);
         }
         

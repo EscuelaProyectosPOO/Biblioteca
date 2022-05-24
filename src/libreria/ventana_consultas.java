@@ -59,7 +59,7 @@ public class ventana_consultas extends javax.swing.JFrame {
             panel_titulo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_titulo2Layout.createSequentialGroup()
                 .addGap(234, 234, 234)
-                .addComponent(label_titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel_titulo2Layout.setVerticalGroup(
@@ -247,10 +247,7 @@ public class ventana_consultas extends javax.swing.JFrame {
 
 
                 }
-                
-                
-                
-                
+ 
             }
             
             
