@@ -6,6 +6,7 @@ import Base_Datos_Conexion.ConexionEditoriales;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class ventana_libros extends javax.swing.JFrame {
     
@@ -686,6 +687,10 @@ public class ventana_libros extends javax.swing.JFrame {
                 ArrayList editoriales = edi.busqueda_id(editorial);
                 editoriales_combo.setSelectedItem(String.valueOf(editoriales.get(0)));
                 
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No se han encontrado registros que coincidan", "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
         

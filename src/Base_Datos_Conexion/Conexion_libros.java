@@ -217,8 +217,8 @@ public class Conexion_libros {
                     + "encrypt=true;trustServerCertificate=true;";
 
                 conexion = DriverManager.getConnection(conexionUrl);
-                String consulta_libros = "update Libros set ID_libro = '" + id_libro + "', Nombre = '" + libro
-                        + "' where ID_libro = '" + id_libro + "' or Nombre = '" + libro +"'";
+                String consulta_libros = "update Libros set ID_libro = '" + id_libro + "', Titulo = '" + libro
+                        + "' where ID_libro = '" + id_libro + "' or Titulo = '" + libro +"'";
                 
                 PreparedStatement pstl = conexion.prepareStatement(consulta_libros);
                 pstl.executeUpdate();
@@ -310,7 +310,7 @@ public class Conexion_libros {
                 conexion = DriverManager.getConnection(conexionUrl);
                 
                 
-                String consulta = "select Nombre from Libros where ID_Libro = '" + libro + "'";
+                String consulta = "select Titulo from Libros where ID_Libro = '" + libro + "'";
                 PreparedStatement pst = conexion.prepareStatement(consulta);
                 ResultSet rs;
                 rs = pst.executeQuery();
@@ -319,7 +319,7 @@ public class Conexion_libros {
                     while(rs.next()){
                         /*String id = String.valueOf(rs.getInt("ID_editorial"));
                         informacion_fila = Arrays.asList(id, rs.getString("Editorial"));*/
-                        informacion_registro.add(rs.getString("Nombre"));
+                        informacion_registro.add(rs.getString("Titulo"));
                     }
                 
             }else{
@@ -404,6 +404,10 @@ public class Conexion_libros {
                 String consulta_relacion = "delete from Relacion_libros where ID_libro = '" + ID + "'";
                 PreparedStatement pst = conexion.prepareStatement(consulta_relacion);
                 pst.executeUpdate();
+                
+                String consulta_libros = "delete from Libros where ID_libro = '" + ID + "'";
+                PreparedStatement pstl = conexion.prepareStatement(consulta_libros);
+                pstl.executeUpdate();
                 
                 JOptionPane.showMessageDialog(null, "Se ha eliminado el registro", "Informacion",
                         JOptionPane.INFORMATION_MESSAGE);
