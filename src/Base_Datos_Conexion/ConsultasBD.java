@@ -52,8 +52,10 @@ public class ConsultasBD {
                     informacion_registro.add(rs.getString(i));
                 
             }else{
+                if(rs == null){
+                    JOptionPane.showMessageDialog(null, "Error en la consulta del campo ");
+                }
                 
-                JOptionPane.showMessageDialog(null, "Error en la consulta del campo ");
                 
             
             }

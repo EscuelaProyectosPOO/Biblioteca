@@ -386,6 +386,10 @@ public class ventana_autores extends javax.swing.JFrame {
                 autor_caja.setText(String.valueOf(informacion_registro.get(1)));
                 autor_caja.setForeground(Color.black);
             }
+            else{
+                JOptionPane.showMessageDialog(null, "No se han encontrado registros", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            }
             
 
        }catch(Exception e){
