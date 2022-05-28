@@ -172,7 +172,7 @@ public class Conexion_ventana_consultas {
 
             conexion = DriverManager.getConnection(conexionUrl);
             
-            String consulta = "select Libros.ID_libro as ID_libro, Libros.Titulo as titulo, Usuarios.ID_usuario as ID_usuario, Usuarios.Nombre as nombre," +
+            String consulta = "select Libros.ID_libro as ID_libro,Usuarios.ID_usuario as ID_usuario, Libros.Titulo as titulo,  Usuarios.Nombre as nombre," +
                                 "Prestamo.Fecha_prestamo_inicio as inicio, Prestamo.Fecha_de_retorno as retorno " +
                                 "from Prestamo, Libros, Usuarios " +
                                 "where Prestamo.ID_libro = Libros.ID_libro " +
@@ -189,8 +189,8 @@ public class Conexion_ventana_consultas {
                     
                    
                     informacion_fila = Arrays.asList( rs.getString("ID_libro"),
-                            rs.getString("titulo"),
                             rs.getString("ID_usuario"),
+                            rs.getString("titulo"),
                             rs.getString("nombre"),
                             String.valueOf(rs.getDate("inicio")),
                             String.valueOf(rs.getDate("retorno")));

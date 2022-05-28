@@ -731,13 +731,18 @@ public class ventana_libros extends javax.swing.JFrame {
 
     private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
         //Base_Datos_Conexion.ConsultasBD conexion = new Base_Datos_Conexion.ConsultasBD();
-        
+        try{
         //int autor, editorial, ejemplares;
         int autor = Integer.parseInt(id_autor.getText());
         int editorial = Integer.parseInt(id_editorial.getText());
         int ejemplares = Integer.parseInt(ejemplares_caja.getText());
         
         obj.insertar(id_libro.getText(), titulo_caja.getText(), autor, editorial, ejemplares);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Asegúrese de que el número de ejemplares sea un entero \n"+e, "Error",
+                        JOptionPane.ERROR_MESSAGE);
+        }
        
     }//GEN-LAST:event_boton_entrarMouseClicked
 

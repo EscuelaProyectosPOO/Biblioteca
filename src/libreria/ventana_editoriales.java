@@ -317,14 +317,20 @@ public class ventana_editoriales extends javax.swing.JFrame {
     }//GEN-LAST:event_id_cajaMousePressed
 
     private void boton_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseClicked
+        try{
+            int id = Integer.parseInt(id_caja.getText());
+            obj.insertar(id,editorial_caja.getText());
+
+            editorial_caja.setText("Ingrese la editorial del libro aquí");
+            editorial_caja.setForeground(new Color(153, 153, 153));
+            id_caja.setText("Ingrese el ID de la editorial aquí");
+            id_caja.setForeground(new Color(153, 153, 153));
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No se han podido insertar los datos", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
         
-        int id = Integer.parseInt(id_caja.getText());
-        obj.insertar(id,editorial_caja.getText());
-        
-        editorial_caja.setText("Ingrese la editorial del libro aquí");
-        editorial_caja.setForeground(new Color(153, 153, 153));
-        id_caja.setText("Ingrese el ID de la editorial aquí");
-        id_caja.setForeground(new Color(153, 153, 153));
     }//GEN-LAST:event_boton_entrarMouseClicked
 
     private void boton_entrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_entrarMouseEntered
@@ -340,11 +346,20 @@ public class ventana_editoriales extends javax.swing.JFrame {
     private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
         ArrayList resultados;
         try{
+            
             if("Ingrese el ID de la editorial aquí".equals(id_caja.getText()) || "".equals(id_caja.getText())){
                 resultados = obj.busqueda_nombre(editorial_caja.getText());
-                //System.out.println("nombre: "+resultados.get(1));
-                id_caja.setText(String.valueOf(resultados.get(0)));
+                
+                if (resultados.size() > 0){
+                    id_caja.setText(String.valueOf(resultados.get(0)));
                 id_caja.setForeground(new Color(0, 0, 0));
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "No se han encontrado registros", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+                }
+                //System.out.println("nombre: "+resultados.get(1));
+                
 
             }
             else{

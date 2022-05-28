@@ -22,8 +22,10 @@ public class ConexionUsuarios {
     
     public void insertar(String ID, String nombre, String paterno, String materno, String tel, String direccion){
         Connection conexion = null;
+        ArrayList b = busqueda(ID);
         
-        try{
+        if(b == null || b.size() == 0){
+            try{
 
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
                 String conexionUrl = "jdbc:sqlserver://;"
@@ -49,6 +51,12 @@ public class ConexionUsuarios {
                 System.out.println(e);
 
             }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Ya existe un usuario con ese ID", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+        }
+        
     }
     
     public ArrayList busqueda(String ID){
@@ -105,32 +113,41 @@ public class ConexionUsuarios {
     }
     
     public void eliminar(String ID){
+        boolean b = buscar_prestamo(ID);
+        
+        if(b == false){
             Connection conexion = null;
         
-        try{
+            try{
 
-                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
-                String conexionUrl = "jdbc:sqlserver://;"
-                    + "databaseName=" +Nombre_base_datos + ";"
-                    + "user="+ Nombre_usario_base_datos + ";"
-                    + "password=" + Password + ";"
-                    + "encrypt=true;trustServerCertificate=true;";
+                    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+                    String conexionUrl = "jdbc:sqlserver://;"
+                        + "databaseName=" +Nombre_base_datos + ";"
+                        + "user="+ Nombre_usario_base_datos + ";"
+                        + "password=" + Password + ";"
+                        + "encrypt=true;trustServerCertificate=true;";
 
-                conexion = DriverManager.getConnection(conexionUrl);
-                
-                String consulta = "delete from Usuarios where ID_usuario = '" + ID + "'";
-                PreparedStatement pst = conexion.prepareStatement(consulta);
-                pst.executeUpdate();
-                
-                JOptionPane.showMessageDialog(null, "Se ha eliminado el registro", "Informacion",
-                        JOptionPane.INFORMATION_MESSAGE);
-                conexion.close();
-                
-         } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e, "Error",
-                        JOptionPane.ERROR_MESSAGE);
+                    conexion = DriverManager.getConnection(conexionUrl);
 
+                    String consulta = "delete from Usuarios where ID_usuario = '" + ID + "'";
+                    PreparedStatement pst = conexion.prepareStatement(consulta);
+                    pst.executeUpdate();
+
+                    JOptionPane.showMessageDialog(null, "Se ha eliminado el registro", "Informacion",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    conexion.close();
+
+             } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e, "Error",
+                            JOptionPane.ERROR_MESSAGE);
+
+            }
         }
+        else{
+            JOptionPane.showMessageDialog(null, "No se puede eliminar al usuario porque \n tiene uno o más préstamos pendientes", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+        }
+        
     }
     
     public void actualizar (String ID, String nombre, String paterno, String materno, String tel, String direccion){
@@ -163,5 +180,51 @@ public class ConexionUsuarios {
 
         }
     
+    }
+    
+    public boolean buscar_prestamo(String ID){
+        boolean resultado = false;
+        
+        Connection conexion = null;
+        ArrayList informacion_registro = new ArrayList();
+        List<String> informacion_fila = new ArrayList();
+        
+        try{
+
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+                String conexionUrl = "jdbc:sqlserver://;"
+                    + "databaseName=" +Nombre_base_datos + ";"
+                    + "user="+ Nombre_usario_base_datos + ";"
+                    + "password=" + Password + ";"
+                    + "encrypt=true;trustServerCertificate=true;";
+
+                conexion = DriverManager.getConnection(conexionUrl);
+                
+                
+                String consulta = "select * from Prestamo where ID_usuario = '" + ID + "'";
+                PreparedStatement pst = conexion.prepareStatement(consulta);
+                ResultSet rs;
+                rs = pst.executeQuery();
+               
+                if(rs != null){
+                    resultado = true;
+                
+            }else{
+                
+                resultado = false;
+                
+            
+            }
+            
+            conexion.close();
+                
+         } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e, "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                
+                System.out.println(e);
+
+            }
+        return resultado;
     }
 }

@@ -382,13 +382,11 @@ public class ventana_autores extends javax.swing.JFrame {
             
             informacion_registro = ConsultasBD.ConsultarBaseDatos("Autores", "ID_autor", ID_autor);
 
-            autor_caja.setText(String.valueOf(informacion_registro.get(1)));
-
-
-            autor_caja.setForeground(Color.black);
-           
-
-          
+            if(informacion_registro.size() > 0){
+                autor_caja.setText(String.valueOf(informacion_registro.get(1)));
+                autor_caja.setForeground(Color.black);
+            }
+            
 
        }catch(Exception e){
 
@@ -423,9 +421,15 @@ public class ventana_autores extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos \n", "No se han podido registrar los datos",
                     JOptionPane.ERROR_MESSAGE);
             }else{
-
-                ConsultasBD.insertarTablaAutor(ID_autor, Nombre_autor);
-               
+                ArrayList b = ConsultasBD.ConsultarBaseDatos("Autores", "ID_autor", ID_autor);
+                
+                if(b.size() == 0){
+                    ConsultasBD.insertarTablaAutor(ID_autor, Nombre_autor);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Ya existe un autor registrado con ete ID", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+                }   
           }
 
        }catch(Exception e){

@@ -25,8 +25,11 @@ public class Conexion_libros {
     
     public void insertar(String id_libro, String libro, int autor, int editorial, int ejemplares){
         Connection conexion = null;
+        ArrayList b = buscar_id(id_libro);
+        System.out.println(b);
         
-        try{
+        if (b == null || b.size() == 0){
+            try{
 
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
                 String conexionUrl = "jdbc:sqlserver://;"
@@ -52,12 +55,18 @@ public class Conexion_libros {
                         JOptionPane.INFORMATION_MESSAGE);
                 conexion.close();
                 
-         } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e, "Error",
-                        JOptionPane.ERROR_MESSAGE);
-                System.out.println(e);
+            } catch (Exception e) {
+                   JOptionPane.showMessageDialog(null, e, "Error",
+                           JOptionPane.ERROR_MESSAGE);
+                   System.out.println(e);
 
+           }
         }
+        else{
+            JOptionPane.showMessageDialog(null, "Ya existe un libro con este ID", "Error",
+                           JOptionPane.ERROR_MESSAGE);
+        }
+        
     }
     
     public ArrayList capturar_autores(){
@@ -388,6 +397,48 @@ public class Conexion_libros {
     }
     
     public void eliminar (String ID){
+        
+        boolean b = buscar_prestamos(ID);
+        
+        if(b == false){
+            Connection conexion = null;
+        
+            try{
+
+                    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+                    String conexionUrl = "jdbc:sqlserver://;"
+                        + "databaseName=" +Nombre_base_datos + ";"
+                        + "user="+ Nombre_usario_base_datos + ";"
+                        + "password=" + Password + ";"
+                        + "encrypt=true;trustServerCertificate=true;";
+
+                    conexion = DriverManager.getConnection(conexionUrl);
+
+                    String consulta_relacion = "delete from Relacion_libros where ID_libro = '" + ID + "'";
+                    PreparedStatement pst = conexion.prepareStatement(consulta_relacion);
+                    pst.executeUpdate();
+
+
+                    JOptionPane.showMessageDialog(null, "Se ha eliminado el registro", "Informacion",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    conexion.close();
+
+                    eliminar_libro(ID);
+
+             } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e, "Error",
+                            JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
+        
+        else{
+            JOptionPane.showMessageDialog(null, "No puede eliminarse el libro porque hay uno \n o más ejemplares en préstamo", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }
+    public void eliminar_libro(String ID){
         Connection conexion = null;
         
         try{
@@ -401,13 +452,10 @@ public class Conexion_libros {
 
                 conexion = DriverManager.getConnection(conexionUrl);
                 
-                String consulta_relacion = "delete from Relacion_libros where ID_libro = '" + ID + "'";
+                String consulta_relacion = "delete from Libros where ID_libro = '" + ID + "'";
                 PreparedStatement pst = conexion.prepareStatement(consulta_relacion);
                 pst.executeUpdate();
-                
-                String consulta_libros = "delete from Libros where ID_libro = '" + ID + "'";
-                PreparedStatement pstl = conexion.prepareStatement(consulta_libros);
-                pstl.executeUpdate();
+
                 
                 JOptionPane.showMessageDialog(null, "Se ha eliminado el registro", "Informacion",
                         JOptionPane.INFORMATION_MESSAGE);
@@ -418,5 +466,49 @@ public class Conexion_libros {
                         JOptionPane.ERROR_MESSAGE);
 
         }
+    }
+    
+    public boolean buscar_prestamos(String ID){
+        Connection conexion = null;
+        ArrayList informacion_registro = new ArrayList();
+        List<String> informacion_fila = new ArrayList();
+        
+        boolean resultado = false;
+        try{
+
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+                String conexionUrl = "jdbc:sqlserver://;"
+                    + "databaseName=" +Nombre_base_datos + ";"
+                    + "user="+ Nombre_usario_base_datos + ";"
+                    + "password=" + Password + ";"
+                    + "encrypt=true;trustServerCertificate=true;";
+
+                conexion = DriverManager.getConnection(conexionUrl);
+                
+                
+                String consulta = "select * from Prestamo where ID_libro = '" + ID + "'";
+                PreparedStatement pst = conexion.prepareStatement(consulta);
+                ResultSet rs;
+                rs = pst.executeQuery();
+               
+                
+                if(rs != null){
+                    resultado = true;
+                }
+                else{
+                    resultado = false;
+                }
+                
+            conexion.close();
+                
+         } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e, "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                
+                System.out.println(e);
+
+            }
+        return resultado;
+
     }
 }

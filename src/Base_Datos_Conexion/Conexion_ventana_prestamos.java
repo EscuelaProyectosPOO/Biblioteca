@@ -47,21 +47,22 @@ public class Conexion_ventana_prestamos {
             ResultSet rs = pst.executeQuery();
             
             if(rs.next()){
+                /*JOptionPane.showMessageDialog(null, "Datos encontrados con exito", "Informacion",
+                    JOptionPane.INFORMATION_MESSAGE);*/
                 
                 for (int i=1;i<=rs.getMetaData().getColumnCount();i++)
                     informacion_registro.add(rs.getString(i));
                 
             }else{
+                if(rs == null){
+                    JOptionPane.showMessageDialog(null, "Error en la consulta del campo ");
+                }
                 
-                JOptionPane.showMessageDialog(null, "Error en la consulta del campo ");
-                
-            
             }
             
             conexion.close();
             
-            JOptionPane.showMessageDialog(null, "Datos encontrados con exito", "Informacion",
-                    JOptionPane.INFORMATION_MESSAGE);
+            
         }catch(Exception e){
             
             JOptionPane.showMessageDialog(null, e, "Error",

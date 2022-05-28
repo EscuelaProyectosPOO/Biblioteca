@@ -6,6 +6,7 @@ import Base_Datos_Conexion.Conexion_ventana_prestamos;
 import codigo_ventana.clase_ventanaVolver_inicio;
 import java.sql.Date;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class ventana_prestamos extends javax.swing.JFrame {
 
@@ -461,8 +462,17 @@ public class ventana_prestamos extends javax.swing.JFrame {
     private void boton_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_buscarMouseClicked
 
        ArrayList informacion  = Conexion_ventana_prestamos.ConsultarBaseDatos(id_libro.getText(), id_usuario.getText());
+       if(informacion.size() > 0){
+           JOptionPane.showMessageDialog(null, "Datos encontrados con exito", "Informacion",
+           JOptionPane.INFORMATION_MESSAGE);
+           caja_entrega.setText( String.valueOf(informacion.get(0)));
+           caja_entrega.setForeground(new Color(0, 0, 0));
+       }
+       else{
+           JOptionPane.showMessageDialog(null, "No se han encontrado registros", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+       }
        
-       caja_entrega.setText( String.valueOf(informacion.get(0)));
        
 
     }//GEN-LAST:event_boton_buscarMouseClicked
@@ -478,19 +488,37 @@ public class ventana_prestamos extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_registrarMouseEntered
 
     private void boton_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarMouseClicked
-
+        try{
+            ArrayList b  = Conexion_ventana_prestamos.ConsultarBaseDatos(id_libro.getText(), id_usuario.getText());
        
-        String id_libro = this.id_libro.getText();
-        String id_usuarioV = id_usuario.getText();
-        //saca la fecha de hoy
-        long miliseconds = System.currentTimeMillis();
-        Date prestamo_inicio = new Date(miliseconds);
+            if(b.size() == 0){
+                String id_libro = this.id_libro.getText();
+                String id_usuarioV = id_usuario.getText();
+                //saca la fecha de hoy
+                long miliseconds = System.currentTimeMillis();
+                Date prestamo_inicio = new Date(miliseconds);
 
-        Date prestamo_fin = Date.valueOf(caja_entrega.getText());
+                Date prestamo_fin = Date.valueOf(caja_entrega.getText());
+                
+                if(prestamo_fin.before(prestamo_inicio)){
+                    JOptionPane.showMessageDialog(null, "El prestamo no puede finalizar antes de la fecha de inicio", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                }
+                else{
+                    Conexion_ventana_prestamos.insertarBaseDatos_Prestamo(id_libro, id_usuarioV, prestamo_inicio, prestamo_fin);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Este usuario ya tiene este libro en préstamo", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        catch(Exception e){
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Por favor ingrese la fecha en el fromato especificado", "Error",
+            JOptionPane.ERROR_MESSAGE);
+        }
         
-
-
-        Conexion_ventana_prestamos.insertarBaseDatos_Prestamo(id_libro, id_usuarioV, prestamo_inicio, prestamo_fin);
 
         
     }//GEN-LAST:event_boton_registrarMouseClicked

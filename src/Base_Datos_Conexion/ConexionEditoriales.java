@@ -25,8 +25,11 @@ public class ConexionEditoriales {
     
     public void insertar(int ID, String nombre){
         Connection conexion = null;
+        ArrayList b = busqueda_id(ID);
+        System.out.println(b);
         
-        try{
+        if(b == null || b.size() == 0){
+            try{
 
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
                 String conexionUrl = "jdbc:sqlserver://;"
@@ -51,6 +54,12 @@ public class ConexionEditoriales {
                 System.out.println(e);
 
             }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Yaexiste una editorial registrada con este ID", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+        }
+        
     }
     
     public ArrayList busqueda_id(int ID){

@@ -286,7 +286,7 @@ public class ventana_consultas extends javax.swing.JFrame {
             //si prestamos
             
             limpiar_tabla();
-            titulo = new String[]{"Id libro","Libro", "Id usuario","Usuario", "Fecha de inicio", "Fecha de retorno" };
+            titulo = new String[]{"Id libro", "Id usuario","Libro","Usuario", "Fecha de inicio", "Fecha de retorno" };
             
             tabla.setColumnIdentifiers(titulo);
             TablaConsultas.setModel(tabla);
